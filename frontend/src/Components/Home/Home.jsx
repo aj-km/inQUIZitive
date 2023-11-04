@@ -6,7 +6,7 @@ import { getAllUsers, getFollowingPosts } from "../../Actions/User";
 import Loader from "../Loader/Loader";
 import { Typography } from "@mui/material";
 import { useAlert } from "react-alert";
-
+import QuizInput from "../QuizInput/QuizInput"
 const Home = () => {
   const dispatch = useDispatch();
   const alert = useAlert();
@@ -34,7 +34,7 @@ const Home = () => {
   ) : (
     <div className="home">
       <div className="homeleft">
-        Login Page
+        Home Component
       </div>
       <div className="homeright">
         {users && users.length > 0 ? (

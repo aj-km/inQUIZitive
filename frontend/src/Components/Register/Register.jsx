@@ -9,7 +9,7 @@ import { useAlert } from "react-alert";
 const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [avatar, setAvatar] = useState("");
+  const [avatar, setAvatar] = useState();
   const [password, setPassword] = useState("");
 
   const dispatch = useDispatch();
