@@ -15,7 +15,7 @@ import ResetPassword from "./Components/ResetPassword/ResetPassword";
 import UserProfile from "./Components/UserProfile/UserProfile";
 import Search from "./Components/Search/Search";
 import NotFound from "./Components/NotFound/NotFound";
-
+import QuizInput from "./Components/QuizInput/QuizInput";
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -63,7 +63,10 @@ function App() {
           path="/user/:id"
           element={isAuthenticated ? <UserProfile /> : <Login />}
         />
-
+        <Route
+          path="/newpost"
+          element={isAuthenticated ? <QuizInput/> : <NotFound />}
+        />
         <Route path="search" element={<Search />} />
 
         <Route path="*" element={<NotFound />} />
