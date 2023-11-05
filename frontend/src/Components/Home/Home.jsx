@@ -2,11 +2,11 @@ import React, { useEffect } from "react";
 import User from "../User/User";
 import "./Home.css";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllUsers, getFollowingPosts } from "../../Actions/User";
+import { getAllUsers} from "../../Actions/User";
 import Loader from "../Loader/Loader";
 import { Typography } from "@mui/material";
 import { useAlert } from "react-alert";
-import QuizInput from "../QuizInput/QuizInput"
+import QuizInput from "../QuizForm/QuizForm"
 const Home = () => {
   const dispatch = useDispatch();
   const alert = useAlert();
@@ -17,7 +17,6 @@ const Home = () => {
   );
 
   useEffect(() => {
-    dispatch(getFollowingPosts());
     dispatch(getAllUsers());
   }, [dispatch]);
 

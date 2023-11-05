@@ -1,4 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
+import { quizReducer } from "./Reducers/quizReducer";
 import {
   allUsersReducer,
   postOfFollowingReducer,
@@ -9,9 +10,9 @@ import {
 const store = configureStore({
   reducer: {
     user: userReducer,
-    postOfFollowing: postOfFollowingReducer,
     allUsers: allUsersReducer,
     userProfile: userProfileReducer,
+    quiz:quizReducer,
   },
 });
 
