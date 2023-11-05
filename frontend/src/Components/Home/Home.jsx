@@ -1,12 +1,26 @@
 import React, { useEffect } from "react";
 import User from "../User/User";
+import Quiz from "../Quiz/Quiz";
 import "./Home.css";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllUsers} from "../../Actions/User";
 import Loader from "../Loader/Loader";
 import { Typography } from "@mui/material";
 import { useAlert } from "react-alert";
-import QuizInput from "../QuizForm/QuizForm"
+
+
+const questions = [
+  {
+    text: 'What is the capital of France?',
+    options: ['Paris', 'London', 'Berlin', 'Madrid']
+  },
+  {
+    text: 'What is the capital of England?',
+    options: ['Paris', 'London', 'Berlin', 'Madrid']
+  },
+  // Add more questions here...
+];
+
 const Home = () => {
   const dispatch = useDispatch();
   const alert = useAlert();
@@ -33,7 +47,8 @@ const Home = () => {
   ) : (
     <div className="home">
       <div className="homeleft">
-        Home Component
+        {/* <h1> Quiz </h1> */}
+        <Quiz name="Geography Quiz" questions={questions} />
       </div>
       <div className="homeright">
         {users && users.length > 0 ? (
