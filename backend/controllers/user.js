@@ -1,4 +1,5 @@
 const User = require("../models/User");
+const Quiz=require("../models/Quiz");
 const { sendEmail } = require("../middlewares/sendEmail");
 const crypto = require("crypto");
 const cloudinary = require("cloudinary");
@@ -310,7 +311,7 @@ exports.getUserProfile = async (req, res) => {
 exports.getAllUsers = async (req, res) => {
     try {
         const users = await User.find({
-            name:{$regex:req.query.name, $options:'i'},
+            name: { $regex: req.query.name, $options: 'i' },
         });
         res.status(200).json({
             success: true,
@@ -453,5 +454,23 @@ exports.getUserPosts = async (req, res) => {
             status: false,
             message: e.message,
         })
+    }
+}
+
+exports.createQuiz = async (req, res) => {
+    try {
+        // No need to check if the user is an admin if you're using middleware to handle that.
+        // We assume that the middleware has already verified that the user is an admin.
+
+        // Create a new quiz
+        const quiz = new Quiz(req.body);
+        await quiz.save();
+
+        res.status(201).json(quiz);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({
+            message: 'An error occurred while creating the quiz.'
+        });
     }
 }

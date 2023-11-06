@@ -3,7 +3,7 @@ import User from "../User/User";
 import Quiz from "../Quiz/Quiz";
 import "./Home.css";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllUsers, getFollowingPosts } from "../../Actions/User";
+import { getAllUsers} from "../../Actions/User";
 import Loader from "../Loader/Loader";
 import { Avatar, Typography } from "@mui/material";
 import { useAlert } from "react-alert";

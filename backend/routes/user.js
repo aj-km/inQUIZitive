@@ -1,6 +1,7 @@
 const express=require('express');
-const { register, login, followUser, logout, updatePassword, updateProfile, deleteProfile, myProfile, getUserProfile, getAllUsers, forgotPassword, resetPassword, getMyPosts, getUserPosts } = require('../controllers/user');
+const { register, login, followUser, logout, updatePassword, updateProfile, deleteProfile, myProfile, getUserProfile, getAllUsers, forgotPassword, resetPassword, getMyPosts, getUserPosts, createQuiz } = require('../controllers/user');
 const {isAuthenticated}=require("../middlewares/auth");
+const { checkAdmin } = require('../middlewares/checkAdmin');
 const router=express.Router();
 
 router.route("/register").post(register);
@@ -23,4 +24,6 @@ router.route("/users").get(isAuthenticated,getAllUsers);
 
 router.route("/forgot/password").post(forgotPassword);
 router.route("/password/reset/:token").put(resetPassword);
+
+router.route("/admin/createQuiz").post(isAuthenticated,checkAdmin,createQuiz);
 module.exports=router;

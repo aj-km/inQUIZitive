@@ -20,8 +20,8 @@ const Header = () => {
         {tab === "/" ? <Home style={{ color: "black" }} /> : <HomeOutlined />}
       </Link>
 
-      <Link to="/newpost" onClick={() => setTab("/newpost")}>
-        {tab === "/newpost" ? (
+      <Link to="/createQuiz" onClick={() => setTab("/createQuiz")}>
+        {tab === "/createQuiz" ? (
           <Add style={{ color: "black" }} />
         ) : (
           <AddOutlined />

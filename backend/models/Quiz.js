@@ -9,6 +9,10 @@ const QuestionSchema = new mongoose.Schema({
     type: [String],
     required: true,
   },
+  answer:{
+    type:String,
+    required:true,
+  }
 });
 
 const AnswerSchema = new mongoose.Schema({
@@ -19,8 +23,11 @@ const AnswerSchema = new mongoose.Schema({
 });
 
 const QuizSchema = new mongoose.Schema({
+  title:String,
   questions: [QuestionSchema],
-  answers: [AnswerSchema],
+  // answers: [AnswerSchema],
+  //yaha pe  haga hai thoda pair utha kar chalen 
+  // answers:[String,]
 });
 
 module.exports = mongoose.model('Quiz', QuizSchema);

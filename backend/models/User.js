@@ -46,6 +46,10 @@ const userSchema = new mongoose.Schema({
     select: false,
     //to access user data without password
   },
+  isAdmin: {
+    type: Boolean,
+    default: true,
+  },
   quizzes: [QuizResponseSchema],
   resetPasswordToken: String,
   resetPasswordExpire: Date,
