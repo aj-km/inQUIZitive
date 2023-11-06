@@ -1,49 +1,73 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { createQuiz } from '../../features/quizzes/quizSlice';
+import { createQuiz, resetCreateQuiz } from '../../Actions/quizActions';
 import './QuizInput.css';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { useAlert } from 'react-alert';
+import Loader from "../Loader/Loader";
 
 const QuestionInput = () => {
   const [numQuestions, setNumQuestions] = useState(1);
+  const [quizTitle, setQuizTitle] = useState();
   const [quizData, setQuizData] = useState({
     title: '',
     questions: [{ question: '', options: ['', '', '', ''], answer: '' }]
   });
-
+  const location=useLocation();
+  const alert=useAlert();
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { loading, error, quizCreated } = useSelector((state) => state.quiz);
+  const { loading, error, quizDataFromBackend,quizCreated } = useSelector((state) => state.quiz);
+
+
+  useEffect(() => {
+    if (quizCreated) {
+      navigate("/quiz-success");
+    }
+    // If you have cleanup logic when the component unmounts or before re-running the effect, return it here
+    return () => {
+      // Cleanup logic
+      dispatch(resetCreateQuiz());
+    };
+
+  }, [quizCreated, navigate, dispatch]); 
+  // }, [quizCreated]); 
+  useEffect(() => {
+    if (error) {
+      alert.error(error);
+      dispatch({ type: "clearErrors" });
+    }
+  }, [alert, error, dispatch]);
 
   useEffect(() => {
     setQuizData((prevData) => ({
       ...prevData,
+      title: quizTitle,
+      // title: "",
       questions: Array.from({ length: numQuestions }, (_, index) => ({
         question: prevData.questions[index]?.question || '',
         options: prevData.questions[index]?.options || ['', '', '', ''],
         answer: prevData.questions[index]?.answer || ''
       }))
     }));
-  }, [numQuestions]);
+  }, [numQuestions, quizTitle]);
 
-  useEffect(() => {
-    if (quizCreated) {
-      // navigate to the desired route after quiz creation
-      navigate('/quiz-success');
-    }
-  }, [quizCreated, navigate]);
-
-  useEffect(() => {
-    if (error) {
-      // Log the error or show a notification
-      console.error(error);
-    }
-  }, [error]);
+  
+  // useEffect(() => {
+  //   // Dispatch an action to reset quiz creation state
+  //   dispatch(resetCreateQuiz());
+  // }, [dispatch]);
 
   const handleNumQuestionsChange = (e) => {
     const newNumQuestions = Number(e.target.value);
     setNumQuestions(newNumQuestions);
+  };
+
+  const handleQuizTitleChange = (e) => {
+    const newQuizTitle = (e.target.value);
+    setQuizTitle(newQuizTitle);
+    console.log(quizTitle);
   };
 
   const handleQuestionChange = (e) => {
@@ -78,15 +102,22 @@ const QuestionInput = () => {
       setCurrentQuestion(currentQuestion - 1);
     }
   };
-
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(quizData);
     dispatch(createQuiz(quizData));
   };
 
   return (
     <div className="QuestionInput">
       <form onSubmit={handleSubmit}>
+        <input
+            type="text"
+            placeholder="Quiz Title"
+            value={quizTitle}
+            onChange={handleQuizTitleChange}
+            required
+          />
         <input
           type="number"
           min="1"
@@ -95,6 +126,7 @@ const QuestionInput = () => {
           onChange={handleNumQuestionsChange}
           required
         />
+      
         {numQuestions > 0 && (
           <>
             <input

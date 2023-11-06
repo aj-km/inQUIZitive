@@ -1,12 +1,26 @@
-export const quizReducer = (state = { quizzes: [] }, action) => {
-  switch (action.type) {
-    case 'CREATE_QUIZ_REQUEST':
-      return { ...state, loading: true };
-    case 'CREATE_QUIZ_SUCCESS':
-      return { ...state, loading: false, quizzes: [...state.quizzes, action.payload] };
-    case 'CREATE_QUIZ_FAIL':
-      return { ...state, loading: false, error: action.payload };
-    default:
-      return state;
-  }
-};
+import { createReducer } from "@reduxjs/toolkit";
+const initialState={};
+
+export const quizReducer=createReducer(initialState,{
+    CreateQuizRequest:(state)=>{
+      state.loading=true;
+      state.quizCreated=false;
+    },
+    CreateQuizSuccess:(state,action)=>{
+      state.loading=false;
+      state.quizDataFromBackend=action.payload;
+      state.quizCreated=true;
+    },
+    CreateQuizFailure:(state,action)=>{
+      state.loading=false;
+      state.error=action.payload;
+      state.quizCreated=false;
+    },
+    clearErrors: (state) => {
+      state.error = null;
+    },
+    ResetQuiz:(state)=>{
+      state.quizCreated=false;
+    }
+
+});

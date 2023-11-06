@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const createQuiz = (quizData) => async (dispatch) => {
   try {
-    dispatch({ type: 'CREATE_QUIZ_REQUEST' });
+    dispatch({ type: 'CreateQuizRequest' });
     
     const config = {
       headers: {
@@ -13,15 +13,21 @@ export const createQuiz = (quizData) => async (dispatch) => {
     const { data } = await axios.post('/api/v1/admin/createQuiz', quizData, config);
 
     dispatch({ 
-      type: 'CREATE_QUIZ_SUCCESS',
+      type: 'CreateQuizSuccess',
       payload: data,
     });
   } catch (error) {
     dispatch({
-      type: 'CREATE_QUIZ_FAIL',
-      payload: error.response && error.response.data.message
-        ? error.response.data.message
-        : error.message,
+      type: 'CreateQuizFailure',
+      // payload: error.response && error.response.data.message
+      //   ? error.response.data.message
+      //   : error.message,
+      payload:error.response.data.message,
     });
   }
 };
+export const resetCreateQuiz=()=>async(dispatch)=>{
+  dispatch({
+    type:'ResetQuiz',
+  })
+}

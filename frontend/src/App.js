@@ -15,7 +15,6 @@ import ResetPassword from "./Components/ResetPassword/ResetPassword";
 import UserProfile from "./Components/UserProfile/UserProfile";
 import Search from "./Components/Search/Search";
 import NotFound from "./Components/NotFound/NotFound";
-import QuizForm from "./Components/QuizForm/QuizForm";
 import QuizInput from "./Components/QuizInput/QuizInput";
 import QuizCreationSuccess from "./Components/QuizCreationSuccess/QuizCreationSuccess";
 function App() {
@@ -72,7 +71,7 @@ function App() {
           element={<QuizInput/>}
         />
         <Route path="/search" element={<Search />} />
-        <Route path='/dashboard' element={<QuizCreationSuccess/>}/>
+        <Route path='/quiz-success' element={<QuizCreationSuccess/>}/>
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
