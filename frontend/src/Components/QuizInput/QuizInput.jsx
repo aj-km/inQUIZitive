@@ -39,13 +39,13 @@ const QuestionInput = () => {
       setShowExportButton(true);
     }
   };
-  const handlePrevClick = () => {
-    if (currentQuestion >0) {
-      setCurrentQuestion(currentQuestion - 1);
-    } else {
+  // const handlePrevClick = () => {
+  //   if (currentQuestion >0) {
+  //     setCurrentQuestion(currentQuestion - 1);
+  //   } else {
       
-    }
-  };
+  //   }
+  // };
   const exportData = () => {
     console.log(questions);
     console.log(answers);
@@ -69,7 +69,7 @@ const QuestionInput = () => {
             />
           ))}
           <input type="text" value={answers[currentQuestion]} onChange={handleAnswerChange} placeholder="Enter correct answer" />
-         <button className="btn1" onClick={handlePrevClick}>Previous</button>
+         {/* <button className="btn1" onClick={handlePrevClick}>Previous</button> */}
           <button className="btn2" onClick={handleNextClick}>Next</button>
         </div>
       )}

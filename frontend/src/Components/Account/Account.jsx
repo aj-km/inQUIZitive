@@ -23,27 +23,6 @@ const Account = () => {
     dispatch(logoutUser());
   };
 
-  useEffect(() => {
-    // dispatch(getMyPosts());
-
-  }, [dispatch]);
-
-  // useEffect(() => {
-  //   if (error) {
-  //     alert.error(error);
-  //     dispatch({ type: "clearErrors" });
-  //   }
-
-  //   if (likeError) {
-  //     alert.error(likeError);
-  //     dispatch({ type: "clearErrors" });
-  //   }
-  //   if (message) {
-  //     alert.success(message);
-  //     dispatch({ type: "clearMessage" });
-  //   }
-  // }, [alert, error, message, likeError, dispatch]);
-
   return userLoading === true ? (
     <Loader />
   ) : (
@@ -58,25 +37,6 @@ const Account = () => {
         />
 
         <Typography variant="h5">{user.name}</Typography>
-{/* 
-        <div>
-          <button onClick={() => setFollowersToggle(!followersToggle)}>
-            <Typography>Followers</Typography>
-          </button>
-          <Typography>{user.followers.length}</Typography>
-        </div> */}
-
-        {/* <div>
-          <button onClick={() => setFollowingToggle(!followingToggle)}>
-            <Typography>Following</Typography>
-          </button>
-          <Typography>{user.following.length}</Typography>
-        </div> */}
-
-        {/* <div>
-          <Typography>Posts</Typography>
-          <Typography>{user.posts.length}</Typography>
-        </div> */}
 
         <Button variant="contained" onClick={logoutHandler}>
           Logout

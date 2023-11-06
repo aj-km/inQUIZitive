@@ -5,8 +5,9 @@ import "./Home.css";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllUsers, getFollowingPosts } from "../../Actions/User";
 import Loader from "../Loader/Loader";
-import { Typography } from "@mui/material";
+import { Avatar, Typography } from "@mui/material";
 import { useAlert } from "react-alert";
+import Footer from "../Footer/Footer";
 
 
 const questions = [
@@ -26,24 +27,9 @@ const Home = () => {
   const alert = useAlert();
 
 
-  const { users, loading: usersLoading } = useSelector(
-    (state) => state.allUsers
-  );
+  const { user, loading: userLoading } = useSelector((state) => state.user);
 
-  useEffect(() => {
-    dispatch(getFollowingPosts());
-    dispatch(getAllUsers());
-  }, [dispatch]);
-
-  // useEffect(() => {
-
-  //   if (message) {
-  //     alert.success(message);
-  //     dispatch({ type: "clearMessage" });
-  //   }
-  // }, [alert,  dispatch]);
-
-  return  usersLoading === true ? (
+  return  userLoading === true ? (
     <Loader />
   ) : (
     <div className="home">
@@ -51,20 +37,17 @@ const Home = () => {
         {/* <h1> Quiz </h1> */}
         <Quiz name="Geography Quiz" questions={questions} />
       </div>
+
       <div className="homeright">
-        {users && users.length > 0 ? (
-          users.map((user) => (
-            <User
-              key={user._id}
-              userId={user._id}
-              name={user.name}
-              avatar={user.avatar.url}
-            />
-          ))
-        ) : (
-          <Typography>No Users Yet</Typography>
-        )}
+
+      <Avatar
+          src={user.avatar.url}
+          sx={{ height: "8vmax", width: "8vmax" }}
+        />
+        <Typography variant="h5">{user.name}</Typography>
+
       </div>
+      {/* <Footer/> */}
     </div>
   );
 };
