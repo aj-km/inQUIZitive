@@ -1,10 +1,30 @@
 // QuizComponent.jsx
-import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { resetQuizSubmit, submitQuizResponses } from '../../Actions/quizActions';
+import React, { useEffect, useState } from 'react';
 import './QuizComponent.css'; // Make sure the path to your CSS file is correct
+import { useAlert } from 'react-alert';
+import { useNavigate } from 'react-router-dom';
 
-const QuizComponent = ({ quiz, onSubmit }) => {
+const QuizComponent = ({ quiz }) => {
+
+  const dispatch = useDispatch();
+  const {user} = useSelector(state => state.user);
+  const { submitSuccess }=useSelector(state=>state.submitQuiz);
+  // const alert = useAlert();
+  const navigate = useNavigate();
+  
   // Initialize state to keep track of selected options for each question
   const [selectedOptions, setSelectedOptions] = useState({});
+
+  useEffect(() => {
+    if(submitSuccess){
+      navigate("/quiz-submitted");
+    }
+    return () => {
+      dispatch(resetQuizSubmit());
+    }
+  }, [submitSuccess, navigate, dispatch]);
 
   const handleOptionChange = (questionId, option) => {
     // Update the selected option for the question
@@ -14,9 +34,17 @@ const QuizComponent = ({ quiz, onSubmit }) => {
     }));
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault(); // Prevent form submission to a server
-    onSubmit(selectedOptions); // Pass the selected options up to the parent component
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    // Create an array of responses from selectedOptions
+    const responses = Object.keys(selectedOptions).map((questionId) => ({
+      questionId,
+      chosenOption: selectedOptions[questionId],
+    }));
+
+    // Dispatch the submit action
+    dispatch(submitQuizResponses(user._id, quiz.quizId._id, responses));
   };
 
   return (

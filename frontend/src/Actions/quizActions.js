@@ -105,7 +105,7 @@ export const selectOption = (questionId, selectedOption) => async (dispatch) => 
 };
 
 // Action to submit quiz responses
-export const submitQuizResponses = (userId, quizId,quizResponses) => async (dispatch) => {
+export const submitQuizResponses = (userId, quizId, quizResponses) => async (dispatch) => {
   dispatch({ 
     type: 'SubmitQuizResponseRequest' 
   });
@@ -130,3 +130,10 @@ export const submitQuizResponses = (userId, quizId,quizResponses) => async (disp
     });
   }
 };
+
+export const resetQuizSubmit = () => async(dispatch)=>{
+  dispatch({
+    type: 'SubmitQuizReset'
+  })
+}
+

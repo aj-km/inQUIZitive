@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { fetchQuiz, quizListReducer, quizReducer } from "./Reducers/quizReducer";
+import { fetchQuiz, quizListReducer, quizReducer, submitQuizResponses } from "./Reducers/quizReducer";
 import { quizSendReducer } from "./Reducers/quizSendReducer";
 import {
   allUsersReducer,
@@ -16,6 +16,7 @@ const store = configureStore({
     sendQuiz:quizSendReducer,
     allQuizzes:quizListReducer,
     fetchQuiz:fetchQuiz,
+    submitQuiz:submitQuizResponses
   },
 });
 

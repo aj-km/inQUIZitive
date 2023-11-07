@@ -17,6 +17,7 @@ import Search from "./Components/Search/Search";
 import NotFound from "./Components/NotFound/NotFound";
 import QuizInput from "./Components/QuizInput/QuizInput";
 import QuizCreationSuccess from "./Components/QuizCreationSuccess/QuizCreationSuccess";
+import QuizSubmitted from "./Components/QuizSubmitted/QuizSubmitted";
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -70,6 +71,10 @@ function App() {
           // element={isAuthenticated ? <QuizForm/> : <NotFound />}
           // element=<QuizForm/>
           element={<QuizInput/>}
+        />
+        <Route
+          path="/quiz-submitted"
+          element={<QuizSubmitted/>}
         />
         <Route path="/search" element={<Search />} />
         <Route path='/quiz-success' element={<QuizCreationSuccess/>}/>

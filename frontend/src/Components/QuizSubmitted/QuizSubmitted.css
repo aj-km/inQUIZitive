@@ -1,0 +1,50 @@
+.success-container {
+    text-align: center;
+    margin-top: 50px;
+    padding: 20px;
+    color: #333;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .success-container h1 {
+    color: #4CAF50;
+    font-size: 2.5rem;
+    margin-bottom: 0.5em;
+  }
+  
+  .success-container p {
+    font-size: 1.2rem;
+    margin-bottom: 2em;
+  }
+  
+  .return-btn {
+    padding: 10px 20px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .return-btn:hover {
+    background-color: #357a38;
+  }
+  
+  /* Responsive styling */
+  @media (max-width: 768px) {
+    .success-container h1 {
+      font-size: 2rem;
+    }
+  
+    .success-container p {
+      font-size: 1rem;
+    }
+  
+    .return-btn {
+      font-size: 0.9rem;
+    }
+  }
+  

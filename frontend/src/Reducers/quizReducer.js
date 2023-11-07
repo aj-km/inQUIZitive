@@ -23,6 +23,7 @@ export const quizReducer = createReducer(initialState, {
     state.quizCreated = false;
   }
 });
+
 const initialState2 = {
   quizzes: []
 }
@@ -44,6 +45,7 @@ export const quizListReducer = createReducer(initialState2, {
   }
 
 })
+
 const initialState3 = {
   loading: false,
   quizzes: [],
@@ -72,23 +74,28 @@ export const fetchQuiz = createReducer(initialState3, {
     }
   }
 });
+
 const initialState4={
-  quizzes: [],
-  loading: false,
-  error: null,
   submitLoading: false,
-  submitError: null,
+  submitSuccess: false,
+  submitError: null
 }
 export const submitQuizResponses=createReducer(initialState4,{
-  SubmitQuizResponseRequest:(state,action)=>{
+  SubmitQuizResponseRequest:(state)=>{
     state.submitLoading=true;
     state.submitError=null;
   },
   SubmitQuizResponseSuccess:(state)=>{
     state.submitLoading=false;
+    state.submitSuccess=true;
   },
   SubmitQuizResponseFailure:(state,action)=>{
     state.submitLoading=false;
+    state.submitSuccess=false;
     state.submitError=action.payload;
+  },
+  SubmitQuizReset:(state)=>{
+    state.submitSuccess=false;
+    state.submitLoading=false;
   }
 });

@@ -33,10 +33,10 @@ exports.sendQuizToUser = async (req, res) => {
         res.status(500).json({ message: error.message });
       }
 };
+
 // Function to handle the submission of quiz responses
 exports.submitQuizResponses = async (req, res) => {
-  const { userId, quizId, responses } = req.body; // Extract userId, quizId, and responses from the request body
-
+  const { userId, quizId, quizResponses } = req.body; // Extract userId, quizId, and responses from the request body
   try {
     // Find the user by ID
     const user = await User.findById(userId);
@@ -48,19 +48,26 @@ exports.submitQuizResponses = async (req, res) => {
     const quiz = await Quiz.findById(quizId);
     if (!quiz) {
       return res.status(404).json({ message: 'Quiz not found' });
-    }
+    }  
 
     // Calculate score based on responses - this is a simple correct/incorrect count
     let score = 0;
-    responses.forEach(response => {
+    quizResponses.forEach(response => {
       const question = quiz.questions.id(response.questionId);
       if (question && question.answer === response.chosenOption) {
         score += 1; // Increment score for correct answers
       }
     });
-
+  
     // Save the quiz responses and score in the user's document
-    user.quizzes.push({ quizId, responses, score });
+    const quizAttempted = user.quizzes.find(obj => {
+      return obj.quizId.toString() === quizId;
+    });
+    
+    quizAttempted.responses = [];
+    quizAttempted.score = score;
+    quizAttempted.responses.push( ...quizResponses);
+
     await user.save();
 
     res.status(200).json({ message: 'Quiz responses submitted successfully', score });

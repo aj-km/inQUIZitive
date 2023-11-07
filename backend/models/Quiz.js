@@ -22,7 +22,7 @@ const AnswerSchema = new mongoose.Schema({
   },
 });
 
-const QuizSchema = new mongoose.Schema({
+const QuizSchema = new mongoose.Schema({      //It is used to display questions to users
   title:{
     type: String,
     required: true,
