@@ -1,5 +1,5 @@
 const User = require("../models/User");
-const Quiz=require("../models/Quiz");
+const Quiz = require("../models/Quiz");
 const { sendEmail } = require("../middlewares/sendEmail");
 const crypto = require("crypto");
 const cloudinary = require("cloudinary");
@@ -474,3 +474,20 @@ exports.createQuiz = async (req, res) => {
         });
     }
 }
+
+
+exports.getUserQuizzes = async (req, res) => {
+    try {
+        const user = await User.findById(req.params.userId).populate({
+            path: 'quizzes.quizId', 
+            model: 'Quiz'
+        });
+        const quizzes=user.quizzes;
+        res.status(200).json({
+            success:true,
+            quizzes,
+        });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};

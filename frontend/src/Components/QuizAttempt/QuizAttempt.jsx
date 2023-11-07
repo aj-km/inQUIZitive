@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './Quiz.css';
+import './QuizAttempt.css';
 
 const Quiz = ({ name, questions }) => {
   const [answers, setAnswers] = useState(Array(questions.length).fill(''));

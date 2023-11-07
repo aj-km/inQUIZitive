@@ -104,7 +104,7 @@ const QuestionInput = () => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(quizData);
+    // console.log(quizData);
     dispatch(createQuiz(quizData));
   };
 

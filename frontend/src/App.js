@@ -23,14 +23,15 @@ function App() {
     dispatch(loadUser());
   }, [dispatch]);
 
-  const { isAuthenticated } = useSelector((state) => state.user);
-
+  const { isAuthenticated,user} = useSelector((state) => state.user);
+  // const isAdmin=user.isAdmin;
+  // console.log(user._id);
   return (
     <Router>
       {isAuthenticated && <Header />}
 
       <Routes>
-        <Route path="/" element={isAuthenticated ? <Home /> : <Login />} />
+        <Route path="/" element={(isAuthenticated)? <Home /> : <Login />} />
         <Route
           path="/account"
           element={isAuthenticated ? <Account /> : <Login />}

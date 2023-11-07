@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import User from "../User/User";
-import Quiz from "../Quiz/Quiz";
+import QuizAttempt from "../QuizAttempt/QuizAttempt";
 import "./Home.css";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllUsers} from "../../Actions/User";
@@ -8,6 +8,9 @@ import Loader from "../Loader/Loader";
 import { Avatar, Typography } from "@mui/material";
 import { useAlert } from "react-alert";
 import Footer from "../Footer/Footer";
+import QuizSend from "../QuizSend/QuizSend";
+import QuizAll from "../QuizAll/QuizAll";
+import QuizzesList from "../QuizzesList/QuizzesList";
 
 
 const questions = [
@@ -28,14 +31,17 @@ const Home = () => {
 
 
   const { user, loading: userLoading } = useSelector((state) => state.user);
-
+  //yahan pe isAdmin logic laga le
   return  userLoading === true ? (
     <Loader />
   ) : (
     <div className="home">
       <div className="homeleft">
         {/* <h1> Quiz </h1> */}
-        <Quiz name="Geography Quiz" questions={questions} />
+        {/* <QuizAttempt name="Geography Quiz" questions={questions} /> */}
+        {/* <QuizSend/> */}
+        {/* <QuizAll/> */}
+        <QuizzesList/>
       </div>
 
       <div className="homeright">

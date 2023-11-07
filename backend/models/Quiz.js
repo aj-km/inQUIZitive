@@ -23,7 +23,10 @@ const AnswerSchema = new mongoose.Schema({
 });
 
 const QuizSchema = new mongoose.Schema({
-  title:String,
+  title:{
+    type: String,
+    required: true,
+  },
   questions: [QuestionSchema],
   // answers: [AnswerSchema],
   //yaha pe  haga hai thoda pair utha kar chalen 

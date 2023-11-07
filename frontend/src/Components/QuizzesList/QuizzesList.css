@@ -1,0 +1,27 @@
+/* QuizzesList.css */
+.quizzes-list {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .quiz-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .quiz-list li {
+    padding: 10px;
+    margin: 5px 0;
+    background-color: #f7f7f7;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+  }
+  
+  .quiz-list li:hover {
+    background-color: #eaeaea;
+  }
+  
