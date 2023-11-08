@@ -22,8 +22,11 @@ const AnswerSchema = new mongoose.Schema({
   },
 });
 
-const QuizSchema = new mongoose.Schema({
-  title:String,
+const QuizSchema = new mongoose.Schema({      //It is used to display questions to users
+  title:{
+    type: String,
+    required: true,
+  },
   questions: [QuestionSchema],
   // answers: [AnswerSchema],
   //yaha pe  haga hai thoda pair utha kar chalen 

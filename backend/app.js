@@ -11,9 +11,10 @@ app.use(express.urlencoded({ limit: '50mb', extended: true }));
 app.use(cookieParser());
 
 //importing routes
+const quizRoutes=require("./routes/quiz");
 const user = require("./routes/user");
-
 //using routes
 app.use("/api/v1", user);
+app.use("/api",quizRoutes);
 
 module.exports = app;

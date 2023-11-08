@@ -23,7 +23,7 @@ export const loginUser = (email, password) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: "LoginFailure",
-      payload: error.response.data.message,
+      payload: error.response?.data?.message || error.message,
     });
   }
 };
@@ -43,7 +43,8 @@ export const loadUser = () => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: "LoadUserFailure",
-      payload: error.response.data.message,
+      // payload: error.response.data.message,
+      payload:error.response?.data?.message || error.message,
     });
   }
 };

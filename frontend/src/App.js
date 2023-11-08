@@ -17,20 +17,22 @@ import Search from "./Components/Search/Search";
 import NotFound from "./Components/NotFound/NotFound";
 import QuizInput from "./Components/QuizInput/QuizInput";
 import QuizCreationSuccess from "./Components/QuizCreationSuccess/QuizCreationSuccess";
+import QuizSubmitted from "./Components/QuizSubmitted/QuizSubmitted";
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(loadUser());
   }, [dispatch]);
 
-  const { isAuthenticated } = useSelector((state) => state.user);
-
+  const { isAuthenticated,user} = useSelector((state) => state.user);
+  // const isAdmin=user.isAdmin;
+  // console.log(user._id);
   return (
     <Router>
       {isAuthenticated && <Header />}
 
       <Routes>
-        <Route path="/" element={isAuthenticated ? <Home /> : <Login />} />
+        <Route path="/" element={(isAuthenticated)? <Home /> : <Login />} />
         <Route
           path="/account"
           element={isAuthenticated ? <Account /> : <Login />}
@@ -69,6 +71,10 @@ function App() {
           // element={isAuthenticated ? <QuizForm/> : <NotFound />}
           // element=<QuizForm/>
           element={<QuizInput/>}
+        />
+        <Route
+          path="/quiz-submitted"
+          element={<QuizSubmitted/>}
         />
         <Route path="/search" element={<Search />} />
         <Route path='/quiz-success' element={<QuizCreationSuccess/>}/>

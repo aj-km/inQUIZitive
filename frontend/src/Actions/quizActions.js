@@ -31,3 +31,109 @@ export const resetCreateQuiz=()=>async(dispatch)=>{
     type:'ResetQuiz',
   })
 }
+
+export const sendQuiz = (userEmail,quizTitle) => async (dispatch) => {
+  try {
+    dispatch({ 
+      type: 'SendQuizRequest' 
+    });
+    const response = await axios.post('/api/admin/send', { userEmail,quizTitle  });
+    dispatch({ 
+      type: 'SendQuizSuccess',
+      payload: response.data 
+    });
+  } catch (error) {
+    dispatch({
+      type: 'SendQuizFailure',
+      payload: error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message,
+    });
+  }
+};
+
+export const getQuizzes = () => async (dispatch) => {
+  try {
+    dispatch({ 
+      type: 'GetQuizzesRequest' });
+    const response = await fetch('/api/getAllQuizzes');
+    const data = await response.json();
+    dispatch({ 
+      type: 'GetQuizzesSuccess', 
+      payload: data 
+    });
+  } catch (error) {
+    dispatch({
+      type: 'GetQuizzesFailure',
+      payload: error.message,
+    });
+  }
+};
+export const setActiveQuiz = (quiz) => async (dispatch) => {
+  dispatch({
+    type: 'SetActiveQuiz',
+    payload: quiz,
+  });
+};
+export const fetchQuizzes = (userId) => async (dispatch) => {
+  dispatch({ 
+    type: 'FetchQuizRequest' 
+  });
+  try {
+    const response = await fetch(`/api/v1/getUserQuizzes/${userId}`);
+    if (!response.ok) {
+      throw new Error(`Error: ${response.status}`);
+    }
+    const data = await response.json(); // Parse the response data as JSON
+    // console.log(data);
+    dispatch({ 
+      type: 'FetchQuizSuccess', 
+      payload: data.quizzes,
+    });
+  } catch (error) {
+    dispatch({ 
+      type: 'FetchQuizFailure', 
+      payload: error.message, // Use error.message for the error payload
+    });
+  }
+};
+export const selectOption = (questionId, selectedOption) => async (dispatch) => {
+  dispatch({
+    type: 'SelectOption',
+    payload: { questionId, selectedOption },
+  });
+};
+
+// Action to submit quiz responses
+export const submitQuizResponses = (userId, quizId, quizResponses) => async (dispatch) => {
+  dispatch({ 
+    type: 'SubmitQuizResponseRequest' 
+  });
+  try {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        // Include other headers like authorization if needed
+      },
+    };
+    const { data } = await axios.post('/api/quizzes/submit', { userId,quizId, quizResponses }, config);
+    dispatch({
+      type: 'SubmitQuizResponseSuccess',
+      payload: data
+    });
+  } catch (error) {
+    dispatch({
+      type: 'SubmitQuizResponseFailure',
+      payload: error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message,
+    });
+  }
+};
+
+export const resetQuizSubmit = () => async(dispatch)=>{
+  dispatch({
+    type: 'SubmitQuizReset'
+  })
+}
+

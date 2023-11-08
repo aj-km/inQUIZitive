@@ -12,6 +12,7 @@ const QuizResponseSchema = new mongoose.Schema({
     {
       questionId: {
         type: mongoose.Schema.Types.ObjectId,
+        // type: String,
         required: true,
       },
       chosenOption: {
