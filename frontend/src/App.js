@@ -18,6 +18,8 @@ import NotFound from "./Components/NotFound/NotFound";
 import QuizInput from "./Components/QuizInput/QuizInput";
 import QuizCreationSuccess from "./Components/QuizCreationSuccess/QuizCreationSuccess";
 import QuizSubmitted from "./Components/QuizSubmitted/QuizSubmitted";
+import Footer from "./Components/Footer/Footer";
+
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -28,6 +30,7 @@ function App() {
   // const isAdmin=user.isAdmin;
   // console.log(user._id);
   return (
+    <>
     <Router>
       {isAuthenticated && <Header />}
 
@@ -81,6 +84,8 @@ function App() {
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
+    <Footer />
+    </>
   );
 }
 

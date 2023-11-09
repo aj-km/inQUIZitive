@@ -2,17 +2,16 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const crypto = require("crypto");
-
 const QuizResponseSchema = new mongoose.Schema({
   quizId: {
     type: mongoose.Schema.Types.ObjectId,
     required: true,
+    ref:'Quiz'
   },
   responses: [
     {
       questionId: {
         type: mongoose.Schema.Types.ObjectId,
-        // type: String,
         required: true,
       },
       chosenOption: {
