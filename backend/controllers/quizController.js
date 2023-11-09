@@ -76,3 +76,14 @@ exports.submitQuizResponses = async (req, res) => {
     res.status(500).json({ message: 'Error submitting quiz responses', error: error.message });
   }
 };
+exports.showQuizResponse=async (req, res) => {
+  try {
+    const user = await User.findById(req.params.userId).populate({
+      path: 'quizzes.quizId', 
+      model: 'Quiz',
+  });
+    res.json(user.quizzes);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};

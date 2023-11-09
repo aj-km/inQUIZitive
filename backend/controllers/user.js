@@ -479,9 +479,10 @@ exports.createQuiz = async (req, res) => {
 exports.getUserQuizzes = async (req, res) => {
     try {
         const user = await User.findById(req.params.userId).populate({
-            path: 'quizzes.quizId', 
-            model: 'Quiz'
+            path: 'quizzes.quizId' , 
+            model: 'Quiz',
         });
+        
         const quizzes=user.quizzes;
         res.status(200).json({
             success:true,
