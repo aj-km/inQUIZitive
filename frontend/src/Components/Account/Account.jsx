@@ -28,7 +28,7 @@ const Account = () => {
   ) : (
     <div className="account">
       <div className="accountleft">
-          {<Typography variant="h6">You Have registered</Typography>}
+          {<Typography variant="h6">Welcome {user.name}</Typography>}
       </div>
       <div className="accountright">
         <Avatar
@@ -53,53 +53,6 @@ const Account = () => {
           Delete My Profile
         </Button>
 
-        {/* <Dialog
-          open={followersToggle}
-          onClose={() => setFollowersToggle(!followersToggle)}
-        >
-          <div className="DialogBox">
-            <Typography variant="h4">Followers</Typography>
-
-            {user && user.followers.length > 0 ? (
-              user.followers.map((follower) => (
-                <User
-                  key={follower._id}
-                  userId={follower._id}
-                  name={follower.name}
-                  avatar={follower.avatar.url}
-                />
-              ))
-            ) : (
-              <Typography style={{ margin: "2vmax" }}>
-                You have no followers
-              </Typography>
-            )}
-          </div>
-        </Dialog> */}
-
-        {/* <Dialog
-          open={followingToggle}
-          onClose={() => setFollowingToggle(!followingToggle)}
-        >
-          <div className="DialogBox">
-            <Typography variant="h4">Following</Typography>
-
-            {user && user.following.length > 0 ? (
-              user.following.map((follow) => (
-                <User
-                  key={follow._id}
-                  userId={follow._id}
-                  name={follow.name}
-                  avatar={follow.avatar.url}
-                />
-              ))
-            ) : (
-              <Typography style={{ margin: "2vmax" }}>
-                You're not following anyone
-              </Typography>
-            )}
-          </div>
-        </Dialog> */}
       </div>
     </div>
   );
