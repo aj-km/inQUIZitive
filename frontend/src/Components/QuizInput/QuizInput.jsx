@@ -32,7 +32,6 @@ const QuestionInput = () => {
     };
 
   }, [quizCreated, navigate, dispatch]); 
-  // }, [quizCreated]); 
   useEffect(() => {
     if (error) {
       alert.error(error);
@@ -44,7 +43,6 @@ const QuestionInput = () => {
     setQuizData((prevData) => ({
       ...prevData,
       title: quizTitle,
-      // title: "",
       questions: Array.from({ length: numQuestions }, (_, index) => ({
         question: prevData.questions[index]?.question || '',
         options: prevData.questions[index]?.options || ['', '', '', ''],
@@ -52,12 +50,6 @@ const QuestionInput = () => {
       }))
     }));
   }, [numQuestions, quizTitle]);
-
-  
-  // useEffect(() => {
-  //   // Dispatch an action to reset quiz creation state
-  //   dispatch(resetCreateQuiz());
-  // }, [dispatch]);
 
   const handleNumQuestionsChange = (e) => {
     const newNumQuestions = Number(e.target.value);
@@ -67,7 +59,6 @@ const QuestionInput = () => {
   const handleQuizTitleChange = (e) => {
     const newQuizTitle = (e.target.value);
     setQuizTitle(newQuizTitle);
-    console.log(quizTitle);
   };
 
   const handleQuestionChange = (e) => {
@@ -104,7 +95,6 @@ const QuestionInput = () => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    // console.log(quizData);
     dispatch(createQuiz(quizData));
   };
 

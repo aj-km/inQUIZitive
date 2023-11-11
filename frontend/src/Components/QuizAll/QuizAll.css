@@ -1,13 +1,11 @@
-/* QuizAll.css */
-/* General styles */
+
 body {
     font-family: 'Arial', sans-serif;
     margin: 0;
-    padding: 0;
+    padding: 2vmax 0;
     background: #f5f5f5;
   }
   
-  /* Container for the entire component */
   .quiz-all-container {
     width: 80%;
     max-width: 800px;
@@ -18,7 +16,6 @@ body {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
   
-  /* Quiz list styles */
   .quiz-list {
     list-style-type: none;
     padding: 0;
@@ -35,7 +32,6 @@ body {
     background-color: #f8f8f8;
   }
   
-  /* Active quiz styles */
   .active-quiz {
     margin-top: 20px;
     padding-top: 20px;
@@ -47,7 +43,6 @@ body {
     margin-bottom: 10px;
   }
   
-  /* Question styles */
   .question-list {
     list-style-type: none;
     padding: 0;

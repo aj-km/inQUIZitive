@@ -19,6 +19,9 @@ import QuizInput from "./Components/QuizInput/QuizInput";
 import QuizCreationSuccess from "./Components/QuizCreationSuccess/QuizCreationSuccess";
 import QuizSubmitted from "./Components/QuizSubmitted/QuizSubmitted";
 import Footer from "./Components/Footer/Footer";
+import QuizAll from "./Components/QuizAll/QuizAll";
+import QuizzesList from "./Components/QuizzesList/QuizzesList";
+import Sidebar from "./Components/Sidebar/Sidebar";
 
 function App() {
   const dispatch = useDispatch();
@@ -27,10 +30,10 @@ function App() {
   }, [dispatch]);
 
   const { isAuthenticated,user} = useSelector((state) => state.user);
-  // const isAdmin=user.isAdmin;
-  // console.log(user._id);
+
   return (
     <>
+    {/* <Sidebar/> */}
     <Router>
       {isAuthenticated && <Header />}
 
@@ -78,6 +81,14 @@ function App() {
         <Route
           path="/quiz-submitted"
           element={<QuizSubmitted/>}
+        />
+        <Route
+          path="/all-quizzes"
+          element={<QuizAll/>}
+        />
+        <Route
+          path="/attempt-quiz"
+          element={<QuizzesList/>}
         />
         <Route path="/search" element={<Search />} />
         <Route path='/quiz-success' element={<QuizCreationSuccess/>}/>

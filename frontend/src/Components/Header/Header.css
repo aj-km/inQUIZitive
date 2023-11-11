@@ -2,13 +2,21 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #ffffff; /* Add a background color to the header */
+  z-index: 1000; /* Set a high z-index to ensure the header stays on top */
 }
 
 .header > a {
   width: 2vmax;
   height: 2vmax;
   margin: 1vmax 4vmax;
+  text-decoration: none; /* Add this to remove the default underline on links */
 }
+
 .header > a > svg {
   font-size: 2vmax;
   transition: all 0.5s;
@@ -20,6 +28,11 @@
   transform: scale(1.2);
 }
 
+body {
+  /* margin-top: 2vmax;  */
+  /* margin-top: 60px;  */
+}
+
 @media screen and (max-width: 600px) {
   .header > a {
     width: 8vw;
@@ -28,5 +41,9 @@
   }
   .header > a > svg {
     font-size: 8vw;
+  }
+
+  body {
+    margin-top: 8vw; /* Adjust based on the height of your header */
   }
 }

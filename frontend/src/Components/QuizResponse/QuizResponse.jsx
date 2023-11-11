@@ -14,6 +14,8 @@ function QuizResponse({ userId }) {
     fetchData();
   }, [userId]);
 
+//   console.log(quizzes);
+
   return (
     <div className="quiz-response">
       {quizzes.map((quiz, index) => (
