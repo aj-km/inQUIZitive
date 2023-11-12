@@ -7,14 +7,14 @@ function QuizResponse({ userId }) {
 
   useEffect(() => {
     const fetchData = async () => {
-      const res = await axios.get(`http://localhost:3000/api/${userId}/quizzes`);
+      const res = await axios.get(`http://localhost:3000/api/${userId}/quizzes`);   //check
       setQuizzes(res.data);
     };
 
     fetchData();
   }, [userId]);
 
-//   console.log(quizzes);
+  console.log(quizzes);
 
   return (
     <div className="quiz-response">

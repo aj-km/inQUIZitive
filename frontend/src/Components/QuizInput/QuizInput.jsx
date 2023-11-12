@@ -7,18 +7,17 @@ import { useAlert } from 'react-alert';
 import Loader from "../Loader/Loader";
 
 const QuestionInput = () => {
-  const [numQuestions, setNumQuestions] = useState(1);
+  const [numQuestions, setNumQuestions] = useState();
   const [quizTitle, setQuizTitle] = useState();
   const [quizData, setQuizData] = useState({
     title: '',
     questions: [{ question: '', options: ['', '', '', ''], answer: '' }]
   });
-  const location=useLocation();
   const alert=useAlert();
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { loading, error, quizDataFromBackend,quizCreated } = useSelector((state) => state.quiz);
+  const { loading, error, quizCreated } = useSelector((state) => state.quiz);
 
 
   useEffect(() => {
