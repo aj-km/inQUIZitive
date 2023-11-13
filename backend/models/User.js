@@ -26,6 +26,9 @@ const QuizResponseSchema = new mongoose.Schema({
   },
 });
 const userSchema = new mongoose.Schema({
+  googleID:{
+    type: String,
+  },
   name: {
     type: String,
     required: [true, "Please enter a name"],

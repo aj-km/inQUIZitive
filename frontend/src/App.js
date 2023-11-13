@@ -20,13 +20,14 @@ import QuizCreationSuccess from "./Components/QuizCreationSuccess/QuizCreationSu
 import QuizSubmitted from "./Components/QuizSubmitted/QuizSubmitted";
 import Footer from "./Components/Footer/Footer";
 
+
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(loadUser());
   }, [dispatch]);
-
   const { isAuthenticated,user} = useSelector((state) => state.user);
+
   // const isAdmin=user.isAdmin;
   // console.log(user._id);
   return (
@@ -38,7 +39,7 @@ function App() {
         <Route path="/" element={(isAuthenticated)? <Home /> : <Login />} />
         <Route
           path="/account"
-          element={isAuthenticated ? <Account /> : <Login />}
+          element={isAuthenticated ? <Account /> : <Login />  }
         />
 
         <Route
@@ -73,7 +74,8 @@ function App() {
           path="/createQuiz"
           // element={isAuthenticated ? <QuizForm/> : <NotFound />}
           // element=<QuizForm/>
-          element={<QuizInput/>}
+          //element={<QuizInput/>}
+         
         />
         <Route
           path="/quiz-submitted"
