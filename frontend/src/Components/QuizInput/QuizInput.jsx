@@ -7,17 +7,18 @@ import { useAlert } from 'react-alert';
 import Loader from "../Loader/Loader";
 
 const QuestionInput = () => {
-  const [numQuestions, setNumQuestions] = useState();
+  const [numQuestions, setNumQuestions] = useState(1);
   const [quizTitle, setQuizTitle] = useState();
   const [quizData, setQuizData] = useState({
     title: '',
     questions: [{ question: '', options: ['', '', '', ''], answer: '' }]
   });
+  const location=useLocation();
   const alert=useAlert();
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { loading, error, quizCreated } = useSelector((state) => state.quiz);
+  const { loading, error, quizDataFromBackend,quizCreated } = useSelector((state) => state.quiz);
 
 
   useEffect(() => {
@@ -31,6 +32,7 @@ const QuestionInput = () => {
     };
 
   }, [quizCreated, navigate, dispatch]); 
+  // }, [quizCreated]); 
   useEffect(() => {
     if (error) {
       alert.error(error);
@@ -42,6 +44,7 @@ const QuestionInput = () => {
     setQuizData((prevData) => ({
       ...prevData,
       title: quizTitle,
+      // title: "",
       questions: Array.from({ length: numQuestions }, (_, index) => ({
         question: prevData.questions[index]?.question || '',
         options: prevData.questions[index]?.options || ['', '', '', ''],
@@ -49,6 +52,12 @@ const QuestionInput = () => {
       }))
     }));
   }, [numQuestions, quizTitle]);
+
+  
+  // useEffect(() => {
+  //   // Dispatch an action to reset quiz creation state
+  //   dispatch(resetCreateQuiz());
+  // }, [dispatch]);
 
   const handleNumQuestionsChange = (e) => {
     const newNumQuestions = Number(e.target.value);
@@ -58,6 +67,7 @@ const QuestionInput = () => {
   const handleQuizTitleChange = (e) => {
     const newQuizTitle = (e.target.value);
     setQuizTitle(newQuizTitle);
+    console.log(quizTitle);
   };
 
   const handleQuestionChange = (e) => {
@@ -94,6 +104,7 @@ const QuestionInput = () => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
+    // console.log(quizData);
     dispatch(createQuiz(quizData));
   };
 

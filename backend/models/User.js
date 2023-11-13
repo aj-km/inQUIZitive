@@ -51,8 +51,7 @@ const userSchema = new mongoose.Schema({
   },
   isAdmin: {
     type: Boolean,
-    default: false,
-    // default: true,
+    default: true,
   },
   quizzes: [QuizResponseSchema],
   resetPasswordToken: String,

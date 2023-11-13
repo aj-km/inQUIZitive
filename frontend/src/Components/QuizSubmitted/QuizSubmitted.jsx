@@ -15,8 +15,9 @@ const QuizSubmitted = () => {
   return (
     <div className="success-container">
       <h1>Quiz Submitted Successfully!</h1>
+      {/* <p>Your quiz has been submitted and is now available for users.</p> */}
       <button className="return-btn" onClick={handleReturn}>
-        Return to Home page
+        Attempt Another Quiz
       </button>
     </div>
   );

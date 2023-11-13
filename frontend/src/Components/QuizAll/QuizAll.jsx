@@ -12,6 +12,7 @@ const QuizAll = () => {
   }, [dispatch]);
 
   const handleQuizClick = (quiz) => {
+    // If the active quiz is clicked again, it will be deselected
     if (activeQuiz && activeQuiz._id === quiz._id) {
       dispatch(setActiveQuiz(null));
     } else {
