@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import "./Register.css";
 import { registerUser } from "../../Actions/User";
 import { useAlert } from "react-alert";
-import  OnlineAuth  from "../OnlineAuth/OnlineAuth"
 
 const Register = () => {
   const [name, setName] = useState("");
@@ -90,7 +89,6 @@ const Register = () => {
         <Button disabled={loading} type="submit">
           Sign Up
         </Button>
-        <OnlineAuth/>
       </form>
     </div>
   );

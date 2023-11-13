@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../../Actions/User";
 import { useAlert } from "react-alert";
-import  OnlineAuth  from "../OnlineAuth/OnlineAuth"
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -60,7 +59,6 @@ const Login = () => {
         <Link to="/register">
           <Typography>New User?</Typography>
         </Link>
-        <OnlineAuth/>
       </form>
     </div>
   );
