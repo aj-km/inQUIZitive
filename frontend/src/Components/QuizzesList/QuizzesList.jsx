@@ -65,7 +65,8 @@ const QuizzesList = () => {
 
   return (
     <div className="quizzes-list">
-      {loading && <p>Loading quizzes...</p>}
+      {/* {loading && <p>Loading quizzes...</p>} */}
+      {<p>You can attempt following quizzes:</p>}
       {error && <p>Error loading quizzes: {error}</p>}
       <ul className="quiz-list">
         {quizzes.map((quiz) => (
