@@ -28,6 +28,10 @@ const QuizSchema = new mongoose.Schema({      //It is used to display questions 
     required: true,
   },
   questions: [QuestionSchema],
+  duration: { // New field
+    type: Number, // time in milliseconds
+    required: true,
+  },
   // answers: [AnswerSchema],
   //yaha pe  haga hai thoda pair utha kar chalen 
   // answers:[String,]

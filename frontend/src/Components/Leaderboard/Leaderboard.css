@@ -1,0 +1,26 @@
+/* Leaderboard.css */
+.leaderboard {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .quiz-list-leaderboard {
+    width: 30%;
+  }
+  
+  .quiz-results {
+    width: 65%;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  

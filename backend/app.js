@@ -13,8 +13,11 @@ app.use(cookieParser());
 //importing routes
 const quizRoutes=require("./routes/quiz");
 const user = require("./routes/user");
+// const groupsRouter = require('./routes/groups');
+
 //using routes
 app.use("/api/v1", user);
 app.use("/api",quizRoutes);
+// app.use('/groups', groupsRouter);
 
 module.exports = app;

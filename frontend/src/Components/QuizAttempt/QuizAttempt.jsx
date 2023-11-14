@@ -1,70 +1,184 @@
-import React, { useState, useEffect } from 'react';
-import './QuizAttempt.css';
+// import { useDispatch, useSelector } from 'react-redux';
+// import { resetQuizSubmit, submitQuizResponses } from '../../Actions/quizActions';
+// import React, { useEffect, useState } from 'react';
+// import './QuizComponent.css';
+// import { useAlert } from 'react-alert';
+// import { useNavigate } from 'react-router-dom';
 
-const Quiz = ({ name, questions }) => {
-  const [answers, setAnswers] = useState(Array(questions.length).fill(''));
-  const [timeLeft, setTimeLeft] = useState(300);
-  const [quizStarted, setQuizStarted] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
+// const QuizComponent = ({ quiz }) => {
+
+//   const dispatch = useDispatch();
+//   const {user} = useSelector(state => state.user);
+//   const { submitSuccess }=useSelector(state=>state.submitQuiz);
+//   // const alert = useAlert();
+//   const navigate = useNavigate();
+  
+//   // Initialize state to keep track of selected options for each question
+//   const [selectedOptions, setSelectedOptions] = useState({});
+
+//   useEffect(() => {
+//     if(submitSuccess){
+//       navigate("/quiz-submitted");
+//     }
+//     return () => {
+//       dispatch(resetQuizSubmit());
+//     }
+//   }, [submitSuccess, navigate, dispatch]);
+
+//   const handleOptionChange = (questionId, option) => {
+//     // Update the selected option for the question
+//     setSelectedOptions(prevSelectedOptions => ({
+//       ...prevSelectedOptions,
+//       [questionId]: option,
+//     }));
+//   };
+
+//   const handleSubmit = async (event) => {
+//     event.preventDefault();
+
+//     // Create an array of responses from selectedOptions
+//     const responses = Object.keys(selectedOptions).map((questionId) => ({
+//       questionId,
+//       chosenOption: selectedOptions[questionId],
+//     }));
+
+//     // Dispatch the submit action
+//     dispatch(submitQuizResponses(user._id, quiz.quizId._id, responses));
+//   };
+
+//   return (
+//     <div className="quiz-container">
+//       <h2 className="quiz-title">{quiz.quizId.title}</h2>
+//       <form className="quiz-form" onSubmit={handleSubmit}>
+//         {quiz.quizId.questions.map((question) => (
+//           <div key={question._id} className="question">
+//             <p className="question-text">{question.question}</p>
+//             <div className="options-container">
+//               {question.options.map((option) => (
+//                 <label className="option-label" key={option}>
+//                   <input
+//                     type="radio"
+//                     name={`question_${question._id}`}
+//                     value={option}
+//                     checked={selectedOptions[question._id] === option}
+//                     onChange={() => handleOptionChange(question._id, option)}
+//                   />
+//                   {option}
+//                 </label>
+//               ))}
+//             </div>
+//           </div>
+//         ))}
+//         <button type="submit" className="submit-btn">
+//           Submit Quiz
+//         </button>
+//       </form>
+//     </div>
+//   );
+// };
+
+// export default QuizComponent;
+
+//Modified file
+import { useDispatch, useSelector } from 'react-redux';
+import { resetQuizSubmit, submitQuizResponses } from '../../Actions/quizActions';
+import React, { useEffect, useState, useRef } from 'react';
+import './QuizComponent.css';
+import { useAlert } from 'react-alert';
+import { useNavigate } from 'react-router-dom';
+
+const QuizComponent = ({ quiz }) => {
+
+  const dispatch = useDispatch();
+  const {user} = useSelector(state => state.user);
+  const { submitSuccess }=useSelector(state=>state.submitQuiz);
+  const navigate = useNavigate();
+  
+  // Initialize state to keep track of selected options for each question
+  const [selectedOptions, setSelectedOptions] = useState({});
+  const [timeLeft, setTimeLeft] = useState(5 * 60); // 5 minutes in seconds
+  const intervalRef = useRef(null);
 
   useEffect(() => {
-    if (quizStarted && timeLeft > 0) {
-      const timerId = setTimeout(() => {
-        setTimeLeft(timeLeft - 1);
-      }, 1000);
-      return () => clearTimeout(timerId);
-    } else if (timeLeft === 0) {
-      handleSubmit();
-    }
-  }, [quizStarted, timeLeft]);
+    intervalRef.current = setInterval(() => {
+      setTimeLeft(timeLeft => {
+        if (timeLeft >= 1) return timeLeft - 1;
 
-  const handleSubmit = () => {
-    setQuizStarted(false);
-    setSubmitted(true);
-    console.log(answers);
+        // Time's up, submit the quiz
+        handleSubmit(new Event('submit'));
+        return 0;
+      });
+    }, 1000);
+
+    return () => {
+      clearInterval(intervalRef.current);
+    };
+  }, []);
+
+  useEffect(() => {
+    if(submitSuccess){
+      navigate("/quiz-submitted");
+    }
+    return () => {
+      dispatch(resetQuizSubmit());
+    }
+  }, [submitSuccess, navigate, dispatch]);
+
+  const handleOptionChange = (questionId, option) => {
+    // Update the selected option for the question
+    setSelectedOptions(prevSelectedOptions => ({
+      ...prevSelectedOptions,
+      [questionId]: option,
+    }));
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    // Stop the timer
+    clearInterval(intervalRef.current);
+
+    // Create an array of responses from selectedOptions
+    const responses = Object.keys(selectedOptions).map((questionId) => ({
+      questionId,
+      chosenOption: selectedOptions[questionId],
+    }));
+
+    // Dispatch the submit action
+    dispatch(submitQuizResponses(user._id, quiz.quizId._id, responses));
   };
 
   return (
-    <div className="container">
-      <h1>{name}</h1>
-      {!quizStarted && !submitted ? (
-        <>
-          <p className="instructions">The time for the quiz is 5 minutes.</p>
-          <button className="start-button" onClick={() => setQuizStarted(true)}>Start Quiz</button>
-        </>
-      ) : submitted ? (
-        <p>Thank you! Your quiz has been successfully submitted.</p>
-      ) : (
-        <>
-        <div className="timer">Time left: {Math.floor(timeLeft / 60)}:{timeLeft % 60 < 10 ? '0' : ''}{timeLeft % 60}</div>
-          {questions.map((question, questionIndex) => (
-            <div key={questionIndex} className="question">
-              <h2>{questionIndex + 1}. {question.text}</h2>
-              <div className="options">
-                {question.options.map((option, optionIndex) => (
-                  <label key={optionIndex} className="option">
-                    <input
-                      type="radio"
-                      name={`question-${questionIndex}`}
-                      value={option}
-                      onChange={(e) => {
-                        const newAnswers = [...answers];
-                        newAnswers[questionIndex] = e.target.value;
-                        setAnswers(newAnswers);
-                      }}
-                    />
-                    {option}
-                  </label>
-                ))}
-              </div>
+    <div className="quiz-container">
+      <h2 className="quiz-title">{quiz.quizId.title}</h2>
+      <h1 className="timer">{Math.floor(timeLeft / 60)}:{timeLeft % 60 < 10 ? '0' : ''}{timeLeft % 60}</h1>
+      <form className="quiz-form" onSubmit={handleSubmit}>
+        {quiz.quizId.questions.map((question) => (
+          <div key={question._id} className="question">
+            <p className="question-text">{question.question}</p>
+            <div className="options-container">
+              {question.options.map((option) => (
+                <label className="option-label" key={option}>
+                  <input
+                    type="radio"
+                    name={`question_${question._id}`}
+                    value={option}
+                    checked={selectedOptions[question._id] === option}
+                    onChange={() => handleOptionChange(question._id, option)}
+                  />
+                  {option}
+                </label>
+              ))}
             </div>
-          ))}
-          <button className="submit-button" onClick={handleSubmit}>Submit</button>
-        </>
-      )}
+          </div>
+        ))}
+        <button type="submit" className="submit-btn">
+          Submit Quiz
+        </button>
+      </form>
     </div>
   );
-  
 };
 
-export default Quiz;
+export default QuizComponent;
+

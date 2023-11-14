@@ -21,9 +21,10 @@ import QuizSubmitted from "./Components/QuizSubmitted/QuizSubmitted";
 import Footer from "./Components/Footer/Footer";
 import QuizAll from "./Components/QuizAll/QuizAll";
 import QuizzesList from "./Components/QuizzesList/QuizzesList";
-import Sidebar from "./Components/Sidebar/Sidebar";
 import QuizSend from "./Components/QuizSend/QuizSend";
 import QuizResponse from "./Components/QuizResponse/QuizResponse";
+import Leaderboard from "./Components/Leaderboard/Leaderboard";
+import CreateGroup from "./Components/CreateGroup/CreateGroup";
 
 function App() {
   const dispatch = useDispatch();
@@ -37,8 +38,6 @@ function App() {
     <>
     <Router>
       {isAuthenticated && <Header />}
-      {/* { isAuthenticated ? 
-      <Sidebar> */}
       <Routes>
         <Route path="/" element={(isAuthenticated)? <Home /> : <Login />} />
         <Route
@@ -98,13 +97,20 @@ function App() {
           path="/quiz-response"
           element={<QuizResponse/>}
         />
+        <Route
+          path="/leaderboard"
+          element={<Leaderboard/>}
+        />
+        <Route
+          path="/create-group"
+          element={<CreateGroup/>}
+        />
         <Route path="/search" element={<Search />} />
         <Route path='/quiz-success' element={<QuizCreationSuccess/>}/>
         <Route path="*" element={<NotFound />} />
       </Routes>
-      {/* </Sidebar> : <Login/> } */}
     </Router>
-    <Footer />
+    {isAuthenticated && <Footer />}
     </>
   );
 }

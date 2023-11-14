@@ -1,5 +1,11 @@
 import { createReducer } from "@reduxjs/toolkit";
-const initialState = {};
+
+const initialState = {
+  loading: false,
+  quizDataFromBackend: null,
+  error: null,
+  quizCreated: false,
+};
 
 export const quizReducer = createReducer(initialState, {
   CreateQuizRequest: (state) => {
@@ -24,9 +30,15 @@ export const quizReducer = createReducer(initialState, {
   }
 });
 
+// const initialState2 = {
+//   quizzes: []
+// }
 const initialState2 = {
-  quizzes: []
-}
+  loading: false,
+  quizzes: [],
+  error: null,
+  activeQuiz: null,
+};
 export const quizListReducer = createReducer(initialState2, {
   GetQuizzesRequest: (state) => {
     state.loading = true;
@@ -98,4 +110,25 @@ export const submitQuizResponses=createReducer(initialState4,{
     state.submitSuccess=false;
     state.submitLoading=false;
   }
+});
+
+const initialState5 = {
+  loading: false,
+  quizzes: [],
+  error: null,
+};
+export const getLeaderboardQuizzes = createReducer(initialState5, {
+  GetLeaderboardQuizzesRequest: (state) => {
+    state.loading = true;
+    state.quizzes = [];
+    state.error = null;
+  },
+  GetLeaderboardQuizzesSuccess: (state, action) => {
+    state.loading = false;
+    state.quizzes = action.payload;
+  },
+  GetLeaderboardQuizzesFailure: (state, action) => {
+    state.loading = false;
+    state.error = action.payload;
+  },
 });

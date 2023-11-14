@@ -24,6 +24,11 @@ const QuizResponseSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  timeTaken: { // New field
+    type: Number, // time in milliseconds
+    required: false,
+    // required: true,
+  },
 });
 const userSchema = new mongoose.Schema({
   name: {
@@ -49,7 +54,6 @@ const userSchema = new mongoose.Schema({
   isAdmin: {
     type: Boolean,
     default: false,
-    // default: true,
   },
   quizzes: [QuizResponseSchema],
   resetPasswordToken: String,

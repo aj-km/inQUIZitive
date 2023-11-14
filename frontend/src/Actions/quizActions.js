@@ -69,6 +69,30 @@ export const getQuizzes = () => async (dispatch) => {
     });
   }
 };
+
+//New change for leaderboard
+export const getLeaderboardQuizzes = () => async (dispatch) => {
+  try {
+    dispatch({ 
+      type: 'GetLeaderboardQuizzesRequest' 
+    });
+    // const response = await axios.get('/api/getAllQuizzes');
+    const response = await axios.get('/api/getLeaderboardQuizzes');
+    dispatch({ 
+      type: 'GetLeaderboardQuizzesSuccess', 
+      payload: response.data 
+    });
+  } catch (error) {
+    dispatch({
+      type: 'GetLeaderboardQuizzesFailure',
+      payload: error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message,
+    });
+  }
+};
+
+
 export const setActiveQuiz = (quiz) => async (dispatch) => {
   dispatch({
     type: 'SetActiveQuiz',
@@ -105,7 +129,34 @@ export const selectOption = (questionId, selectedOption) => async (dispatch) => 
 };
 
 // Action to submit quiz responses
-export const submitQuizResponses = (userId, quizId, quizResponses) => async (dispatch) => {
+// export const submitQuizResponses = (userId, quizId, quizResponses) => async (dispatch) => {
+//   dispatch({ 
+//     type: 'SubmitQuizResponseRequest' 
+//   });
+//   try {
+//     const config = {
+//       headers: {
+//         'Content-Type': 'application/json',
+//         // Include other headers like authorization if needed
+//       },
+//     };
+//     const { data } = await axios.post('/api/quizzes/submit', { userId,quizId, quizResponses }, config);
+//     dispatch({
+//       type: 'SubmitQuizResponseSuccess',
+//       payload: data
+//     });
+//   } catch (error) {
+//     dispatch({
+//       type: 'SubmitQuizResponseFailure',
+//       payload: error.response && error.response.data.message
+//         ? error.response.data.message
+//         : error.message,
+//     });
+//   }
+// };
+
+//Version 2.0
+export const submitQuizResponses = (userId, quizId, quizResponses, timeTaken) => async (dispatch) => {
   dispatch({ 
     type: 'SubmitQuizResponseRequest' 
   });
@@ -116,7 +167,7 @@ export const submitQuizResponses = (userId, quizId, quizResponses) => async (dis
         // Include other headers like authorization if needed
       },
     };
-    const { data } = await axios.post('/api/quizzes/submit', { userId,quizId, quizResponses }, config);
+    const { data } = await axios.post('/api/quizzes/submit', { userId, quizId, quizResponses, timeTaken }, config);
     dispatch({
       type: 'SubmitQuizResponseSuccess',
       payload: data
