@@ -174,7 +174,7 @@ import { useAlert } from 'react-alert';
 import Loader from '../Loader/Loader';
 
 const QuestionInput = () => {
-  const [numQuestions, setNumQuestions] = useState(1);
+  const [numQuestions, setNumQuestions] = useState();
   const [quizTitle, setQuizTitle] = useState();
   const [quizDuration, setQuizDuration] = useState({
     hours: '',
@@ -234,7 +234,6 @@ const QuestionInput = () => {
   const handleQuizTitleChange = (e) => {
     const newQuizTitle = e.target.value;
     setQuizTitle(newQuizTitle);
-  
   };
 
   const handleQuizDurationChange = (type) => (e) => {
@@ -279,7 +278,6 @@ const QuestionInput = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-   
     dispatch(createQuiz(quizData));
   };
 

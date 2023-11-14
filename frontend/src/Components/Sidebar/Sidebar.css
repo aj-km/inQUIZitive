@@ -1,9 +1,10 @@
-* {
-  margin: 0%;
-  padding: 0%;
-}
+/* * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+} */
 
-.main-container {
+/* .main-container {
   display: flex;
 }
 main {
@@ -38,7 +39,23 @@ main {
 }
 .hide {
   display: none;
-} 
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+  height: 30px;
+  padding: 10px;
+}
+.search input {
+  border: none;
+  margin-left: 10px;
+  border-radius: 5px;
+  background: rgb(238, 238, 238);
+
+  color: white;
+}
 
 .routes {
   margin-top: 15px;
@@ -88,4 +105,4 @@ main {
 .menu_container .link {
   padding-left: 20px;
   border-bottom: #fff 0.5px solid;
-}
+} */
