@@ -1,27 +1,14 @@
 .header {
   display: flex;
-  justify-content: space-between;
-  /* justify-content: center; */
+  justify-content: center;
   align-items: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background-color: rgb(225, 237, 247);
-  z-index: 1000; /* Set a high z-index to ensure the header stays on top */
-}
-
-.header-title{
-  margin-left: 2rem;
 }
 
 .header > a {
   width: 2vmax;
   height: 2vmax;
   margin: 1vmax 4vmax;
-  text-decoration: none;
 }
-
 .header > a > svg {
   font-size: 2vmax;
   transition: all 0.5s;
@@ -42,23 +29,4 @@
   .header > a > svg {
     font-size: 8vw;
   }
-
-  body {
-    margin-top: 8vw; /* Adjust based on the height of your header */
-  }
-}
-
-.logout-button{
-  margin-right: 2rem;
-}
-.logout-button > svg:hover{
-  color: black;
-  transform: scale(1.2);
-  cursor: pointer;
-}
-
-.logout-button > svg{
-  font-size: 2vmax;
-  transition: all 0.5s;
-  color: rgba(0, 0, 0, 0.445);
 }

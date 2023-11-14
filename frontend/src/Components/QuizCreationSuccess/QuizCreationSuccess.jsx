@@ -21,4 +21,4 @@ const QuizCreationSuccess = () => {
   );
 }
 
-export default QuizCreationSuccess;
+export default QuizCreationSuccess

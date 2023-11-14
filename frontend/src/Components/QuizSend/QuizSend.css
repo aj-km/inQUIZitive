@@ -4,8 +4,7 @@
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: linear-gradient(to right, #fff5bc, #cec1ff);
-    /* background-color: #f4f7fa; */
+    background-color: #f4f7fa;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   }
   

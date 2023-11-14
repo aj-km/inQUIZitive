@@ -33,7 +33,8 @@ function App() {
   }, [dispatch]);
 
   const { isAuthenticated,user} = useSelector((state) => state.user);
-
+  // const isAdmin=user.isAdmin;
+  // console.log(user._id);
   return (
     <>
     <Router>
@@ -75,6 +76,8 @@ function App() {
         />
         <Route
           path="/createQuiz"
+          // element={isAuthenticated ? <QuizForm/> : <NotFound />}
+          // element=<QuizForm/>
           element={<QuizInput/>}
         />
         <Route
