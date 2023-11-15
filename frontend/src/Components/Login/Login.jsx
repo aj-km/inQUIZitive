@@ -12,7 +12,7 @@ const Login = () => {
   const dispatch = useDispatch();
   const alert = useAlert();
 
-  const { error } = useSelector((state) => state.user);
+  const { error,loading } = useSelector((state) => state.user);
 
   const loginHandler = (e) => {
     e.preventDefault();
@@ -53,7 +53,7 @@ const Login = () => {
           <Typography>Forgot Password?</Typography>
         </Link>
 
-        <Button type="submit">Login</Button>
+        <Button disabled={loading} type="submit">Login</Button>
 
         <Link to="/register">
           <Typography>New User?</Typography>

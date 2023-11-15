@@ -10,7 +10,7 @@ const ResetPassword = () => {
   const dispatch = useDispatch();
   const alert = useAlert();
   const params = useParams();
-  const { error, loading, message } = useSelector((state) => state.like);
+  const { error, loading, message } = useSelector((state) => state.forgotReset);
 
   const submitHandler = (e) => {
     e.preventDefault();

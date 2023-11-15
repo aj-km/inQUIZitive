@@ -9,7 +9,7 @@ const ForgotPassword = () => {
 
   const dispatch = useDispatch();
   const alert = useAlert();
-  const { error, loading, message } = useSelector((state) => state.like);
+  const { error, loading, message } = useSelector((state) => state.forgotReset);
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -30,7 +30,7 @@ const ForgotPassword = () => {
     <div className="forgotPassword">
       <form className="forgotPasswordForm" onSubmit={submitHandler}>
         <Typography variant="h3" style={{ padding: "2vmax" }}>
-          Social Aap
+          inQUIZitive
         </Typography>
 
         <input
@@ -41,7 +41,6 @@ const ForgotPassword = () => {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-
         <Button disabled={loading} type="submit">
           Send Token
         </Button>
