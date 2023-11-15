@@ -111,7 +111,7 @@ function App() {
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
-    {/* {isAuthenticated && <Footer />} */}
+    {isAuthenticated && <Footer />}
     </>
   );
 }
