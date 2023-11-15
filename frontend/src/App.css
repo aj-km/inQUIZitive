@@ -17,7 +17,7 @@ main {
 }
 
 .sidebar {
-  background: rgb(0, 7, 61);
+  background: rgb(129, 134, 166);
   color: white;
   height: 100vh;
   overflow-y: auto;
@@ -48,7 +48,7 @@ main {
 }
 .link {
   display: flex;
-  color: white;
+  color: rgb(194, 93, 93);
   gap: 10px;
   padding: 5px 10px;
   border-right: 4px solid transparent;

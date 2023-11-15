@@ -5,6 +5,8 @@ import { Provider } from "react-redux";
 import store from "./store";
 import { Provider as AlertProvider, positions, transitions } from "react-alert";
 import AlertTemplate from "react-alert-template-basic";
+import './Assets/css/bootstrap.min.css'
+import './Assets/css/agency.min.css'
 
 const options = {
   position: positions.BOTTOM_CENTER,
