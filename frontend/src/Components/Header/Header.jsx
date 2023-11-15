@@ -83,8 +83,8 @@ const Header = () => {
       <div className="header-title">
         <h1>inQUIZitive</h1>
       </div>
-      <Link to="/" onClick={() => setTab("/")}>
-        {tab === "/" ? <Home style={{ color: "black" }} /> : <HomeOutlined />}
+      <Link to="/redirect" onClick={() => setTab("/")}>
+        {tab === "/redirect" ? <Home style={{ color: "black" }} /> : <HomeOutlined />}
       </Link>
 
       {isAdmin &&
