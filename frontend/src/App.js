@@ -25,7 +25,7 @@ import QuizSend from "./Components/QuizSend/QuizSend";
 import QuizResponse from "./Components/QuizResponse/QuizResponse";
 import Leaderboard from "./Components/Leaderboard/Leaderboard";
 import CreateGroup from "./Components/CreateGroup/CreateGroup";
-
+import FrontPage from "./Components/Frontpage/Frontpage"
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -39,7 +39,8 @@ function App() {
     <Router>
       {isAuthenticated && <Header />}
       <Routes>
-        <Route path="/" element={(isAuthenticated)? <Home /> : <Login />} />
+        <Route path="/" element={<FrontPage/>} />
+        <Route path="/redirect" element={(isAuthenticated)? <Home /> : <Login />} />
         <Route
           path="/account"
           element={isAuthenticated ? <Account /> : <Login />}
