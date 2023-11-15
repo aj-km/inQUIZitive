@@ -1,7 +1,6 @@
 .login {
   height: 100vh;
-  background-image: linear-gradient(to right, #fff5bc, #cec1ff);
-
+  background-image: linear-gradient(to right, #1b1b19, #aa98ee);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -10,9 +9,9 @@
 }
 
 .loginForm {
-  background-color: white;
+  background-color: rgb(202, 234, 232);
   height: 100%;
-  width: 50%;
+  width: 40%; /* Adjust the width as needed */
   border-radius: 30px;
   box-sizing: border-box;
   padding: 2vmax;
@@ -26,16 +25,38 @@
   padding: 1vmax 2vmax;
   width: 80%;
   border-radius: 40px;
-  border: 1px solid #ccc;
+  border: 1px solid #cfabab;
   margin: 2vmax;
   font: 100 1.2rem "Roboto", sans-serif;
   outline: none;
 }
+
+/* Styling for all buttons and links */
+.loginForm > button,
 .loginForm > a {
-  align-self: flex-end;
-  text-decoration: none;
-  color: rgba(0, 0, 0, 0.342);
+  cursor: pointer;
+  padding: 1vmax 2vmax;
+  width: 80%;
+  border-radius: 40px;
+  border: none;
   margin: 2vmax;
+  font: 100 1.2rem "Roboto", sans-serif;
+  outline: none;
+  text-align: center;
+  text-decoration: none;
+  color: white;
+  background-color: #4caf50; /* Green background color for buttons */
+}
+
+.loginForm > button:hover,
+.loginForm > a:hover {
+  background-color: #45a049; /* Dark green background on hover */
+}
+.loginForm > .title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 2vmax;
+  color: #333; /* Change the color to your preference */
 }
 
 @media screen and (max-width: 600px) {

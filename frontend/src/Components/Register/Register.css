@@ -1,7 +1,6 @@
 .register {
   min-height: 100vh;
-  background-image: linear-gradient(to right, #fff5bc, #cec1ff);
-
+  background-image: linear-gradient(to right, #1b1b19, #aa98ee);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -10,8 +9,8 @@
 }
 
 .registerForm {
-  background-color: white;
-  width: 50%;
+  background-color: rgb(202, 234, 232);
+  width: 40%;
   border-radius: 30px;
   box-sizing: border-box;
   padding: 2vmax;
@@ -22,35 +21,63 @@
 
 .registerInputs {
   box-sizing: border-box;
-  padding: 1vmax 2vmax;
+  padding: 0.8vmax 1.6vmax; /* Adjusted padding for smaller inputs */
   width: 80%;
-  border-radius: 40px;
-  border: 1px solid #ccc;
-  margin: 2vmax;
-  font: 100 1.2rem "Roboto", sans-serif;
+  border-radius: 30px; /* Smaller border-radius for a cleaner look */
+  border: 1px solid #cfabab;
+  margin: 1vmax; /* Adjusted margin for smaller spacing */
+  font: 100 1rem "Roboto", sans-serif; /* Slightly smaller font size */
   outline: none;
 }
 
 .registerForm > input[type="file"] {
   border-radius: 30px;
-  margin: 2vmax;
+  margin: 1vmax;
 }
 
 .registerForm > input[type="file"]::-webkit-file-upload-button {
-  background-color: rgb(38, 63, 173);
+  background-color: #4caf50;
   color: white;
   width: 100%;
   padding: 1vmax;
   border-radius: 30px;
   border: none;
-  font: 100 1.2rem "Roboto", sans-serif;
+  font: 100 1rem "Roboto", sans-serif; /* Slightly smaller font size */
+}
+
+/* Styling for buttons */
+.registerButtons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.registerForm > button,
+.registerForm > a {
+  cursor: pointer;
+  padding: 1vmax 2vmax;
+  width: 80%;
+  border-radius: 30px; /* Smaller border-radius for buttons */
+  border: none;
+  margin: 1vmax; /* Adjusted margin for smaller spacing */
+  font: 100 1rem "Roboto", sans-serif; /* Slightly smaller font size */
+  outline: none;
+  text-align: center;
+  text-decoration: none;
+  color: white;
+  background-color: #4caf50;
+}
+
+.registerForm > button:hover,
+.registerForm > a:hover {
+  background-color: #45a049;
 }
 
 .registerForm > a {
-  align-self: flex-end;
+  align-self: center;
   text-decoration: none;
   color: rgba(0, 0, 0, 0.342);
-  margin: 2vmax;
+  margin: 1vmax; /* Adjusted margin for smaller spacing */
 }
 
 @media screen and (max-width: 600px) {
@@ -58,11 +85,10 @@
     width: 100%;
   }
 
-  .registerForm > input {
-    padding: 4vw 8vw;
+  .registerInputs {
+    padding: 2vw 4vw; /* Adjusted padding for smaller inputs on small screens */
     margin: 2vmax;
-    font: 100 1.2rem "Roboto", sans-serif;
-    margin: 4vw;
+    font: 100 1rem "Roboto", sans-serif; /* Slightly smaller font size */
   }
 
   .registerForm > input[type="file"] {
@@ -73,9 +99,15 @@
     width: 70%;
   }
 
+  .registerButtons > button,
+  .registerButtons > a {
+    width: 100%;
+  }
+
   .registerForm > a {
     align-self: center;
     text-decoration: none;
     color: rgba(0, 0, 0, 0.342);
+    margin: 2vmax;
   }
 }

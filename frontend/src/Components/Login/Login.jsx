@@ -29,7 +29,7 @@ const Login = () => {
   return (
     <div className="login">
       <form className="loginForm" onSubmit={loginHandler}>
-        <Typography variant="h3" style={{ padding: "2vmax" }}>
+        <Typography variant="h3" className="title" style={{ padding: "2vmax" }}>
           inQUIZitive
         </Typography>
 

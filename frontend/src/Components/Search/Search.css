@@ -1,62 +1,6 @@
-/* .search {
-  height: 100vh;
-  background-image: linear-gradient(to right, #fff5bc, #cec1ff);
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2vmax;
-  box-sizing: border-box;
-}
-
-.searchForm {
-  background-color: white;
-  height: 100%;
-  width: 50%;
-  border-radius: 30px;
-  box-sizing: border-box;
-  padding: 2vmax;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.searchForm > input {
-  box-sizing: border-box;
-  padding: 1vmax 2vmax;
-  width: 80%;
-  border-radius: 40px;
-  border: 1px solid #ccc;
-  margin: 2vmax;
-  font: 100 1.2rem "Roboto", sans-serif;
-  outline: none;
-}
-
-.searchResults {
-  width: 100%;
-  height: 100%;
-  overflow-y: auto;
-  padding: 2vmax;
-  box-sizing: border-box;
-  margin: 2vmax;
-}
-
-@media screen and (max-width: 600px) {
-  .searchForm {
-    width: 100%;
-  }
-
-  .searchForm > input {
-    padding: 4vw 8vw;
-    margin: 2vmax;
-    font: 100 1.2rem "Roboto", sans-serif;
-    margin: 4vw;
-  }
-} */
-
 .search {
-  height: 100vh;
-  background-image: linear-gradient(to right, #fff5bc, #cec1ff);
+  min-height: 100vh;
+  background-image: linear-gradient(to right, #1b1b19, #aa98ee);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -65,19 +9,9 @@
   animation: fadeIn 1s ease-in-out;
 }
 
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
 .searchForm {
-  background-color: white;
-  height: 100%;
-  width: 50%;
+  background-color: rgb(202, 234, 232);
+  width: 40%;
   border-radius: 30px;
   box-sizing: border-box;
   padding: 2vmax;
@@ -87,23 +21,14 @@
   animation: slideUp 1s ease-in-out;
 }
 
-@keyframes slideUp {
-  0% {
-    transform: translateY(100%);
-  }
-  100% {
-    transform: translateY(0);
-  }
-}
-
 .searchForm > input {
   box-sizing: border-box;
   padding: 1vmax 2vmax;
   width: 80%;
-  border-radius: 40px;
-  border: 1px solid #ccc;
-  margin: 2vmax;
-  font: 100 1.2rem "Roboto", sans-serif;
+  border-radius: 30px;
+  border: 1px solid #cfabab;
+  margin: 1vmax;
+  font: 100 1rem "Roboto", sans-serif; /* Slightly smaller font size */
   outline: none;
   transition: all 0.3s ease-in-out;
 }
@@ -122,10 +47,25 @@
   animation: fadeIn 1s ease-in-out;
 }
 
+@keyframes slideUp {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
 @media screen and (max-width: 600px) {
   .searchForm {
     width: 100%;
     animation: slideUpMobile 1s ease-in-out;
+  }
+
+  .searchForm > input {
+    padding: 2vw 4vw;
+    margin: 1vmax;
+    font: 100 1rem "Roboto", sans-serif; /* Slightly smaller font size */
   }
 
   @keyframes slideUpMobile {
@@ -135,12 +75,5 @@
     100% {
       transform: translateY(0);
     }
-  }
-
-  .searchForm > input {
-    padding: 4vw 8vw;
-    margin: 2vmax;
-    font: 100 1.2rem "Roboto", sans-serif;
-    margin: 4vw;
   }
 }
