@@ -82,7 +82,7 @@ const Register = () => {
           onChange={(e) => setPassword(e.target.value)}
         />
 
-        <Link to="/">
+        <Link to="/redirect">
           <Typography>Already Signed Up? Login Now</Typography>
         </Link>
 
