@@ -58,6 +58,9 @@ function FrontPage() {
           <li className="nav-item">
             <a className="nav-link js-scroll-trigger" href="#contact">Contact</a>
           </li>
+          <li className="nav-item">
+            <a className="nav-link js-scroll-trigger" href="redirect">Login</a>
+          </li>
         </ul>
       </div>
     </div>
@@ -80,7 +83,7 @@ function FrontPage() {
       <div className="row">
         <div className="col-lg-12 text-center">
           <h2 className="section-heading text-uppercase">Services</h2>
-          <h3 className="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+          <h3 className="section-subheading text-muted">These are ways to Quizify</h3>
         </div>
       </div>
       <div className="row text-center">
