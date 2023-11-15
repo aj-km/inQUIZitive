@@ -9,12 +9,23 @@ const ForgotPassword = () => {
 
   const dispatch = useDispatch();
   const alert = useAlert();
+  const { error, loading, message } = useSelector((state) => state.forgotReset);
 
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(forgotPassword(email));
   };
 
+  useEffect(() => {
+    if (error) {
+      alert.error(error);
+      dispatch({ type: "clearErrors" });
+    }
+    if (message) {
+      alert.success(message);
+      dispatch({ type: "clearMessage" });
+    }
+  }, [alert, error, dispatch, message]);
   return (
     <div className="forgotPassword">
       <form className="forgotPasswordForm" onSubmit={submitHandler}>
@@ -30,7 +41,7 @@ const ForgotPassword = () => {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        <Button type="submit">
+        <Button disabled={loading} type="submit">
           Send Token
         </Button>
       </form>

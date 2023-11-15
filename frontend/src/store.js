@@ -5,6 +5,7 @@ import groupsReducer from './redux/groupsSlice';
 
 import {
   allUsersReducer,
+  forgotReset,
   userProfileReducer,
   userReducer,
 } from "./Reducers/User";
@@ -21,6 +22,7 @@ const store = configureStore({
     submitQuiz:submitQuizResponses,
     leaderboard: getLeaderboardQuizzes,
     groups: groupsReducer,
+    forgotReset:forgotReset,
   },
 });
 
