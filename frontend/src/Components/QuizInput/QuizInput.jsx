@@ -19,7 +19,6 @@
 //   const navigate = useNavigate();
 //   const { loading, error, quizCreated } = useSelector((state) => state.quiz);
 
-
 //   useEffect(() => {
 //     if (quizCreated) {
 //       navigate("/quiz-success");
@@ -30,7 +29,7 @@
 //       dispatch(resetCreateQuiz());
 //     };
 
-//   }, [quizCreated, navigate, dispatch]); 
+//   }, [quizCreated, navigate, dispatch]);
 //   useEffect(() => {
 //     if (error) {
 //       alert.error(error);
@@ -115,7 +114,7 @@
 //           onChange={handleNumQuestionsChange}
 //           required
 //         />
-      
+
 //         {numQuestions > 0 && (
 //           <>
 //             <input
@@ -163,27 +162,26 @@
 
 // export default QuestionInput;
 
-
 //version 2.0
-import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { createQuiz, resetCreateQuiz } from '../../Actions/quizActions';
-import './QuizInput.css';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { useAlert } from 'react-alert';
-import Loader from '../Loader/Loader';
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { createQuiz, resetCreateQuiz } from "../../Actions/quizActions";
+import "./QuizInput.css";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useAlert } from "react-alert";
+import Loader from "../Loader/Loader";
 
 const QuestionInput = () => {
   const [numQuestions, setNumQuestions] = useState();
   const [quizTitle, setQuizTitle] = useState();
   const [quizDuration, setQuizDuration] = useState({
-    hours: '',
-    minutes: '',
-    seconds: '',
+    hours: "",
+    minutes: "",
+    seconds: "",
   });
   const [quizData, setQuizData] = useState({
-    title: '',
-    questions: [{ question: '', options: ['', '', '', ''], answer: '' }],
+    title: "",
+    questions: [{ question: "", options: ["", "", "", ""], answer: "" }],
     duration: 0,
   });
   const alert = useAlert();
@@ -194,7 +192,7 @@ const QuestionInput = () => {
 
   useEffect(() => {
     if (quizCreated) {
-      navigate('/quiz-success');
+      navigate("/quiz-success");
     }
     return () => {
       dispatch(resetCreateQuiz());
@@ -204,7 +202,7 @@ const QuestionInput = () => {
   useEffect(() => {
     if (error) {
       alert.error(error);
-      dispatch({ type: 'clearErrors' });
+      dispatch({ type: "clearErrors" });
     }
   }, [alert, error, dispatch]);
 
@@ -219,9 +217,9 @@ const QuestionInput = () => {
       title: quizTitle,
       duration: totalMilliseconds,
       questions: Array.from({ length: numQuestions }, (_, index) => ({
-        question: prevData.questions[index]?.question || '',
-        options: prevData.questions[index]?.options || ['', '', '', ''],
-        answer: prevData.questions[index]?.answer || '',
+        question: prevData.questions[index]?.question || "",
+        options: prevData.questions[index]?.options || ["", "", "", ""],
+        answer: prevData.questions[index]?.answer || "",
       })),
     }));
   }, [numQuestions, quizTitle, quizDuration]);
@@ -283,6 +281,7 @@ const QuestionInput = () => {
 
   return (
     <div className="QuestionInput">
+      <h1>Create a quiz</h1>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -304,21 +303,21 @@ const QuestionInput = () => {
             type="number"
             placeholder="Hours"
             value={quizDuration.hours}
-            onChange={handleQuizDurationChange('hours')}
+            onChange={handleQuizDurationChange("hours")}
             required
           />
           <input
             type="number"
             placeholder="Minutes"
             value={quizDuration.minutes}
-            onChange={handleQuizDurationChange('minutes')}
+            onChange={handleQuizDurationChange("minutes")}
             required
           />
           <input
             type="number"
             placeholder="Seconds"
             value={quizDuration.seconds}
-            onChange={handleQuizDurationChange('seconds')}
+            onChange={handleQuizDurationChange("seconds")}
             required
           />
         </div>
@@ -331,16 +330,18 @@ const QuestionInput = () => {
               placeholder={`Question ${currentQuestion + 1}`}
               required
             />
-            {quizData.questions[currentQuestion]?.options.map((option, oIndex) => (
-              <input
-                key={oIndex}
-                type="text"
-                value={option}
-                onChange={handleOptionChange(oIndex)}
-                placeholder={`Option ${oIndex + 1}`}
-                required
-              />
-            ))}
+            {quizData.questions[currentQuestion]?.options.map(
+              (option, oIndex) => (
+                <input
+                  key={oIndex}
+                  type="text"
+                  value={option}
+                  onChange={handleOptionChange(oIndex)}
+                  placeholder={`Option ${oIndex + 1}`}
+                  required
+                />
+              )
+            )}
             <input
               type="text"
               value={quizData.questions[currentQuestion]?.answer}
@@ -349,10 +350,18 @@ const QuestionInput = () => {
               required
             />
             <div>
-              <button type="button" onClick={handlePrevClick} disabled={currentQuestion === 0}>
+              <button
+                type="button"
+                onClick={handlePrevClick}
+                disabled={currentQuestion === 0}
+              >
                 Previous
               </button>
-              <button type="button" onClick={handleNextClick} disabled={currentQuestion === numQuestions - 1}>
+              <button
+                type="button"
+                onClick={handleNextClick}
+                disabled={currentQuestion === numQuestions - 1}
+              >
                 Next
               </button>
             </div>
@@ -368,4 +377,3 @@ const QuestionInput = () => {
 };
 
 export default QuestionInput;
-
