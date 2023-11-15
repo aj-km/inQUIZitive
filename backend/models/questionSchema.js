@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+
 const QuestionSchema = new mongoose.Schema({
     question: {
       type: String,
@@ -13,4 +14,5 @@ const QuestionSchema = new mongoose.Schema({
       required:true,
     }
   });
-module.exports=mongoose.model("QuestionSchema",QuestionSchema);
+
+module.exports = mongoose.model("QuestionSchema",QuestionSchema);

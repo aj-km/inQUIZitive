@@ -3,7 +3,6 @@ exports.checkAdmin=async(req, res, next)=> {
     if (!req.user) {
         return res.status(401).json({ message: 'Authentication required.' });
     }
-
     try {
         // Assuming req.user is already populated by previous authentication middleware
         // and contains all necessary information including the isAdmin property.

@@ -9,21 +9,14 @@ const QuestionSchema = new mongoose.Schema({
     type: [String],
     required: true,
   },
-  answer:{
+  answer: {
     type:String,
-    required:true,
+    required: true,
   }
 });
 
-const AnswerSchema = new mongoose.Schema({
-  answer: {
-    type: String,
-    required: true,
-  },
-});
-
 const QuizSchema = new mongoose.Schema({      //It is used to display questions to users
-  title:{
+  title: {
     type: String,
     required: true,
   },
@@ -32,9 +25,6 @@ const QuizSchema = new mongoose.Schema({      //It is used to display questions 
     type: Number, // time in milliseconds
     required: true,
   },
-  // answers: [AnswerSchema],
-  //yaha pe  haga hai thoda pair utha kar chalen 
-  // answers:[String,]
 });
 
 module.exports = mongoose.model('Quiz', QuizSchema);

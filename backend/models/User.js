@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const crypto = require("crypto");
+
 const QuizResponseSchema = new mongoose.Schema({
   quizId: {
     type: mongoose.Schema.Types.ObjectId,
@@ -30,6 +31,7 @@ const QuizResponseSchema = new mongoose.Schema({
     // required: true,
   },
 });
+
 const userSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -41,7 +43,7 @@ const userSchema = new mongoose.Schema({
   },
   email: {
     type: String,
-    required: [true, "Please enter a email"],
+    required: [true, "Please enter an email"],
     unique: [true, "Email already exists"],
   },
   password: {
@@ -86,4 +88,5 @@ userSchema.methods.getResetPasswordToken = function () {
 
   return resetToken;
 };
+
 module.exports = mongoose.model("User", userSchema);

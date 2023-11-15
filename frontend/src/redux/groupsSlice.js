@@ -3,9 +3,11 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 // Async thunk for creating a group
-export const createGroup = createAsyncThunk('groups/createGroup', async (groupData) => {
+// export const createGroup = createAsyncThunk('groups/createGroup', async (groupData) => {
+export const createGroup = createAsyncThunk('/api/v1/admin/createGroup', async (groupData) => {
   try {
-    const response = await axios.post('/groups/create', groupData);
+    // const response = await axios.post('/groups/create', groupData);
+    const response = await axios.post('/api/v1/admin/createGroup', groupData);
     return response.data;
   } catch (error) {
     throw error.response.data;

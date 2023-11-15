@@ -1,8 +1,11 @@
 const User = require("../models/User");
 const Quiz = require("../models/Quiz");
+const Group = require("../models/Group");
+
 const { sendEmail } = require("../middlewares/sendEmail");
 const crypto = require("crypto");
 const cloudinary = require("cloudinary");
+
 exports.register = async (req, res) => {
     try {
         const { name, email, password, avatar } = req.body;
@@ -24,6 +27,7 @@ exports.register = async (req, res) => {
             password,
             avatar: { public_id: myCloud.public_id, url: myCloud.secure_url },
         });
+
         const token = await user.generateToken();
 
         const options = {
@@ -53,7 +57,7 @@ exports.login = async (req, res) => {
         if (!user) {
             return res.status(400).json({
                 success: false,
-                message: "user does not exist"
+                message: "User does not exist"
             });
         }
         const isMatch = await user.matchPassword(password);
@@ -81,6 +85,7 @@ exports.login = async (req, res) => {
         })
     }
 }
+
 exports.logout = async (req, res) => {
     try {
         res.status(200)
@@ -101,8 +106,7 @@ exports.followUser = async (req, res) => {
     try {
         const userToFollow = await User.findById(req.params.id);
         const loggedInUser = await User.findById(req.user._id);
-        // console.log(req.params);
-        // console.log(req.user);
+
         if (!userToFollow) {
             return res.status(404).json({
                 success: false,
@@ -172,6 +176,7 @@ exports.updatePassword = async (req, res) => {
         });
     }
 }
+
 exports.updateProfile = async (req, res) => {
     try {
         const user = await User.findById(req.user._id);
@@ -202,6 +207,7 @@ exports.updateProfile = async (req, res) => {
         })
     }
 }
+
 exports.deleteProfile = async (req, res) => {
     try {
         const user = await User.findById(req.user._id);
@@ -288,13 +294,15 @@ exports.myProfile = async (req, res) => {
         })
     }
 }
+
+//Modify it to search for a particular quiz
 exports.getUserProfile = async (req, res) => {
     try {
         const user = await User.findById(req.params.id)
         if (!user) {
             return res.status(404).json({
                 success: false,
-                message: "user not found",
+                message: "User not found",
             })
         }
         res.status(200).json({
@@ -308,6 +316,7 @@ exports.getUserProfile = async (req, res) => {
         })
     }
 }
+
 exports.getAllUsers = async (req, res) => {
     try {
         const users = await User.find({
@@ -324,6 +333,7 @@ exports.getAllUsers = async (req, res) => {
         })
     }
 }
+
 exports.forgotPassword = async (req, res) => {
     try {
         const user = await User.findOne({ email: req.body.email });
@@ -459,10 +469,6 @@ exports.getUserPosts = async (req, res) => {
 
 exports.createQuiz = async (req, res) => {
     try {
-        // No need to check if the user is an admin if you're using middleware to handle that.
-        // We assume that the middleware has already verified that the user is an admin.
-
-        // Create a new quiz
         const quiz = new Quiz(req.body);
         await quiz.save();
 
@@ -474,7 +480,6 @@ exports.createQuiz = async (req, res) => {
         });
     }
 }
-
 
 exports.getUserQuizzes = async (req, res) => {
     try {
@@ -492,3 +497,30 @@ exports.getUserQuizzes = async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 };
+
+//Create group
+exports.createGroup = async (req, res) => {
+    try {
+      const { groupName, emailIds } = req.body;
+  
+      // Validate if groupName and emailIds are present
+      if (!groupName || !emailIds) {
+        return res.status(400).json({ message: 'Group name and email IDs are required.' });
+      }
+  
+      // Check if a group with the same name already exists
+      const existingGroup = await Group.findOne({ groupName });
+      if (existingGroup) {
+        return res.status(400).json({ message: 'A group with the same name already exists.' });
+      }
+  
+      // Create a new group in the database
+      const newGroup = new Group({ groupName, emailIds });
+      await newGroup.save();
+  
+      res.status(201).json({ message: 'Group created successfully.', group: newGroup });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Internal Server Error' });
+    }
+  };
