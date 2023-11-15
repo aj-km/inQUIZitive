@@ -29,6 +29,16 @@ const Account = () => {
     <div className="account">
       <div className="accountleft">
           {<Typography variant="h6">Welcome {user.name}</Typography>}
+      
+      <Typography variant="h4" style={{ marginBottom: "20px" }}>
+        Welcome to Your Quiz Dashboard!
+      </Typography>
+      <Typography variant="body1">
+        Start creating engaging quizzes, track your participants' progress, and
+        explore insightful analytics. Your journey to interactive learning
+        begins here.
+      </Typography>
+
       </div>
       <div className="accountright">
         <Avatar

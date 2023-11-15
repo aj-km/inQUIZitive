@@ -81,7 +81,7 @@ const Header = () => {
   return (
     <div className="header">
       <div className="header-title">
-        <h1>inQUIZitive</h1>
+        <a href="/"><h4>inQUIZitive</h4></a>
       </div>
       <Link to="/redirect" onClick={() => setTab("/")}>
         {tab === "/redirect" ? <Home style={{ color: "black" }} /> : <HomeOutlined />}

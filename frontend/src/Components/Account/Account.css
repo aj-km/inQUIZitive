@@ -82,3 +82,31 @@
     margin-top: 6vw;
   }
 }
+/* AccountLeft.css */
+
+.accountleft {
+  background-image: linear-gradient(to right, #fff5bc, #cec1ff);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2vmax;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+.accountleft h6 {
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  color: #007bff;
+}
+
+.accountleft h4 {
+  margin-bottom: 20px;
+  font-size: 2rem;
+  color: #007bff;
+}
+
+.accountleft p {
+  font-size: 1rem;
+  color: #555;
+}
