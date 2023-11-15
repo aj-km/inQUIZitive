@@ -36,16 +36,17 @@ const Search = () => {
         </Button>
 
         <div className="searchResults">
-          {users &&
-            users.map((user) => (
-              <User
-                key={user._id}
-                userId={user._id}
-                name={user.name}
-                avatar={user.avatar.url}
-              />
-            ))}
+  {users &&
+    users.map((user) => (
+      <div key={user._id} className="searchResultItem">
+        <div className="searchResultDetails">
+          <Typography variant="h6">{user.name}</Typography>
+          <Typography variant="body1">{user.email}</Typography>
         </div>
+      </div>
+    ))}
+</div>
+
       </form>
     </div>
   );
