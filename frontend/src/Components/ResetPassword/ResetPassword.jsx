@@ -10,11 +10,7 @@ const ResetPassword = () => {
   const dispatch = useDispatch();
   const alert = useAlert();
   const params = useParams();
-<<<<<<< HEAD
-  const { error, loading, message } = useSelector((state) => state.forgotReset);
-=======
   const { error, loading, message } = useSelector((state) => state.like);
->>>>>>> parent of 948d77a (bugs fixed)
 
   const submitHandler = (e) => {
     e.preventDefault();

@@ -9,11 +9,7 @@ const ForgotPassword = () => {
 
   const dispatch = useDispatch();
   const alert = useAlert();
-<<<<<<< HEAD
-  const { error, loading, message } = useSelector((state) => state.forgotReset);
-=======
   const { error, loading, message } = useSelector((state) => state.like);
->>>>>>> parent of 948d77a (bugs fixed)
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -45,10 +41,6 @@ const ForgotPassword = () => {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-<<<<<<< HEAD
-=======
-
->>>>>>> parent of 948d77a (bugs fixed)
         <Button disabled={loading} type="submit">
           Send Token
         </Button>

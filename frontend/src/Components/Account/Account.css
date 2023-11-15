@@ -110,3 +110,49 @@
   font-size: 1rem;
   color: #555;
 }
+/* styles.css */
+
+
+
+.accountleft {
+  text-align: center;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+}
+
+.accountleft h6 {
+  color: #333;
+}
+
+.accountleft h4 {
+  color: #1a237e; /* Dark blue color */
+  margin-bottom: 20px;
+}
+
+.accountleft body1 {
+  color: #555;
+  margin-bottom: 10px;
+}
+
+/* Style for additional user information */
+.accountleft body1:nth-child(n+5) {
+  font-weight: bold;
+}
+
+/* Style for Yes/No */
+.accountleft body1:last-child {
+  color: #4caf50; /* Green for Yes */
+}
+
+.accountleft body1:last-child:after {
+  content: ' | '; /* Separator between Admin and Yes/No */
+  color: #777;
+}
+
+.accountleft body1:last-child:before {
+  content: 'Admin: ';
+  color: #777;
+}

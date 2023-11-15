@@ -27,9 +27,8 @@ const Account = () => {
     <Loader />
   ) : (
     <div className="account">
-      <div className="accountleft">
-          {<Typography variant="h6">Welcome {user.name}</Typography>}
-      
+    <div className="accountleft">
+      <Typography variant="h6">Welcome {user.name}</Typography>
       <Typography variant="h4" style={{ marginBottom: "20px" }}>
         Welcome to Your Quiz Dashboard!
       </Typography>
@@ -39,7 +38,10 @@ const Account = () => {
         begins here.
       </Typography>
 
-      </div>
+      {/* Display additional user information */}
+      <Typography variant="body1">Email: {user.email}</Typography>
+      <Typography variant="body1">Admin: {user.isAdmin ? 'Yes' : 'No'}</Typography>
+    </div>
       <div className="accountright">
         <Avatar
           src={user.avatar.url}
