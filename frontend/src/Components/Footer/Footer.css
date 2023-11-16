@@ -1,6 +1,9 @@
 /* Footer.css */
 
 .footer {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
   background-color: rgb(225, 237, 247);
   font-weight: 700;
   color: #080808;
