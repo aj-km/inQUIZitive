@@ -8,6 +8,7 @@
   font-weight: 700;
   color: #080808;
   text-align: center;
+  z-index: -10;
   padding: 10px 0; /* Adjust padding as needed */
   margin-top: auto; /* Push the footer to the bottom */
 }
