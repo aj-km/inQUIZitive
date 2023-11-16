@@ -1,7 +1,11 @@
 import React from "react";
 // import logo from './logo.svg';
-import Portfolio from "./Portfolio";
 import "./App.css";
+import team01 from "../../Assets/img/akash.jpeg"
+import team02 from "../../Assets/img/ajit.jpeg"
+import team03 from "../../Assets/img/resume_img_new.jpg"
+
+
 
 function FrontPage() {
   const portfolioLinks = [
@@ -268,7 +272,7 @@ function FrontPage() {
               <div className="team-member">
                 <img
                   className="mx-auto rounded-circle"
-                  src="img/team/1.jpg"
+                  src={team01}
                   alt=""
                 />
                 <h4>Akash Gupta</h4>
@@ -296,7 +300,7 @@ function FrontPage() {
               <div className="team-member">
                 <img
                   className="mx-auto rounded-circle"
-                  src="img/team/2.jpg"
+                  src={team02}
                   alt=""
                 />
                 <h4>Ajit</h4>
@@ -324,7 +328,7 @@ function FrontPage() {
               <div className="team-member">
                 <img
                   className="mx-auto rounded-circle"
-                  src="img/team/3.jpg"
+                  src={team03}
                   alt=""
                 />
                 <h4>Shivansh</h4>
