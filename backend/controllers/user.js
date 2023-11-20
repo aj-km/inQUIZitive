@@ -5,7 +5,6 @@ const Group = require("../models/Group");
 const { sendEmail } = require("../middlewares/sendEmail");
 const crypto = require("crypto");
 const cloudinary = require("cloudinary");
-const QuizSubjective = require("../models/QuizSubjective");
 
 exports.register = async (req, res) => {
     try {
@@ -103,47 +102,6 @@ exports.logout = async (req, res) => {
     }
 }
 
-exports.followUser = async (req, res) => {
-    try {
-        const userToFollow = await User.findById(req.params.id);
-        const loggedInUser = await User.findById(req.user._id);
-
-        if (!userToFollow) {
-            return res.status(404).json({
-                success: false,
-                message: "User does not exit",
-            })
-        }
-        if (loggedInUser.following.includes(userToFollow._id)) {
-            const indexfollowing = loggedInUser.following.indexOf(userToFollow._id);
-            const indexfollowers = userToFollow.followers.indexOf(loggedInUser._id);
-            loggedInUser.following.splice(indexfollowing, 1);
-            userToFollow.followers.splice(indexfollowers, 1);
-            await loggedInUser.save();
-            await userToFollow.save();
-            return res.status(200).json({
-                success: true,
-                message: "User Unfollowed",
-            });
-        } else {
-            loggedInUser.following.push(userToFollow._id);
-            userToFollow.followers.push(loggedInUser._id);
-
-            await loggedInUser.save();
-            await userToFollow.save();
-            return res.status(200).json({
-                success: true,
-                message: "User followed",
-            });
-        }
-    } catch (e) {
-        res.status(500).json({
-            success: false,
-            message: e.message,
-        });
-    }
-}
-
 exports.updatePassword = async (req, res) => {
     try {
         const user = await User.findById(req.user._id).select("+password");
@@ -212,10 +170,6 @@ exports.updateProfile = async (req, res) => {
 exports.deleteProfile = async (req, res) => {
     try {
         const user = await User.findById(req.user._id);
-        const posts = user.posts;
-        const followers = user.followers;
-        const following = user.following;
-        const userId = user._id;
         //removing photos from  cloudinary
         await cloudinary.v2.uploader.destroy(user.avatar.public_id);
 
@@ -225,49 +179,6 @@ exports.deleteProfile = async (req, res) => {
             expires: new Date(Date.now()),
             httpOnly: true,
         });
-
-        //deleting all posts of user
-        for (let i = 0; i < posts.length; i++) {
-            const post = await Post.findById(posts[i]);
-            await cloudinary.v2.uploader.destroy(post.image.public_id);
-            await post.deleteOne();
-        }
-        //removing user from followers following
-        for (let i = 0; i < followers.length; i++) {
-            const follower = await User.findById(followers[i]);
-            const index = follower.following.indexOf(userId);
-            follower.following.splice(index, 1);
-            await follower.save();
-        }
-        //removing user from following's follower
-        for (let i = 0; i < following.length; i++) {
-            const follows = await User.findById(following[i]);
-            const index = follows.followers.indexOf(userId);
-            follows.followers.splice(index, 1);
-            await follows.save();
-        }
-
-        //removing all comments of user from all posts
-        const allPosts = await Post.find();
-        for (let i = 0; i < allPosts.length; i++) {
-            const post = await Post.findById(allPosts[i]._id);
-            for (let j = 0; j < post.comments.length; j++) {
-                if (post.comments[j].user === userId) {
-                    post.comments.splice(j, 1);
-                }
-            }
-            await post.save();
-        }
-        //removing all likes of user from all posts
-        for (let i = 0; i < allPosts.length; i++) {
-            const post = await Post.findById(allPosts[i]._id);
-            for (let j = 0; j < post.likes.length; j++) {
-                if (post.likes[j].user === userId) {
-                    post.likes.splice(j, 1);
-                }
-            }
-            await post.save();
-        }
 
         res.status(200).json({
             success: true,
@@ -421,52 +332,6 @@ exports.resetPassword = async (req, res) => {
         });
     }
 };
-
-exports.getMyPosts = async (req, res) => {
-    try {
-        const user = await User.findById(req.user._id);
-
-        const posts = [];
-        for (let i = 0; i < user.posts.length; i++) {
-            const post = await Post.findById(user.posts[i]).populate(
-                "likes comments.user owner"
-            );
-            posts.push(post);
-        }
-        res.status(200).json({
-            success: true,
-            posts,
-        });
-    } catch (e) {
-        res.status(500).json({
-            status: false,
-            message: e.message,
-        })
-    }
-}
-
-exports.getUserPosts = async (req, res) => {
-    try {
-        const user = await User.findById(req.params.id);
-
-        const posts = [];
-        for (let i = 0; i < user.posts.length; i++) {
-            const post = await Post.findById(user.posts[i]).populate(
-                "likes comments.user owner"
-            );
-            posts.push(post);
-        }
-        res.status(200).json({
-            success: true,
-            posts,
-        });
-    } catch (e) {
-        res.status(500).json({
-            status: false,
-            message: e.message,
-        })
-    }
-}
 
 // exports.createQuiz = async (req, res) => {
 //     try {
