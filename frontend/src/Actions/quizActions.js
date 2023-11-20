@@ -128,34 +128,6 @@ export const selectOption = (questionId, selectedOption) => async (dispatch) => 
   });
 };
 
-// Action to submit quiz responses
-// export const submitQuizResponses = (userId, quizId, quizResponses) => async (dispatch) => {
-//   dispatch({ 
-//     type: 'SubmitQuizResponseRequest' 
-//   });
-//   try {
-//     const config = {
-//       headers: {
-//         'Content-Type': 'application/json',
-//         // Include other headers like authorization if needed
-//       },
-//     };
-//     const { data } = await axios.post('/api/quizzes/submit', { userId,quizId, quizResponses }, config);
-//     dispatch({
-//       type: 'SubmitQuizResponseSuccess',
-//       payload: data
-//     });
-//   } catch (error) {
-//     dispatch({
-//       type: 'SubmitQuizResponseFailure',
-//       payload: error.response && error.response.data.message
-//         ? error.response.data.message
-//         : error.message,
-//     });
-//   }
-// };
-
-//Version 2.0
 export const submitQuizResponses = (userId, quizId, quizResponses, timeTaken) => async (dispatch) => {
   dispatch({ 
     type: 'SubmitQuizResponseRequest' 

@@ -20,6 +20,10 @@ const QuizSchema = new mongoose.Schema({      //It is used to display questions 
     type: String,
     required: true,
   },
+  type: {
+    type: String,
+    required: true,
+  },
   questions: [QuestionSchema],
   duration: { // New field
     type: Number, // time in milliseconds
