@@ -1,73 +1,116 @@
-.QuestionInput {
-  background-image: linear-gradient(to right, #fff5bc, #cec1ff);
+/* Overall layout */
+.quiz-send-container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  padding: 2vmax;
-  box-sizing: border-box;
-  height: 100vh;
+  align-items: center;
+  min-height: 100vh;
+  background-color: linear-gradient(to right, #fff5bc, #cec1ff);
+  /* background-color: #f4f7fa; */
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
-.QuestionInput form {
+/* Styling for the card containing the form */
+.quiz-send {
+  width: 100%;
+  max-width: 400px;
+  margin: 2rem;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+/* Headings */
+.quiz-send h2 {
+  color: #333;
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+/* Form elements */
+.quiz-send-form {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  width: 100%;
-  max-width: 600px; /* Adjust the maximum width as needed */
-  margin: 0 auto; /* Center the form horizontally */
 }
 
-.QuestionInput input[type="text"],
-.QuestionInput input[type="number"] {
-  margin: 10px 0;
-  padding: 10px;
-  width: 100%; /* Adjust the width as needed */
-  border: 1px solid #ddd;
+.quiz-send-form label {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 0.5rem;
+}
+
+.quiz-send-form input {
+  padding: 10px 15px;
+  font-size: 1rem;
   border-radius: 4px;
-  font-size: 16px;
-  transition: border 0.3s ease;
+  border: 1px solid #ddd;
+  margin-bottom: 1.5rem;
 }
 
-.QuestionInput input[type="text"]:focus,
-.QuestionInput input[type="number"]:focus {
-  border: 1px solid #007bff;
+.quiz-send-form input:focus {
+  border-color: #007bff;
   outline: none;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.075), 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
-.QuestionInput div {
-  display: flex;
-  justify-content: space-between;
-  width: 100%; /* Adjust the width as needed */
+/* Additional input styles for date and starting time */
+.quiz-send-form input[type="date"],
+.quiz-send-form input[type="time"] {
+  margin-bottom: 1.5rem;
 }
 
-.QuestionInput button {
-  margin: 20px 0;
-  padding: 10px 20px;
+/* Submit button */
+.quiz-send-button {
+  padding: 10px 15px;
+  font-size: 1rem;
   border: none;
   border-radius: 4px;
-  background-color: #007bff;
   color: white;
+  background-color: #007bff;
   cursor: pointer;
-  font-size: 16px;
   transition: background-color 0.3s ease;
 }
 
-.QuestionInput button:hover {
+.quiz-send-button:hover, 
+.quiz-send-button:focus {
   background-color: #0056b3;
 }
 
-@media (max-width: 600px) {
-  .QuestionInput {
-    padding: 2vmax;
-  }
+/* Messages */
+.loading, .error, .success {
+  text-align: center;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+}
 
-  .QuestionInput form {
-    max-width: 100%;
-  }
+.loading {
+  background-color: #e3f2fd;
+  color: #3178c6;
+}
 
-  .QuestionInput input[type="text"],
-  .QuestionInput input[type="number"] {
-    width: 100%;
+.error {
+  background-color: #fbe2e5;
+  color: #d9534f;
+}
+
+.success {
+  background-color: #d4edda;
+  color: #5cb85c;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .quiz-send {
+    margin: 1rem;
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .quiz-send {
+    margin: 0.5rem;
   }
 }

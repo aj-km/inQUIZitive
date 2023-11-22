@@ -24,4 +24,8 @@
   .quiz-list li:hover {
     background-color: #eaeaea;
   }
-  
+  /* Add this to your existing CSS file */
+.quiz-list .active-quiz {
+  background-color: #a0e6a0; /* Change the background color for active quizzes */
+  font-weight: bold; /* Apply any other styling you want for active quizzes */
+}
