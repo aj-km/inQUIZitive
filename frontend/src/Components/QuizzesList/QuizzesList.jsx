@@ -1,86 +1,4 @@
-// export default QuizzesList;
-// QuizzesList.jsx
-// import React, { useEffect, useState } from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { fetchQuizzes } from '../../Actions/quizActions';
-// import QuizComponent from '../QuizComponent/QuizComponent';
 
-// const QuizzesList = () => {
-//   const dispatch = useDispatch();
-//   const { isAuthenticated, user } = useSelector((state) => state.user);
-//   const { quizzes, loading, error } = useSelector((state) => state.fetchQuiz);
-//   const [selectedQuiz, setSelectedQuiz] = useState(null);
-
-//   useEffect(() => {
-//     if (isAuthenticated && user?._id) {
-//       dispatch(fetchQuizzes(user._id));
-//     }
-//   }, [dispatch, isAuthenticated, user?._id]);
-
-//   const handleQuizSelection = (quizId) => {
-//     const quiz = quizzes.find((q) => q.quizId._id === quizId);
-//     setSelectedQuiz(quiz);
-//   };
-
-//   return (
-//     <div>
-//       {loading && <p>Loading quizzes...</p>}
-//       {error && <p>Error loading quizzes: {error}</p>}
-//       <ul>
-//         {quizzes.map((quiz) => (
-//           <li key={quiz.quizId._id} onClick={() => handleQuizSelection(quiz.quizId._id)}>
-//             {quiz.quizId.title}
-//           </li>
-//         ))}
-//       </ul>
-//       {selectedQuiz && <QuizComponent quiz={selectedQuiz} />}
-//     </div>
-//   );
-// };
-
-// export default QuizzesList;
-// QuizzesList.jsx
-// import React, { useEffect, useState } from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { fetchQuizzes } from '../../Actions/quizActions';
-// import QuizComponent from '../QuizComponent/QuizComponent';
-// import './QuizzesList.css'; // Import the CSS file for styling
-
-// const QuizzesList = () => {
-//   const dispatch = useDispatch();
-//   const { isAuthenticated, user } = useSelector((state) => state.user);
-//   const { quizzes, loading, error } = useSelector((state) => state.fetchQuiz);
-//   const [selectedQuiz, setSelectedQuiz] = useState(null);
-
-//   useEffect(() => {
-//     if (isAuthenticated && user?._id) {
-//       dispatch(fetchQuizzes(user._id));
-//     }
-//   }, [dispatch, isAuthenticated, user?._id]);
-
-//   const handleQuizSelection = (quizId) => {
-//     const quiz = quizzes.find((q) => q.quizId._id === quizId);
-//     setSelectedQuiz(quiz);
-//   };
-
-//   return (
-//     <div className="quizzes-list">
-//       {/* {loading && <p>Loading quizzes...</p>} */}
-//       {<p>You can attempt following quizzes:</p>}
-//       {error && <p>Error loading quizzes: {error}</p>}
-//       <ul className="quiz-list">
-//         {quizzes.map((quiz) => (
-//           <li key={quiz.quizId._id} onClick={() => handleQuizSelection(quiz.quizId._id)}>
-//             {quiz.quizId.title}
-//           </li>
-//         ))}
-//       </ul>
-//       {selectedQuiz && <QuizComponent quiz={selectedQuiz} />}
-//     </div>
-//   );
-// };
-
-// export default QuizzesList;
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchQuizzes } from '../../Actions/quizActions';
@@ -92,6 +10,7 @@ const QuizzesList = () => {
   const { isAuthenticated, user } = useSelector((state) => state.user);
   const { quizzes, loading, error } = useSelector((state) => state.fetchQuiz);
   const [selectedQuiz, setSelectedQuiz] = useState(null);
+  const [isFullScreen, setIsFullScreen] = useState(false);
   const [currentTime, setCurrentTime] = useState(new Date());
 
   useEffect(() => {
@@ -108,12 +27,37 @@ const QuizzesList = () => {
     }
   }, [dispatch, isAuthenticated, user?._id]);
 
+  useEffect(() => {
+    if (isFullScreen) {
+      document.addEventListener('fullscreenchange', handleFullScreenChange);
+      return () => {
+        document.removeEventListener('fullscreenchange', handleFullScreenChange);
+      };
+    }
+  }, [isFullScreen]);
+
+  const handleFullScreenChange = () => {
+    setIsFullScreen(document.fullscreenElement !== null);
+  };
+
+  const enterFullScreen = () => {
+    const element = document.documentElement;
+    if (element.requestFullscreen) {
+      element.requestFullscreen();
+    } else if (element.mozRequestFullScreen) {
+      element.mozRequestFullScreen();
+    } else if (element.webkitRequestFullscreen) {
+      element.webkitRequestFullscreen();
+    } else if (element.msRequestFullscreen) {
+      element.msRequestFullscreen();
+    }
+    setIsFullScreen(true);
+  };
+
   const isQuizActive = (quiz) => {
     const currentTime = new Date(); 
     const quizStartTime = new Date(quiz.startTime);
     const quizEndTime = new Date(quiz.endTime);
-    console.log(quiz.endTime);
-    console.log(currentTime , quizStartTime , quizStartTime);
     return (currentTime.getTime() >= quizStartTime.getTime()) && (currentTime.getTime() < quizEndTime.getTime());
   };
 
@@ -121,10 +65,19 @@ const QuizzesList = () => {
     const selectedQuiz = quizzes.find((q) => q.quizId._id === quizId);
     // Check if the quiz is currently active
     if (isQuizActive(selectedQuiz)) {
+      enterFullScreen();
       setSelectedQuiz(selectedQuiz);
+      // Add an event listener for beforeunload to show a warning when the user tries to leave the page
+      window.addEventListener('beforeunload', handleBeforeUnload);
     } else {
       console.log("This quiz is not currently active.");
     }
+  };
+
+  const handleBeforeUnload = (event) => {
+    const message = 'You are about to leave the quiz. Are you sure you want to do this?';
+    event.returnValue = message; // Standard for most browsers
+    return message; // For some older browsers
   };
 
   return (
@@ -150,4 +103,3 @@ const QuizzesList = () => {
 };
 
 export default QuizzesList;
-
