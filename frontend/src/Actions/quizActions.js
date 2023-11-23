@@ -32,12 +32,40 @@ export const resetCreateQuiz=()=>async(dispatch)=>{
   })
 }
 
-export const sendQuiz = (userEmail,quizTitle) => async (dispatch) => {
+// export const sendQuiz = (userEmail,quizTitle) => async (dispatch) => {
+//   try {
+//     dispatch({ 
+//       type: 'SendQuizRequest' 
+//     });
+//     const response = await axios.post('/api/admin/send', { userEmail,quizTitle  });
+//     dispatch({ 
+//       type: 'SendQuizSuccess',
+//       payload: response.data 
+//     });
+//   } catch (error) {
+//     dispatch({
+//       type: 'SendQuizFailure',
+//       payload: error.response && error.response.data.message
+//         ? error.response.data.message
+//         : error.message,
+//     });
+//   }
+// };
+
+export const sendQuiz = (userEmail, quizTitle, quizStartDate,quizStartTime,quizEndDate,quizEndTime) => async (dispatch) => {
   try {
     dispatch({ 
       type: 'SendQuizRequest' 
     });
-    const response = await axios.post('/api/admin/send', { userEmail,quizTitle  });
+
+    const response = await axios.post('/api/admin/send', { 
+      userEmail,
+      quizTitle,
+      quizStartDate,
+      quizStartTime,
+      quizEndDate,
+      quizEndTime
+    });
     dispatch({ 
       type: 'SendQuizSuccess',
       payload: response.data 
@@ -51,6 +79,8 @@ export const sendQuiz = (userEmail,quizTitle) => async (dispatch) => {
     });
   }
 };
+
+
 
 export const getQuizzes = () => async (dispatch) => {
   try {
