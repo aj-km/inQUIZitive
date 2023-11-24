@@ -54,11 +54,11 @@ function FrontPage() {
                   Services
                 </a>
               </li>
-              <li className="nav-item">
+              {/* <li className="nav-item">
                 <a className="nav-link js-scroll-trigger" href="/createQuiz">
                   Sample Quiz
                 </a>
-              </li>
+              </li> */}
               <li className="nav-item">
                 <a className="nav-link js-scroll-trigger" href="#about">
                   About
@@ -75,7 +75,7 @@ function FrontPage() {
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link js-scroll-trigger" href="redirect">
+                <a className="nav-link js-scroll-trigger" href="home">
                   Login
                 </a>
               </li>
