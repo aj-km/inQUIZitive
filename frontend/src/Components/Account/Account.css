@@ -1,6 +1,6 @@
 .account {
   box-sizing: border-box;
-  display: grid;
+  display: flex;
   grid-template-columns: 1fr 400px;
   height: 92vh;
 }
@@ -9,14 +9,19 @@
   background-image: linear-gradient(to right, #fff5bc, #cec1ff);
 
   display: flex;
+  flex-grow: 0.2;
   flex-direction: column;
   align-items: center;
   padding: 2vmax;
   box-sizing: border-box;
   overflow-y: auto;
 }
+.accountmiddle{
+  flex-grow: 0.6;
+}
 .accountright {
   padding: 2vmax;
+  flex-grow: 0.2;
   box-sizing: border-box;
   overflow-y: auto;
   display: flex;

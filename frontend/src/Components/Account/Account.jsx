@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { deleteMyProfile, logoutUser } from "../../Actions/User";
 import Loader from "../Loader/Loader";
+import QuizResponse from "../QuizResponse/QuizResponse";
 import User from "../User/User";
 import "./Account.css";
 
@@ -42,6 +43,9 @@ const Account = () => {
       <Typography variant="body1">Email: {user.email}</Typography>
       <Typography variant="body1">Admin: {user.isAdmin ? 'Yes' : 'No'}</Typography>
     </div>
+    <div className="accountmiddle">
+      <QuizResponse />
+    </div>
       <div className="accountright">
         <Avatar
           src={user.avatar.url}
@@ -50,9 +54,15 @@ const Account = () => {
 
         <Typography variant="h5">{user.name}</Typography>
 
-        <Button variant="contained" onClick={logoutHandler}>
+        {/* <Button variant="contained" onClick={logoutHandler}>
           Logout
-        </Button>
+        </Button> */}
+
+        <Link to="/" onClick={logoutHandler}>
+          <Button variant="contained">
+            Logout
+          </Button>
+        </Link>
 
         <Link to="/update/profile">Edit Profile</Link>
         <Link to="/update/password">Change Password</Link>
@@ -70,4 +80,4 @@ const Account = () => {
   );
 };
 
-export default Account;
+export default Account
