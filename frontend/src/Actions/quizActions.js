@@ -158,7 +158,7 @@ export const selectOption = (questionId, selectedOption) => async (dispatch) => 
   });
 };
 
-export const submitQuizResponses = (userId, quizId, quizResponses, timeTaken) => async (dispatch) => {
+export const submitQuizResponses = (userId, quizId, quizResponses, textResponsesArray,timeTaken) => async (dispatch) => {
   dispatch({ 
     type: 'SubmitQuizResponseRequest' 
   });
@@ -169,7 +169,7 @@ export const submitQuizResponses = (userId, quizId, quizResponses, timeTaken) =>
         // Include other headers like authorization if needed
       },
     };
-    const { data } = await axios.post('/api/quizzes/submit', { userId, quizId, quizResponses, timeTaken }, config);
+    const { data } = await axios.post('/api/quizzes/submit', { userId, quizId, quizResponses,textResponsesArray, timeTaken }, config);
     dispatch({
       type: 'SubmitQuizResponseSuccess',
       payload: data
