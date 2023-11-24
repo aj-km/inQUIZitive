@@ -10,7 +10,7 @@ const Home = () => {
 
   const linksUser = [
     { name: "Attempt Quiz", path: "/attempt-quiz" },
-    { name: "Past Quiz Response", path: "/account" },
+    { name: "Past Quiz Response", path: "/quiz-response" },
     { name: "Account", path: "/account" },
   ];
 
