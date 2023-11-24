@@ -3,6 +3,7 @@ import { resetQuizSubmit, submitQuizResponses } from '../../Actions/quizActions'
 import React, { useEffect, useState, useRef } from 'react';
 import './QuizComponent.css';
 import { useNavigate } from 'react-router-dom';
+
 const QuizComponent = ({ quiz }) => {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.user);
@@ -47,10 +48,24 @@ const QuizComponent = ({ quiz }) => {
     }));
   };
 
+  let maxWordLimit = 0;
+  if(quiz.quizId.type === 'Short Answer'){
+    maxWordLimit = 150;
+  }
+  else if(quiz.quizId.type === 'Long Answer'){
+    maxWordLimit = 300;
+  }
+
   const handleTextResponseChange = (questionId, response) => {
+   
+    // maxWordLimit = quiz.quizId.type === 'Short Answer' ? 150 : 300;
+
+    const words = response.split(/\s+/);
+    const limitedResponse = words.slice(0, maxWordLimit).join(' ');
+
     setTextResponses((prevTextResponses) => ({
       ...prevTextResponses,
-      [questionId]: response,
+      [questionId]: limitedResponse,
     }));
   };
 
@@ -90,12 +105,17 @@ const QuizComponent = ({ quiz }) => {
         {quiz.quizId.questions.map((question) => (
           <div key={question._id} className="question">
             <p className="question-text">{question.question}</p>
-            {(quiz.quizId.type === 'Short Answer') || (quiz.quizId.type === 'Long Answer') ? (
-              <textarea
-                value={textResponses[question._id] || ''}
-                onChange={(e) => handleTextResponseChange(question._id, e.target.value)}
-                placeholder={`Type your ${quiz.quizId.type} response here`}
-              />
+            {(quiz.quizId.type === 'Short Answer' || quiz.quizId.type === 'Long Answer') ? (
+              <>
+                <textarea
+                  value={textResponses[question._id] || ''}
+                  onChange={(e) => handleTextResponseChange(question._id, e.target.value)}
+                  placeholder={`Type your ${quiz.quizId.type} response here`}
+                />
+                <div className="word-limit-info">
+                  Word count: {textResponses[question._id]?.split(/\s+/).length || 0}/{maxWordLimit}
+                </div>
+              </>
             ) : (
               <div className="options-container">
                 {question.options.map((option) => (

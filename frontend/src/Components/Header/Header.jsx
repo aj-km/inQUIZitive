@@ -30,7 +30,7 @@ const Header = () => {
 
   return (
     <div className="header">
-      <div className="header-title" style={{}}>
+      <div className="header-title">
         <a href="/"><h4 style={{color:"black"}}>inQUIZitive</h4></a>
       </div>
       <Link to="/home" onClick={() => setTab("/home")}>

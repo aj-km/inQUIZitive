@@ -10,6 +10,7 @@
   background-image:url("../../Assets/img/bg3.jpg");
   background-size: cover;
 }
+
  h1 {
   color: #007bff;
  }
@@ -20,7 +21,7 @@
   align-items: center;
   width: 100%;
   max-width: 600px;
-  margin: 0 auto; 
+  margin: 0 auto;
 }
 
 .QuestionInput input[type="text"],
@@ -43,7 +44,7 @@
 .QuestionInput div {
   display: flex;
   justify-content: space-between;
-  width: 100%; 
+  width: 100%;
 }
 
 .QuestionInput button {

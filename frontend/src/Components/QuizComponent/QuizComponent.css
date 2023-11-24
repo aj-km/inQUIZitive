@@ -105,3 +105,36 @@
   font-weight: bold;
   text-align: center;
 }
+
+
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+  resize: vertical; /* Allow vertical resizing */
+  font-size: 1rem;
+}
+
+/* Apply styles when the textarea is focused */
+textarea:focus {
+  outline: none;
+  border-color: #5cb85c; /* Change the border color when focused */
+  box-shadow: 0 0 5px rgba(92, 184, 92, 0.5); /* Add a subtle box shadow */
+}
+
+/* Additional styling for better appearance */
+@media (min-width: 768px) {
+  textarea {
+    max-width: 100%; /* Ensure the textarea is responsive */
+  }
+}
+
+/* Additional styling for smaller screens */
+@media (max-width: 768px) {
+  textarea {
+    font-size: 0.9rem; /* Adjust font size for smaller screens */
+  }
+}
