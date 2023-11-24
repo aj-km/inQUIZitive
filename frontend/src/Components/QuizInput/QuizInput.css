@@ -7,7 +7,12 @@
   padding: 2vmax;
   box-sizing: border-box;
   height: 100vh;
+  background-image:url("../../Assets/img/bg3.jpg");
+  background-size: cover;
 }
+ h1 {
+  color: #007bff;
+ }
 
 .QuestionInput form {
   display: flex;
@@ -22,7 +27,7 @@
 .QuestionInput input[type="number"] {
   margin: 10px 0;
   padding: 10px;
-  width: 100%; /* Adjust the width as needed */
+  width: 100%;  
   border: 1px solid #ddd;
   border-radius: 4px;
   font-size: 16px;
@@ -55,6 +60,10 @@
 
 .QuestionInput button:hover {
   background-color: #0056b3;
+}
+
+input {
+  color: #007bff;
 }
 
 @media (max-width: 600px) {

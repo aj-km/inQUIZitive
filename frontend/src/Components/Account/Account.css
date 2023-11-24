@@ -3,10 +3,12 @@
   display: grid;
   grid-template-columns: 1fr 400px;
   height: 92vh;
+  /* background-image:url("../../Assets/img/bg4.jpg");
+  background-size: cover; */
 }
 
 .accountleft {
-  background-image: linear-gradient(to right, #fff5bc, #cec1ff);
+  /* background-image: linear-gradient(to right, #fff5bc, #cec1ff); */
 
   display: flex;
   flex-direction: column;
@@ -82,10 +84,9 @@
     margin-top: 6vw;
   }
 }
-/* AccountLeft.css */
 
 .accountleft {
-  background-image: linear-gradient(to right, #fff5bc, #cec1ff);
+  /* background-image: linear-gradient(to right, #fff5bc, #cec1ff); */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -110,9 +111,6 @@
   font-size: 1rem;
   color: #555;
 }
-/* styles.css */
-
-
 
 .accountleft {
   text-align: center;

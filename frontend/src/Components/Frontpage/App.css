@@ -12,6 +12,9 @@
 
 .App-header {
   background-image: linear-gradient(to right, #1b1b19, #aa98ee);
+  z-index: 999;
+  margin-top: 0;
+  width: 100%;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
