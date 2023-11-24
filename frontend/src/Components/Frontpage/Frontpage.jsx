@@ -19,7 +19,7 @@ function FrontPage() {
             <ul className="navbar-nav text-uppercase ml-auto bg-dark">
               <li className="nav-item">
                 <a className="nav-link js-scroll-trigger" href="#services">
-                  Services
+                  FEATURES LETS Quizify
                 </a>
               </li>
               <li className="nav-item">
@@ -51,7 +51,7 @@ function FrontPage() {
         <div className="container">
           <div className="row">
             <div className="col-lg-12 text-center ">
-              <h2 className="section-heading text-uppercase">Services</h2>
+              <h2 className="section-heading text-uppercase">FEATURES LETS Quizify</h2>
               <h3 className="section-subheading text-muted">
                 These are ways to Quizify
               </h3>
