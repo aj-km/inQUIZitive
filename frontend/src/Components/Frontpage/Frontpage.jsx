@@ -3,15 +3,10 @@ import "./App.css";
 import team01 from "../../Assets/img/akash.jpeg"
 import team02 from "../../Assets/img/ajit.jpeg"
 import team03 from "../../Assets/img/resume_img_new.jpg"
-// import { useSelector } from "react-redux";
 
 
 
 function FrontPage() {
-
-  // const {user} = useSelector(state => state);
-  // console.log(user);
-
   return (
     <div className="App">
       <nav className="navbar navbar-expand-lg navbar-dark" id="mainNav">
@@ -27,11 +22,6 @@ function FrontPage() {
                   Services
                 </a>
               </li>
-              {/* <li className="nav-item">
-                <a className="nav-link js-scroll-trigger" href="/createQuiz">
-                  Sample Quiz
-                </a>
-              </li> */}
               <li className="nav-item">
                 <a className="nav-link js-scroll-trigger" href="#about">
                   About
@@ -71,7 +61,6 @@ function FrontPage() {
             <div className="col-md-4">
               <span className="fa-stack fa-4x">
                 <i className="fa fa-circle fa-stack-2x text-primary"></i>
-                {/* <i className="fa fa-shopping-cart fa-stack-1x fa-inverse"></i> */}
                 <i className="fa fa-question fa-stack-1x fa-inverse"></i>
               </span>
               <h4 className="service-heading">Quizify</h4>

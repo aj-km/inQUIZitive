@@ -21,12 +21,12 @@
 
 .registerInputs {
   box-sizing: border-box;
-  padding: 0.8vmax 1.6vmax; /* Adjusted padding for smaller inputs */
+  padding: 0.8vmax 1.6vmax;
   width: 80%;
-  border-radius: 30px; /* Smaller border-radius for a cleaner look */
+  border-radius: 30px; 
   border: 1px solid #cfabab;
-  margin: 1vmax; /* Adjusted margin for smaller spacing */
-  font: 100 1rem "Roboto", sans-serif; /* Slightly smaller font size */
+  margin: 1vmax;
+  font: 100 1rem "Roboto", sans-serif; 
   outline: none;
 }
 
@@ -42,10 +42,8 @@
   padding: 1vmax;
   border-radius: 30px;
   border: none;
-  font: 100 1rem "Roboto", sans-serif; /* Slightly smaller font size */
+  font: 100 1rem "Roboto", sans-serif; 
 }
-
-/* Styling for buttons */
 .registerButtons {
   display: flex;
   flex-direction: column;
@@ -57,10 +55,10 @@
   cursor: pointer;
   padding: 1vmax 2vmax;
   width: 80%;
-  border-radius: 30px; /* Smaller border-radius for buttons */
+  border-radius: 30px; 
   border: none;
-  margin: 1vmax; /* Adjusted margin for smaller spacing */
-  font: 100 1rem "Roboto", sans-serif; /* Slightly smaller font size */
+  margin: 1vmax; 
+  font: 100 1rem "Roboto", sans-serif;
   outline: none;
   text-align: center;
   text-decoration: none;
@@ -77,7 +75,7 @@
   align-self: center;
   text-decoration: none;
   color: rgba(0, 0, 0, 0.342);
-  margin: 1vmax; /* Adjusted margin for smaller spacing */
+  margin: 1vmax; 
 }
 
 @media screen and (max-width: 600px) {
@@ -86,9 +84,9 @@
   }
 
   .registerInputs {
-    padding: 2vw 4vw; /* Adjusted padding for smaller inputs on small screens */
+    padding: 2vw 4vw; 
     margin: 2vmax;
-    font: 100 1rem "Roboto", sans-serif; /* Slightly smaller font size */
+    font: 100 1rem "Roboto", sans-serif; 
   }
 
   .registerForm > input[type="file"] {

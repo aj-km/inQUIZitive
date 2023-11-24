@@ -13,7 +13,7 @@ const QuestionInput = () => {
     minutes: "",
     seconds: "",
   });
-  const [quizType, setquizType] = useState("MCQ"); // Default to MCQ
+  const [quizType, setquizType] = useState("MCQ");
   const [quizData, setQuizData] = useState({
     title: "",
     type: "",
@@ -24,7 +24,7 @@ const QuestionInput = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { loading, error, quizCreated } = useSelector((state) => state.quiz);
+  const {  error, quizCreated } = useSelector((state) => state.quiz);
 
   useEffect(() => {
     if (quizCreated) {
@@ -67,14 +67,14 @@ const QuestionInput = () => {
             return {
               ...defaultQuestionData,
               options: ["T", "F"],
-              answer: "", // Exclude answer for T/F
+              answer: "", 
             };
           case "Short Answer":
           case "Long Answer":
             return {
               ...defaultQuestionData,
-              options: [], // Clear options for text-based answers
-              answer: "", // Exclude answer for short/long answer
+              options: [],
+              answer: "", 
             };
           default:
             return defaultQuestionData;

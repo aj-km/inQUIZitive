@@ -2,7 +2,7 @@
   background-image: linear-gradient(to right, #969591, #d9d3f0);
   box-sizing: border-box;
   display: flex;
-  grid-template-columns: 1fr 3fr 0.3fr; /* Adjusted column widths */
+  grid-template-columns: 1fr 3fr 0.3fr; 
   height: 200vh;
 }
 
@@ -14,11 +14,11 @@
   padding: 2vmax;
   box-sizing: border-box;
   overflow-y: auto;
-  flex-grow: 1; /* Normal width */
+  flex-grow: 1; 
 }
 
 .accountmiddle {
-  flex-grow: 3; /* Bigger width */
+  flex-grow: 3; 
 }
 
 .accountright {
@@ -29,7 +29,7 @@
   flex-direction: column;
   align-items: center;
   margin-right: 0;
-  flex-grow: 0.3; /* Even smaller width */
+  flex-grow: 0.3; 
 }
 
 .accountright img:hover {
@@ -94,7 +94,6 @@
 }
 
 .accountleft {
-  /* background-image: linear-gradient(to right, #fff5bc, #cec1ff); */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -134,7 +133,7 @@
 }
 
 .accountleft h4 {
-  color: #1a237e; /* Dark blue color */
+  color: #1a237e;
   margin-bottom: 20px;
 }
 
@@ -142,19 +141,15 @@
   color: #555;
   margin-bottom: 10px;
 }
-
-/* Style for additional user information */
 .accountleft body1:nth-child(n+5) {
   font-weight: bold;
 }
-
-/* Style for Yes/No */
 .accountleft body1:last-child {
-  color: #4caf50; /* Green for Yes */
+  color: #4caf50; 
 }
 
 .accountleft body1:last-child:after {
-  content: ' | '; /* Separator between Admin and Yes/No */
+  content: ' | '; 
   color: #777;
 }
 

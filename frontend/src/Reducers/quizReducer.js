@@ -29,10 +29,6 @@ export const quizReducer = createReducer(initialState, {
     state.quizCreated = false;
   }
 });
-
-// const initialState2 = {
-//   quizzes: []
-// }
 const initialState2 = {
   loading: false,
   quizzes: [],

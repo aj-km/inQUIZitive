@@ -1,4 +1,4 @@
-/* Main Text Styling */
+
 .search {
   min-height: 100vh;
   background-image: linear-gradient(to right, #1b1b19, #aa98ee);
@@ -12,10 +12,6 @@
   font-family: "Helvetica", sans-serif;
   text-align: center;
 }
-
-
-
-/* Search Box Styling */
 .searchForm {
   background-color: rgb(28, 36, 36);
   width: 40%;
@@ -26,7 +22,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  animation: slideUp 1s ease-in-out, boxAnimation 4s infinite; /* Added box animation */
+  animation: slideUp 1s ease-in-out, boxAnimation 4s infinite; 
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-decoration: none;
 }
@@ -67,7 +63,6 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
-/* Additional Styling for Search Results (if needed) */
 .searchResults {
   width: 100%;
   height: 100%;
@@ -78,7 +73,6 @@
   animation: fadeIn 1s ease-in-out;
 }
 
-/* Keyframe Animation for Slide Up */
 @keyframes slideUp {
   0% {
     transform: translateY(100%);
@@ -88,7 +82,6 @@
   }
 }
 
-/* Box Animation */
 @keyframes boxAnimation {
   0%, 100% {
     transform: scale(1);
@@ -98,7 +91,6 @@
   }
 }
 
-/* Media Query for Smaller Screens */
 @media screen and (max-width: 600px) {
   .searchForm {
     width: 90%;
@@ -126,7 +118,6 @@
     }
   }
 
-  /* Box Animation for Mobile */
   @keyframes boxAnimationMobile {
     0%, 100% {
       transform: scale(1);
