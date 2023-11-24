@@ -207,7 +207,7 @@ exports.myProfile = async (req, res) => {
     }
 }
 
-//Modify it to search for a particular quiz
+
 exports.getUserProfile = async (req, res) => {
     try {
         const user = await User.findById(req.params.id)
@@ -333,84 +333,13 @@ exports.resetPassword = async (req, res) => {
     }
 };
 
-// exports.createQuiz = async (req, res) => {
-//     try {
-//         console.log(req.body);
-//         let quiz;
-//         if(req.body.type==="MCQ" || req.body.type==="T/F"){
-//             quiz = new Quiz(req.body);
-//             await quiz.save();
-//         }
-//         else{
-//             quiz = new QuizSubjective(req.body);
-//             await quiz.save();
-//         }
-//         res.status(201).json(quiz);
-//     } catch (error) {
-//         console.error(error);
-//         res.status(500).json({
-//             message: 'An error occurred while creating the quiz.'
-//         });
-//     }
-// }
-
-
-// exports.createQuiz = async (req, res) => {
-//     try {
-//         console.log(req.body);
-        
-//         const quiz = new QuizSubjective(req.body);
-//         await quiz.save();
-    
-//         res.status(201).json(quiz);
-//     } catch (error) {
-//         console.error(error);
-//         res.status(500).json({
-//             message: 'An error occurred while creating the quiz.'
-//         });
-//     }
-// }
-
-// exports.createQuiz = async (req, res) => {
-//     try {
-//         console.log(req.body);
-//         const { title, type, questions, duration } = req.body;
-
-//         let quiz;
-
-//         if(type==="MCQ" || type==="T/F"){
-//             quiz = new Quiz(req.body);
-//             await quiz.save();
-//         }
-//         else{
-//             quiz = {
-//                 title: title,
-//                 type: type,
-//                 question: questions,
-//                 duration: duration,
-//             };
-//             await quiz.save();
-
-//         }
-//         res.status(201).json(quiz);
-//     } catch (error) {
-//         console.error(error);
-//         res.status(500).json({
-//             message: 'An error occurred while creating the quiz.'
-//         });
-//     }
-// }
-
 exports.createQuiz = async (req, res) => {
     try {
       const { title, type, questions, duration } = req.body;
   
-      // Create an array to store the transformed questions
       const transformedQuestions = [];
   
-      // Loop through the questions received from the frontend
       for (const frontendQuestion of questions) {
-        // Depending on the quiz type, handle the question accordingly
         let backendQuestion = {};
   
         if (type === 'MCQ' || type === 'T/F') {
@@ -422,14 +351,13 @@ exports.createQuiz = async (req, res) => {
         } else if (type === 'Short Answer' || type === 'Long Answer') {
           backendQuestion = {
             question: frontendQuestion.question,
-            answer: 'Ans', // Set answer to an empty string if not provided
+            answer: 'Ans', 
           };
         }
   
         transformedQuestions.push(backendQuestion);
       }
   
-      // Create the Quiz instance
       const quiz = new Quiz({
         title,
         type,
@@ -437,7 +365,6 @@ exports.createQuiz = async (req, res) => {
         duration,
       });
   
-      // Save the quiz to the database
       await quiz.save();
   
       res.status(201).json(quiz);
@@ -466,23 +393,19 @@ exports.getUserQuizzes = async (req, res) => {
     }
 };
 
-//Create group
 exports.createGroup = async (req, res) => {
     try {
       const { groupName, emailIds } = req.body;
   
-      // Validate if groupName and emailIds are present
       if (!groupName || !emailIds) {
         return res.status(400).json({ message: 'Group name and email IDs are required.' });
       }
   
-      // Check if a group with the same name already exists
       const existingGroup = await Group.findOne({ groupName });
       if (existingGroup) {
         return res.status(400).json({ message: 'A group with the same name already exists.' });
       }
   
-      // Create a new group in the database
       const newGroup = new Group({ groupName, emailIds });
       await newGroup.save();
   
