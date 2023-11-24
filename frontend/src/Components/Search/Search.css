@@ -1,7 +1,9 @@
 
 .search {
   min-height: 100vh;
-  background-image: linear-gradient(to right, #1b1b19, #aa98ee);
+  /* background-image: linear-gradient(to right, #1b1b19, #aa98ee); */
+  background-image: url("../../Assets/img/bg3.jpg");
+  background-size: cover;
   display: flex;
   align-items: center;
   justify-content: center;

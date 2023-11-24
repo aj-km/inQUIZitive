@@ -43,7 +43,7 @@ const Register = () => {
   return (
     <div className="register">
       <form className="registerForm" onSubmit={submitHandler}>
-        <Typography variant="h3" style={{ padding: "2vmax" }}>
+        <Typography variant="h3" style={{ padding: "2vmax", color: "white"}}>
           inQUIZitive
         </Typography>
 

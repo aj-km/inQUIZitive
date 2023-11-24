@@ -19,7 +19,7 @@ const Home = () => {
     { name: "Create Quiz", path: "/createQuiz" },
     { name: "Send Quiz to User", path: "/send-quiz" },
     { name: "Create Groups", path: "/create-group" },
-    {name:"Send Quiz to Group",path:"/sendToGroup"},
+    { name: "Send Quiz to Group",path:"/sendToGroup"},
     // { name: "Account", path: "/account" },
   ];
 

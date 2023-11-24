@@ -1,5 +1,7 @@
 .account {
-  background-image: linear-gradient(to right, #dbd26d, #d9d3f0);
+  /* background-image: linear-gradient(to right, #dbd26d, #d9d3f0); */
+  background-image: url("../../Assets/img/bg3.jpg");
+  background-size: cover;
   box-sizing: border-box;
   display: flex;
   grid-template-columns: 1fr 3fr 0.3fr; 
@@ -7,9 +9,9 @@
 }
 
 .accountleft {
-  background-image: linear-gradient(to right, #969591,  #efe7c5,);
-  display: flex;
+ background-color: #5c5b5e;
   flex-direction: column;
+  color:#4caf50;
   align-items: center;
   padding: 2vmax;
   box-sizing: border-box;
@@ -22,6 +24,7 @@
 }
 
 .accountright {
+  background-color:#d4d5da;
   padding: 2vmax;
   box-sizing: border-box;
   overflow-y: auto;
@@ -105,18 +108,18 @@
 .accountleft h6 {
   margin-bottom: 20px;
   font-size: 1.5rem;
-  color: #007bff;
+  color: #4caf50;
 }
 
 .accountleft h4 {
   margin-bottom: 20px;
-  font-size: 2rem;
-  color: #007bff;
+  font-size: 3rem;
+  color: #429830;
 }
 
 .accountleft p {
-  font-size: 1rem;
-  color: #555;
+  font-size: 25px;
+  color: #4caf50;
 }
 
 .accountleft {
@@ -129,11 +132,11 @@
 }
 
 .accountleft h6 {
-  color: #333;
+  color: #4caf50;
 }
 
 .accountleft h4 {
-  color: #1a237e;
+  color: #4caf50;
   margin-bottom: 20px;
 }
 

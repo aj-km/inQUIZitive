@@ -87,8 +87,6 @@ const QuestionInput = () => {
     setquizType(e.target.value);
   };
 
-  console.log(quizData);
-
   const handleNumQuestionsChange = (e) => {
     const newNumQuestions = Number(e.target.value);
     setNumQuestions(newNumQuestions);
