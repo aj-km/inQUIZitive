@@ -1,18 +1,21 @@
 .header {
   display: flex;
   justify-content: space-between;
-  /* justify-content: center; */
   align-items: center;
   position: relative;
   top: 0;
   left: 0;
   width: 100%;
   background-color: rgb(225, 237, 247);
-  z-index: 1000; /* Set a high z-index to ensure the header stays on top */
+  z-index: 1000;
 }
 
 .header-title{
   margin-left: 2rem;
+}
+
+a:hover{
+  text-decoration: none;
 }
 
 .header > a {
@@ -44,7 +47,7 @@
   }
 
   body {
-    margin-top: 8vw; /* Adjust based on the height of your header */
+    margin-top: 8vw;
   }
 }
 

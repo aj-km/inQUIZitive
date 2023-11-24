@@ -13,7 +13,7 @@ exports.getQuizzes = async (req, res) => {
 exports.sendQuizToUser = async (req, res) => {
   try {
 
-    const { userEmail, quizTitle, quizStartDate,quizStartTime,quizEndDate,quizEndTime } = req.body;
+    const { userEmail, quizTitle, quizStartDate, quizStartTime, quizEndDate, quizEndTime } = req.body;
     // Simple validation, you can customize it based on your needs
     if (!userEmail || !quizTitle) {
       return res.status(400).json({ message: "Invalid request parameters" });
@@ -30,16 +30,16 @@ exports.sendQuizToUser = async (req, res) => {
     }
     if (!user.quizzes.some((quizEntry) => quizEntry.quizId.equals(quiz._id))) {
       const startTime = new Date(`${quizStartDate}T${quizStartTime}`);
-    const endTime = new Date(`${quizEndDate}T${quizEndTime}`);
-    const startTimeIST = startTime.toLocaleString('en-US', { timeZone: 'Asia/Kolkata' });
-    const endTimeIST = endTime.toLocaleString('en-US', { timeZone: 'Asia/Kolkata' });
+      const endTime = new Date(`${quizEndDate}T${quizEndTime}`);
+      const startTimeIST = startTime.toLocaleString('en-US', { timeZone: 'Asia/Kolkata' });
+      const endTimeIST = endTime.toLocaleString('en-US', { timeZone: 'Asia/Kolkata' });
       user.quizzes.push({
         quizId: quiz._id,
         responses: [],
         score: 0,
         duration: quiz.duration,
-        startTime:startTimeIST,
-        endTime:endTimeIST,
+        startTime: startTimeIST,
+        endTime: endTimeIST,
       });
 
       await user.save();
@@ -93,38 +93,49 @@ exports.sendQuizToUser = async (req, res) => {
 
 // Function to handle the submission of quiz responses
 exports.submitQuizResponses = async (req, res) => {
-  const { userId, quizId, quizResponses, timeTaken } = req.body; // Extract userId, quizId, responses, and timeTaken from the request body
+  const { userId, quizId, quizResponses, textResponsesArray, timeTaken } = req.body; // Extract userId, quizId, responses, and timeTaken from the request body
   try {
+    console.log(req.body);
     // Find the user by ID
     const user = await User.findById(userId);
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
-
     // Find the quiz by ID
     const quiz = await Quiz.findById(quizId);
     if (!quiz) {
       return res.status(404).json({ message: "Quiz not found" });
     }
-
-    // Calculate score based on responses - this is a simple correct/incorrect count
     let score = 0;
-    quizResponses.forEach((response) => {
-      const question = quiz.questions.id(response.questionId);
-      if (question && question.answer === response.chosenOption) {
-        score += 1; // Increment score for correct answers
-      }
-    });
+    if (quiz.type === "Short Answer" || quiz.type === "Long Answer") {
+      const quizAttempted = user.quizzes.find((obj) => {
+        return obj.quizId.toString() === quizId;
+      });
+      quizAttempted.responses = [];
+      quizAttempted.score = score;
+      quizAttempted.timeTaken = timeTaken; // Add timeTaken to the quizAttempted
+      quizAttempted.responses.push(...textResponsesArray);
+    } else {
+      quizResponses.forEach((response) => {
+        const question = quiz.questions.id(response.questionId);
+        if (question && question.answer === response.chosenOption) {
+          score += 1; // Increment score for correct answers
+        }
+      });
+      const quizAttempted = user.quizzes.find((obj) => {
+        return obj.quizId.toString() === quizId;
+      });
+  
+      quizAttempted.responses = [];
+      quizAttempted.score = score;
+      quizAttempted.timeTaken = timeTaken; // Add timeTaken to the quizAttempted
+      quizAttempted.responses.push(...quizResponses);
+    }
+    // Calculate score based on responses - this is a simple correct/incorrect count
+
 
     // Save the quiz responses, score, and time taken in the user's document
-    const quizAttempted = user.quizzes.find((obj) => {
-      return obj.quizId.toString() === quizId;
-    });
-
-    quizAttempted.responses = [];
-    quizAttempted.score = score;
-    quizAttempted.timeTaken = timeTaken; // Add timeTaken to the quizAttempted
-    quizAttempted.responses.push(...quizResponses);
+    
 
     await user.save();
 

@@ -3,6 +3,18 @@
   padding: 0%;
 }
 
+body {
+  font-family: 'Arial', sans-serif;
+  margin-top: 4rem;
+  /* margin-top: 37px; */
+  padding: 2vmax 0;
+  padding: 0;
+  /* background: linear-gradient(to right, #fff5bc, #cec1ff); */
+  /* background: #f5f5f5; */
+  /* background-image:url("../../Assets/img/bg3.jpg"); */
+  /* background-size: cover; */
+}
+
 .main-container {
   display: flex;
 }
