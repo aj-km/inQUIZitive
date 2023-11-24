@@ -1,0 +1,35 @@
+/* AllUsers.css */
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+h2 {
+    color: #333;
+}
+
+p {
+    margin: 0;
+}
+
+ul.quiz-list {
+    padding-left: 20px;
+}
+
+ul.quiz-list li {
+    margin: 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+/* Add more styles as needed */
