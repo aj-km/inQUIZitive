@@ -1,48 +1,21 @@
 import React from "react";
-// import logo from './logo.svg';
 import "./App.css";
 import team01 from "../../Assets/img/akash.jpeg"
 import team02 from "../../Assets/img/ajit.jpeg"
 import team03 from "../../Assets/img/resume_img_new.jpg"
+// import { useSelector } from "react-redux";
 
 
 
 function FrontPage() {
-  const portfolioLinks = [
-    {
-      title: "Threads",
-      caption: "Illustration",
-    },
-    {
-      title: "Explore",
-      caption: "Graphic Design",
-    },
-    {
-      title: "Finish",
-      caption: "Identity",
-    },
-    {
-      title: "Lines",
-      caption: "Branding",
-    },
-    {
-      title: "Southwest",
-      caption: "Website Design",
-    },
-    {
-      title: "Window",
-      caption: "Photography",
-    },
-    {
-      title: "Pizza",
-      caption: "I love pizza!",
-    },
-  ];
+
+  // const {user} = useSelector(state => state);
+  // console.log(user);
 
   return (
     <div className="App">
       <nav className="navbar navbar-expand-lg navbar-dark" id="mainNav">
-        <div className="container bg-dark">
+        <div className="container bg-dark" style={{marginTop: 0}}>
           <a className="navbar-brand js-scroll-trigger " href="#page-top">
             inQUIZitive
           </a>
@@ -54,11 +27,11 @@ function FrontPage() {
                   Services
                 </a>
               </li>
-              <li className="nav-item">
+              {/* <li className="nav-item">
                 <a className="nav-link js-scroll-trigger" href="/createQuiz">
                   Sample Quiz
                 </a>
-              </li>
+              </li> */}
               <li className="nav-item">
                 <a className="nav-link js-scroll-trigger" href="#about">
                   About
@@ -75,7 +48,7 @@ function FrontPage() {
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link js-scroll-trigger" href="redirect">
+                <a className="nav-link js-scroll-trigger" href="home">
                   Login
                 </a>
               </li>
@@ -83,16 +56,6 @@ function FrontPage() {
           </div>
         </div>
       </nav>
-
-      {/* <header className="masthead">
-    <div className="container">
-      <div className="intro-text">
-        <div className="intro-lead-in">Welcome To Our Studio!</div>
-        <div className="intro-heading text-uppercase">It's Nice To Meet You</div>
-        <a className="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#services">Tell Me More</a>
-      </div>
-    </div>
-  </header> */}
 
       <section className="page-section" id="services">
         <div className="container">
@@ -108,11 +71,8 @@ function FrontPage() {
             <div className="col-md-4">
               <span className="fa-stack fa-4x">
                 <i className="fa fa-circle fa-stack-2x text-primary"></i>
-                <i className="fa fa-shopping-cart fa-stack-1x fa-inverse"></i>
-                {/* <svg xmlns="http://www.w3.org/2000/svg" width="72" height="16" fill="currentColor" class="bi bi-question-circle" viewBox="0 0 16 16">
-  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-  <path d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286zm1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z"/>
-</svg> */}
+                {/* <i className="fa fa-shopping-cart fa-stack-1x fa-inverse"></i> */}
+                <i className="fa fa-question fa-stack-1x fa-inverse"></i>
               </span>
               <h4 className="service-heading">Quizify</h4>
               <p className="text-muted">
@@ -152,8 +112,6 @@ function FrontPage() {
           </div>
         </div>
       </section>
-
-      {/* <Portfolio portfolioLinks={portfolioLinks}></Portfolio> */}
 
       <section className="page-section" id="about">
         <div className="container">

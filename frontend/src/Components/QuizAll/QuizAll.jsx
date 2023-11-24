@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getQuizzes, setActiveQuiz } from '../../Actions/quizActions';
-import './QuizAll.css'; // Make sure to import the CSS file
+import './QuizAll.css';
 
 const QuizAll = () => {
   const dispatch = useDispatch();

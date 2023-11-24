@@ -29,15 +29,17 @@ exports.sendQuizToUser = async (req, res) => {
       return res.status(404).json({ message: "User not found" });
     }
     if (!user.quizzes.some((quizEntry) => quizEntry.quizId.equals(quiz._id))) {
-      const startTime = new Date(`${quizStartDate}T${quizStartTime}:00.000Z`);
-    const endTime = new Date(`${quizEndDate}T${quizEndTime}:00.000Z`);
+      const startTime = new Date(`${quizStartDate}T${quizStartTime}`);
+    const endTime = new Date(`${quizEndDate}T${quizEndTime}`);
+    const startTimeIST = startTime.toLocaleString('en-US', { timeZone: 'Asia/Kolkata' });
+    const endTimeIST = endTime.toLocaleString('en-US', { timeZone: 'Asia/Kolkata' });
       user.quizzes.push({
         quizId: quiz._id,
         responses: [],
         score: 0,
         duration: quiz.duration,
-        startTime:startTime,
-        endTime:endTime,
+        startTime:startTimeIST,
+        endTime:endTimeIST,
       });
 
       await user.save();

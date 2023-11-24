@@ -4,12 +4,16 @@
   height: 100vh;
 }
 
+
+
 .home-content {
   flex: 1;
   overflow: auto;
   box-sizing: border-box;
   padding: 2vmax;
-  background-image: linear-gradient(to right, #1b1b19, #aa98ee);
+  /* background-image: linear-gradient(to right, #1b1b19, #aa98ee); */
+  background-image:url("../../Assets/img/bg3.jpg");
+  background-size: cover;
 }
 
 @media screen and (max-width: 600px) {

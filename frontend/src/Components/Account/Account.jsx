@@ -1,5 +1,4 @@
-import { Avatar, Button, Dialog, Typography } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import { Avatar, Button, Typography } from "@mui/material";
 import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -54,6 +53,15 @@ const Account = () => {
 
         <Typography variant="h5">{user.name}</Typography>
 
+        {/* <Button variant="contained" onClick={logoutHandler}>
+          Logout
+        </Button> */}
+
+        <Link to="/" onClick={logoutHandler}>
+          <Button variant="contained">
+            Logout
+          </Button>
+        </Link>
         {/* <Button variant="contained" onClick={logoutHandler}>
           Logout
         </Button> */}

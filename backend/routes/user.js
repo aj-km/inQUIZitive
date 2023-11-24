@@ -1,5 +1,19 @@
 const express=require('express');
-const { register, login,  logout, updatePassword, updateProfile, deleteProfile, myProfile, getUserProfile, getAllUsers, forgotPassword, resetPassword, getMyPosts, getUserPosts, createQuiz, getUserQuizzes } = require('../controllers/user');
+const { 
+    register, 
+    login, 
+    logout, 
+    updatePassword, 
+    updateProfile, 
+    deleteProfile, 
+    myProfile, 
+    getUserProfile, 
+    getAllUsers, 
+    forgotPassword, 
+    resetPassword, 
+    createQuiz, 
+    getUserQuizzes 
+} = require('../controllers/user');
 const {isAuthenticated}=require("../middlewares/auth");
 const { checkAdmin } = require('../middlewares/checkAdmin');
 const { createGroup } = require('../controllers/user');
