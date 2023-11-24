@@ -9,7 +9,7 @@
 }
 
 .accountleft {
-  background-image: linear-gradient(to right, #969591,  #efe7c5,);
+  background-image: linear-gradient(to right, #76bdbd,  #76bdbd,);
   display: flex;
   flex-direction: column;
   align-items: center;
