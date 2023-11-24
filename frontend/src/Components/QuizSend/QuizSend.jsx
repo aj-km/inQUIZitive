@@ -11,9 +11,9 @@ const QuizSend = () => {
   const [quizStartTime, setQuizStartTime] = useState('');
   const [quizEndDate, setQuizEndDate] = useState('');
   const [quizEndTime, setQuizEndTime] = useState('');
-  const [inputChanged, setInputChanged] = useState(false); // Track whether input changed
-  const [successDisplayed, setSuccessDisplayed] = useState(false); // Track success message display
-  const [errorDisplayed, setErrorDisplayed] = useState(false); // Track error message display
+  const [inputChanged, setInputChanged] = useState(false); 
+  const [successDisplayed, setSuccessDisplayed] = useState(false); 
+  const [errorDisplayed, setErrorDisplayed] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -29,7 +29,7 @@ const QuizSend = () => {
     setInputChanged(true);
     setErrorDisplayed(false);
     setSuccessDisplayed(false);
-    // Handle other input changes
+
     switch (e.target.id) {
       case 'userEmail':
         setUserEmail(e.target.value);
@@ -37,7 +37,7 @@ const QuizSend = () => {
       case 'quizTitle':
         setQuizTitle(e.target.value);
         break;
-      // Handle other input changes
+
       default:
         break;
     }
@@ -51,11 +51,9 @@ const QuizSend = () => {
     setQuizEndDate('');
     setQuizEndTime('');
   };
-
-  // Handle success and error message display
   React.useEffect(() => {
     if (inputChanged) {
-      resetForm(); // Reset the form after success
+      resetForm(); 
     }
     if (error) {
       setErrorDisplayed(true);
