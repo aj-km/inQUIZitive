@@ -26,6 +26,7 @@ import QuizResponse from "./Components/QuizResponse/QuizResponse";
 import Leaderboard from "./Components/Leaderboard/Leaderboard";
 import CreateGroup from "./Components/CreateGroup/CreateGroup";
 import FrontPage from "./Components/Frontpage/Frontpage"
+import QuizSendGroup from "./Components/QuizSendGroup/QuizSendGroup";
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -109,6 +110,8 @@ function App() {
         <Route path="/search" element={<Search />} />
         <Route path='/quiz-success' element={<QuizCreationSuccess/>}/>
         <Route path="*" element={<NotFound />} />
+
+        <Route path="/sendToGroup" element={<QuizSendGroup />} />
       </Routes>
     </Router>
     {/* {isAuthenticated && <Footer />} */}

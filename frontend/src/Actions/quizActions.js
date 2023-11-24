@@ -170,3 +170,42 @@ export const resetQuizSubmit = () => async(dispatch)=>{
   })
 }
 
+export const sendQuizToGroup = (groupName, quizTitle, quizStartDate, quizStartTime, quizEndDate, quizEndTime) => async (dispatch) => {
+  try {
+    dispatch({ 
+      type: 'SendQuizToGroupRequest' 
+    });
+    // Fetch the group information from the backend
+    const groupResponse = await axios.get(`/api/groups/${groupName}`);
+    // Check if the group exists
+    if (!groupResponse.data) {
+      throw new Error('Group not found');
+    }
+    const group = groupResponse.data;
+    // Iterate over the emailIds in the group and send the quiz to each user
+    for (const userEmail of group.emailIds) {
+      console.log(group.emailIds);
+      const response = await axios.post('/api/admin/send', { 
+        userEmail,
+        quizTitle,
+        quizStartDate,
+        quizStartTime,
+        quizEndDate,
+        quizEndTime
+      });
+      console.log(`Quiz sent to ${userEmail}:`, response.data);
+    }
+
+    dispatch({ 
+      type: 'SendQuizToGroupSuccess',
+      payload: 'Quizzes sent to group successfully' 
+    });
+  } catch (error) {
+    dispatch({
+      type: 'SendQuizToGroupFailure',
+      payload: error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message,
+    });
+  }
+};

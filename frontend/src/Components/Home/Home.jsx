@@ -21,6 +21,7 @@ const Home = () => {
     // { name: "Leaderboard", path: "/leaderboard" },
     { name: "Create Groups", path: "/create-group" },
     { name: "Account", path: "/account" },
+    {name:"Send quiz to Group",path:"/sendToGroup"},
   ];
 
   return userLoading === true ? (
