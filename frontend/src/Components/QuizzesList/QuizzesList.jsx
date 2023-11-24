@@ -8,10 +8,10 @@ import './QuizzesList.css';
 const QuizzesList = () => {
   const dispatch = useDispatch();
   const { isAuthenticated, user } = useSelector((state) => state.user);
-  const { quizzes, loading, error } = useSelector((state) => state.fetchQuiz);
+  const { quizzes, error } = useSelector((state) => state.fetchQuiz);
   const [selectedQuiz, setSelectedQuiz] = useState(null);
   const [isFullScreen, setIsFullScreen] = useState(false);
-  const [currentTime, setCurrentTime] = useState(new Date());
+  const [ setCurrentTime] = useState(new Date());
 
   useEffect(() => {
     const timerId = setInterval(() => {
@@ -19,7 +19,7 @@ const QuizzesList = () => {
     }, 1000);
 
     return () => clearInterval(timerId); 
-  }, []); 
+  },); 
 
   useEffect(() => {
     if (isAuthenticated && user?._id) {

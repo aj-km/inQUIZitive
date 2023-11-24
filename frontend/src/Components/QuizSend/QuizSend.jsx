@@ -1,28 +1,36 @@
-
-import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { sendQuiz } from '../../Actions/quizActions';
-import './QuizSend.css';
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { sendQuiz } from "../../Actions/quizActions";
+import "./QuizSend.css";
 
 const QuizSend = () => {
-  const [userEmail, setUserEmail] = useState('');
-  const [quizTitle, setQuizTitle] = useState('');
-  const [quizStartDate, setQuizStartDate] = useState('');
-  const [quizStartTime, setQuizStartTime] = useState('');
-  const [quizEndDate, setQuizEndDate] = useState('');
-  const [quizEndTime, setQuizEndTime] = useState('');
-  const [inputChanged, setInputChanged] = useState(false); 
-  const [successDisplayed, setSuccessDisplayed] = useState(false); 
+  const [userEmail, setUserEmail] = useState("");
+  const [quizTitle, setQuizTitle] = useState("");
+  const [quizStartDate, setQuizStartDate] = useState("");
+  const [quizStartTime, setQuizStartTime] = useState("");
+  const [quizEndDate, setQuizEndDate] = useState("");
+  const [quizEndTime, setQuizEndTime] = useState("");
+  const [inputChanged, setInputChanged] = useState(false);
+  const [successDisplayed, setSuccessDisplayed] = useState(false);
   const [errorDisplayed, setErrorDisplayed] = useState(false);
 
   const dispatch = useDispatch();
 
-  const quizSend = useSelector(state => state.sendQuiz);
+  const quizSend = useSelector((state) => state.sendQuiz);
   const { loading, error, success } = quizSend;
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(sendQuiz(userEmail, quizTitle, quizStartDate, quizStartTime, quizEndDate, quizEndTime));
+    dispatch(
+      sendQuiz(
+        userEmail,
+        quizTitle,
+        quizStartDate,
+        quizStartTime,
+        quizEndDate,
+        quizEndTime
+      )
+    );
   };
 
   const handleInputChange = (e) => {
@@ -31,10 +39,10 @@ const QuizSend = () => {
     setSuccessDisplayed(false);
 
     switch (e.target.id) {
-      case 'userEmail':
+      case "userEmail":
         setUserEmail(e.target.value);
         break;
-      case 'quizTitle':
+      case "quizTitle":
         setQuizTitle(e.target.value);
         break;
 
@@ -44,16 +52,16 @@ const QuizSend = () => {
   };
 
   const resetForm = () => {
-    setUserEmail('');
-    setQuizTitle('');
-    setQuizStartDate('');
-    setQuizStartTime('');
-    setQuizEndDate('');
-    setQuizEndTime('');
+    setUserEmail("");
+    setQuizTitle("");
+    setQuizStartDate("");
+    setQuizStartTime("");
+    setQuizEndDate("");
+    setQuizEndTime("");
   };
   React.useEffect(() => {
     if (inputChanged) {
-      resetForm(); 
+      resetForm();
     }
     if (error) {
       setErrorDisplayed(true);
@@ -122,7 +130,9 @@ const QuizSend = () => {
             onChange={(e) => setQuizEndTime(e.target.value)}
             required
           />
-          <button type="submit" className="quiz-send-button">Send Quiz</button>
+          <button type="submit" className="quiz-send-button">
+            Send Quiz
+          </button>
         </form>
       </div>
     </div>
