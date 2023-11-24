@@ -52,19 +52,6 @@ const Account = () => {
 
         <Typography variant="h5">{user.name}</Typography>
 
-        {/* <Button variant="contained" onClick={logoutHandler}>
-          Logout
-        </Button> */}
-
-        <Link to="/" onClick={logoutHandler}>
-          <Button variant="contained">
-            Logout
-          </Button>
-        </Link>
-        {/* <Button variant="contained" onClick={logoutHandler}>
-          Logout
-        </Button> */}
-
         <Link to="/" onClick={logoutHandler}>
           <Button variant="contained">
             Logout
