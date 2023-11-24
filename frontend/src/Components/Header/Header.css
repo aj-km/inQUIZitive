@@ -6,12 +6,16 @@
   top: 0;
   left: 0;
   width: 100%;
-  background-color: rgb(225, 237, 247);
+  background-color: #007bff;
   z-index: 1000;
 }
 
 .header-title{
   margin-left: 2rem;
+}
+
+.header-title:hover{
+  text-decoration: none;
 }
 
 a:hover{

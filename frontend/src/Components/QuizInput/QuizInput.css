@@ -10,6 +10,7 @@
   background-image:url("../../Assets/img/bg3.jpg");
   background-size: cover;
 }
+
  h1 {
   color: #007bff;
  }
@@ -19,8 +20,8 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
-  max-width: 600px; /* Adjust the maximum width as needed */
-  margin: 0 auto; /* Center the form horizontally */
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .QuestionInput input[type="text"],
@@ -43,7 +44,7 @@
 .QuestionInput div {
   display: flex;
   justify-content: space-between;
-  width: 100%; /* Adjust the width as needed */
+  width: 100%;
 }
 
 .QuestionInput button {
