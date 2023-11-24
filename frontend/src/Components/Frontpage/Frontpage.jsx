@@ -8,7 +8,7 @@ import team03 from "../../Assets/img/resume_img_new.jpg"
 
 function FrontPage() {
   return (
-    <div className="App">
+    <div className="App" style={{backgroundColor:"#aae2c7"}}>
       <nav className="navbar navbar-expand-lg navbar-dark" id="mainNav">
         <div className="container bg-dark" style={{marginTop: 0}}>
           <a className="navbar-brand js-scroll-trigger " href="#page-top">
@@ -27,7 +27,7 @@ function FrontPage() {
                   About
                 </a>
               </li>
-              <li className="nav-item">
+              <li className="nav-item" >
                 <a className="nav-link js-scroll-trigger" href="#team">
                   Team
                 </a>
@@ -186,8 +186,8 @@ function FrontPage() {
         </div>
       </section>
 
-      <section className="bg-light page-section" id="team">
-        <div className="container">
+      <section className=" page-section"   style={{backgroundColor:"#88b8e8"}} id="team">
+        <div className="container"  style={{backgroundColor:"#88b8e8"}}>
           <div className="row">
             <div className="col-lg-12 text-center">
               <h2 className="section-heading text-uppercase">
