@@ -1,63 +1,35 @@
 /* AllUsers.css */
 
-.allusers {
-    background-color: #f4f4f4; /* Light background color */
-    padding: 20px;
-  }
-  
-  h2 {
-    font-size: 24px;
-    color: #333; /* Dark text color */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
     margin-bottom: 20px;
-    text-align: center;
-  }
-  
-  p {
-    font-size: 18px;
-    color: #333; /* Dark text color */
-  }
-  
-  ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  li {
-    background-color: #fff; /* White background for each user */
     border: 1px solid #ddd;
-    margin-bottom: 10px;
     padding: 15px;
-    cursor: pointer;
-    transition: background-color 0.3s ease-in-out;
-  }
-  
-  li:hover {
-    background-color: #f9f9f9; /* Light background color on hover */
-  }
-  
-  li > p {
+    border-radius: 5px;
+}
+
+h2 {
+    color: #333;
+}
+
+p {
     margin: 0;
-  }
-  
-  li > p:nth-child(3) {
-    font-weight: bold;
-    color: #008000; /* Green color for admin user */
-  }
-  
-  ul ul {
-    list-style: none;
-    padding: 0;
+}
+
+ul.quiz-list {
+    padding-left: 20px;
+}
+
+ul.quiz-list li {
+    margin: 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
     margin-top: 10px;
-    border-top: 1px solid #ddd;
-  }
-  
-  li li {
-    border: none;
-    margin-bottom: 0;
-    padding: 0;
-  }
-  
-  li li > p {
-    margin: 5px 0;
-  }
-  
+}
+
+/* Add more styles as needed */

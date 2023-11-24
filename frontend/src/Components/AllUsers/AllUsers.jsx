@@ -18,7 +18,7 @@ const AllUsers = () => {
   };
 
   return (
-    <div className="allusers">
+    <div>
       <h2>User List</h2>
       {loading ? (
         <p>Loading...</p>
