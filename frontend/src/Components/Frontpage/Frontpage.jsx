@@ -186,8 +186,8 @@ function FrontPage() {
         </div>
       </section>
 
-      <section className=" page-section"   style={{backgroundColor:"#88b8e8"}} id="team">
-        <div className="container"  style={{backgroundColor:"#88b8e8"}}>
+      <section className=" page-section"   style={{backgroundColor:"rgb(170 226 199)"}} id="team">
+        <div className="container"  style={{backgroundColor:"rgb(170 226 199)"}}>
           <div className="row">
             <div className="col-lg-12 text-center">
               <h2 className="section-heading text-uppercase">
