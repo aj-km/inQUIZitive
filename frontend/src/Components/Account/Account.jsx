@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import { deleteMyProfile, logoutUser } from "../../Actions/User";
 import Loader from "../Loader/Loader";
 import QuizResponse from "../QuizResponse/QuizResponse";
-import User from "../User/User";
 import "./Account.css";
 
 const Account = () => {
