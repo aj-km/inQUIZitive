@@ -1,32 +1,34 @@
 .account {
   box-sizing: border-box;
   display: flex;
-  grid-template-columns: 1fr 400px;
-  height: 92vh;
+  grid-template-columns: 1fr 3fr 0.3fr; /* Adjusted column widths */
+  height: 100vh;
 }
 
 .accountleft {
   background-image: linear-gradient(to right, #fff5bc, #cec1ff);
-
   display: flex;
-  flex-grow: 0.2;
   flex-direction: column;
   align-items: center;
   padding: 2vmax;
   box-sizing: border-box;
   overflow-y: auto;
+  flex-grow: 1; /* Normal width */
 }
-.accountmiddle{
-  flex-grow: 0.6;
+
+.accountmiddle {
+  flex-grow: 3; /* Bigger width */
 }
+
 .accountright {
   padding: 2vmax;
-  flex-grow: 0.2;
   box-sizing: border-box;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-right: 0;
+  flex-grow: 0.3; /* Even smaller width */
 }
 
 .accountright img:hover {
@@ -54,6 +56,7 @@
 .accountright > a:hover {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.253);
 }
+
 .accountright > div {
   display: flex;
   flex-direction: column;
@@ -64,6 +67,7 @@
 .accountright > div > button:hover {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.253);
 }
+
 .accountright > div > button {
   border: none;
   background-color: white;
@@ -115,9 +119,8 @@
   font-size: 1rem;
   color: #555;
 }
+
 /* styles.css */
-
-
 
 .accountleft {
   text-align: center;
@@ -161,3 +164,4 @@
   content: 'Admin: ';
   color: #777;
 }
+
