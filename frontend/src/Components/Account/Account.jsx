@@ -50,9 +50,15 @@ const Account = () => {
 
         <Typography variant="h5">{user.name}</Typography>
 
-        <Button variant="contained" onClick={logoutHandler}>
+        {/* <Button variant="contained" onClick={logoutHandler}>
           Logout
-        </Button>
+        </Button> */}
+
+        <Link to="/" onClick={logoutHandler}>
+          <Button variant="contained">
+            Logout
+          </Button>
+        </Link>
 
         <Link to="/update/profile">Edit Profile</Link>
         <Link to="/update/password">Change Password</Link>

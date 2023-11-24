@@ -1,31 +1,79 @@
 /* QuizzesList.css */
 .quizzes-list {
-    max-width: 600px;
-    margin: 20px auto;
-    padding: 10px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .quiz-list {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .quiz-list li {
-    padding: 10px;
-    margin: 5px 0;
-    background-color: #f7f7f7;
-    cursor: pointer;
-    border-radius: 4px;
-    transition: background-color 0.3s;
-  }
-  
-  .quiz-list li:hover {
-    background-color: #eaeaea;
-  }
-  /* Add this to your existing CSS file */
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
+}
+
+.quiz-list {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.quiz-list li {
+  background: linear-gradient(to bottom, #fff, #f0f0f0);
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.quiz-list li:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
 .quiz-list .active-quiz {
-  background-color: #a0e6a0; /* Change the background color for active quizzes */
-  font-weight: bold; /* Apply any other styling you want for active quizzes */
+  background: linear-gradient(to bottom, #66bb6a, #43a047);
+  color: #fff;
+}
+
+.quiz-list li div {
+  padding: 15px;
+}
+
+.quiz-list span {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 20px;
+  color: #333;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.quiz-list span:first-child {
+  font-size: 24px;
+  color: #222;
+  margin-bottom: 10px;
+}
+
+.quiz-list span.time {
+  font-size: 16px;
+  color: #555;
+}
+
+
+/* Responsive styles */
+@media only screen and (max-width: 600px) {
+  .quizzes-list {
+    padding: 10px;
+  }
+
+  .quiz-list li div {
+    padding: 10px;
+  }
+
+  .quiz-list span:first-child {
+    font-size: 18px;
+  }
+
+  .quiz-list span {
+    font-size: 14px;
+  }
 }

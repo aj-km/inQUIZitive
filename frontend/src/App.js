@@ -40,10 +40,10 @@ function App() {
       {isAuthenticated && <Header />}
       <Routes>
         <Route path="/" element={<FrontPage/>} />
-        <Route path="/redirect" element={(isAuthenticated)? <Home /> : <Login />} />
+        <Route path="/home" element={(isAuthenticated)? <Home /> : <Login />} />
         <Route
           path="/account"
-          element={isAuthenticated ? <Account /> : <Login />}
+          element={isAuthenticated ? <Account /> : <FrontPage />}
         />
 
         <Route

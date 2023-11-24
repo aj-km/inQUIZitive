@@ -58,7 +58,7 @@ const QuizzesList = () => {
     const currentTime = new Date(); 
     const quizStartTime = new Date(quiz.startTime);
     const quizEndTime = new Date(quiz.endTime);
-    return (currentTime.getTime() >= quizStartTime.getTime()) && (currentTime.getTime() < quizEndTime.getTime());
+    return (currentTime >= quizStartTime) && (currentTime < quizEndTime);
   };
 
   const handleQuizSelection = (quizId) => {
@@ -93,6 +93,8 @@ const QuizzesList = () => {
             <div>
               <span>{quiz.quizId.title}</span>
               <span> - Start Time: {quiz.date} {quiz.startTime}</span>
+              <span> - End Time: {quiz.date} {quiz.endTime}</span>
+
             </div>
           </li>
         ))}
