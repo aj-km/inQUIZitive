@@ -8,9 +8,11 @@ export const quizSendReducer=createReducer(initialState,{
     SendQuizSuccess:(state)=>{
       state.loading=false;
       state.success=true;
+      state.error=false;
     },
     SendQuizFailure:(state,action)=>{
       state.loading=false;
+      state.success=false;
       state.error=action.payload;
     }
 });
