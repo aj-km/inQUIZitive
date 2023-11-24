@@ -9,9 +9,9 @@
 }
 
 .accountleft {
-  background-image: linear-gradient(to right, #76bdbd,  #76bdbd,);
-  display: flex;
+ background-color: #5c5b5e;
   flex-direction: column;
+  color:#4caf50;
   align-items: center;
   padding: 2vmax;
   box-sizing: border-box;
@@ -24,6 +24,7 @@
 }
 
 .accountright {
+  background-color:#d4d5da;
   padding: 2vmax;
   box-sizing: border-box;
   overflow-y: auto;
@@ -107,18 +108,18 @@
 .accountleft h6 {
   margin-bottom: 20px;
   font-size: 1.5rem;
-  color: #007bff;
+  color: #4caf50;
 }
 
 .accountleft h4 {
   margin-bottom: 20px;
-  font-size: 2rem;
-  color: #007bff;
+  font-size: 3rem;
+  color: #429830;
 }
 
 .accountleft p {
-  font-size: 1rem;
-  color: #555;
+  font-size: 25px;
+  color: #4caf50;
 }
 
 .accountleft {
@@ -131,11 +132,11 @@
 }
 
 .accountleft h6 {
-  color: #333;
+  color: #4caf50;
 }
 
 .accountleft h4 {
-  color: #1a237e;
+  color: #4caf50;
   margin-bottom: 20px;
 }
 
