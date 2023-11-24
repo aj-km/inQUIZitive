@@ -67,10 +67,6 @@ const Header = () => {
         <LogoutIcon />
       </Link>
 
-      {/* <div className="logout-button" onClick={logoutHandler}>
-        <LogoutIcon />
-      </div> */}
-
     </div>
   );
 };

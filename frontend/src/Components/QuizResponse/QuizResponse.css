@@ -3,9 +3,6 @@
   margin: 0 auto;
   font-family: Arial, sans-serif;
   line-height: 1.6;
-  /* background-color: red; */
-  /* background-image: url("../../Assets/img/bg5.jpg");
-  background-size: cover; */
 }
 
 .quiz {
@@ -41,7 +38,6 @@
   margin-top: 10px;
 }
 
-/* Responsive styles */
 @media screen and (max-width: 768px) {
   .quiz-response {
     width: 90%;

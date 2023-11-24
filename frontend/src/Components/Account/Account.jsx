@@ -36,8 +36,6 @@ const Account = () => {
         explore insightful analytics. Your journey to interactive learning
         begins here.
       </Typography>
-
-      {/* Display additional user information */}
       <Typography variant="body1">Email: {user.email}</Typography>
       <Typography variant="body1">Admin: {user.isAdmin ? 'Yes' : 'No'}</Typography>
     </div>
@@ -51,19 +49,6 @@ const Account = () => {
         />
 
         <Typography variant="h5">{user.name}</Typography>
-
-        {/* <Button variant="contained" onClick={logoutHandler}>
-          Logout
-        </Button> */}
-
-        <Link to="/" onClick={logoutHandler}>
-          <Button variant="contained">
-            Logout
-          </Button>
-        </Link>
-        {/* <Button variant="contained" onClick={logoutHandler}>
-          Logout
-        </Button> */}
 
         <Link to="/" onClick={logoutHandler}>
           <Button variant="contained">

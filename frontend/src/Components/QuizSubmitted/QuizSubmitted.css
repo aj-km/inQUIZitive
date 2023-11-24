@@ -32,8 +32,6 @@
   .return-btn:hover {
     background-color: #357a38;
   }
-  
-  /* Responsive styling */
   @media (max-width: 768px) {
     .success-container h1 {
       font-size: 2rem;

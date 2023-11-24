@@ -30,7 +30,7 @@ const QuizComponent = ({ quiz }) => {
     return () => {
       clearInterval(intervalRef.current);
     };
-  }, []);
+  }, );
 
   useEffect(() => {
     if (submitSuccess) {

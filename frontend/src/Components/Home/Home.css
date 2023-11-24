@@ -11,7 +11,6 @@
   overflow: auto;
   box-sizing: border-box;
   padding: 2vmax;
-  /* background-image: linear-gradient(to right, #1b1b19, #aa98ee); */
   background-image:url("../../Assets/img/bg3.jpg");
   background-size: cover;
 }
@@ -27,7 +26,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* Adjust as needed */
+  height: 100vh;
 }
 
 .home-content ul {
@@ -41,30 +40,30 @@
 
 .home-content ul li {
   width: 100%;
-  max-width: 900px; /* Adjusted maximum width */
-  height: 100px; /* Adjusted height */
-  line-height: 100px; /* Adjusted line-height */
-  margin: 15px 0; /* Increased vertical spacing */
+  max-width: 900px; 
+  height: 100px;
+  line-height: 100px;
+  margin: 15px 0; 
   padding: 20px;
   color: #fff;
-  font-size: 24px; /* Increased font size */
-  font-family: 'Arial', sans-serif; /* Elegant font - replace with your preferred font */
+  font-size: 24px; 
+  font-family: 'Arial', sans-serif; 
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   transition: background 0.3s ease-in-out, transform 0.3s ease-in-out;
-  background-color: #4caf50; /* Adjusted background color */
-  border-radius: 8px; /* Increased border-radius for a rounded look */
+  background-color: #4caf50;
+  border-radius: 8px; 
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
-  opacity: 0; /* Initial opacity for fade-in effect */
-  transform: translateY(20px); /* Initial transform for fade-in effect */
-  animation: fadeIn 0.5s ease-in-out forwards; /* Fade-in animation */
+  opacity: 0; 
+  transform: translateY(20px); 
+  animation: fadeIn 0.5s ease-in-out forwards; 
 }
 
 .home-content ul li:hover {
-  background-color: #45a049; /* Adjusted background color on hover */
-  transform: scale(1.05); /* Slightly scale on hover for an interactive feel */
+  background-color: #45a049; 
+  transform: scale(1.05); 
 }
 
 @keyframes fadeIn {
@@ -79,7 +78,7 @@
 }
 
 .home-content ul li:hover {
-  background-color: #45a049; /* Adjusted background color on hover */
+  background-color: #45a049; 
 }
 
 .home-content ul li a {

@@ -1,5 +1,4 @@
  .create-group-container {
-  /* justify-content: center; */
   max-width: 400px;
   margin: 2rem auto;
   padding: 2rem;
@@ -21,8 +20,6 @@ label {
   display: block;
   margin-bottom: 0.5rem;
   font-weight: bold;
-  /* color: #555; */
-  /* color: #f8f9fa; */
   color:  #007bff;
 }
 
