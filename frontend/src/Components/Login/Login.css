@@ -11,7 +11,9 @@
 /* Login Component CSS */
 .login {
   height: 100vh;
-  background-image: linear-gradient(to right, #1b1b19, #aa98ee);
+  /* background-image: linear-gradient(to right, #1b1b19, #aa98ee); */
+  background-image: url("../../Assets/img/bg3.jpg");
+  background-size: cover;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -20,7 +22,7 @@
 }
 
 .loginForm {
-  background-color: rgb(4, 4, 4);
+  background-color: rgb(194 194 199);
   height: 100%;
   width: 40%;
   border-radius: 30px;
