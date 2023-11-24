@@ -20,9 +20,11 @@ const Header = () => {
   const dispatch = useDispatch();
   const [tab, setTab] = useState(window.location.pathname);
   const {isAdmin} = useSelector(state => state.user.user);
+  const {user} = useSelector(state => state.user);
+
   const logoutHandler = () => {
-    setTab("/");
     dispatch(logoutUser());
+    console.log(user);
     alert.success("Logged out successfully");
   };
 

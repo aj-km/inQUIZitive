@@ -1,11 +1,9 @@
-import { Avatar, Button, Dialog, Typography } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import { Avatar, Button, Typography } from "@mui/material";
 import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { deleteMyProfile, logoutUser } from "../../Actions/User";
 import Loader from "../Loader/Loader";
-import User from "../User/User";
 import "./Account.css";
 
 const Account = () => {

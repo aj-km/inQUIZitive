@@ -32,7 +32,7 @@ function App() {
     dispatch(loadUser());
   }, [dispatch]);
 
-  const { isAuthenticated,user} = useSelector((state) => state.user);
+  const { isAuthenticated } = useSelector((state) => state.user);
 
   return (
     <>
