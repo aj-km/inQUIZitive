@@ -19,8 +19,8 @@ const Home = () => {
     { name: "Create Quiz", path: "/createQuiz" },
     { name: "Send Quiz to User", path: "/send-quiz" },
     { name: "Create Groups", path: "/create-group" },
-    {name:"Send quiz to Group",path:"/sendToGroup"},
-    { name: "Account", path: "/account" },
+    {name:"Send Quiz to Group",path:"/sendToGroup"},
+    // { name: "Account", path: "/account" },
   ];
 
   return userLoading === true ? (
