@@ -1,3 +1,4 @@
+/* Main Text Styling */
 .search {
   min-height: 100vh;
   background-image: linear-gradient(to right, #1b1b19, #aa98ee);
@@ -7,36 +8,70 @@
   padding: 2vmax;
   box-sizing: border-box;
   animation: fadeIn 1s ease-in-out;
+  color: #fff;
+  font-family: "Helvetica", sans-serif;
+  text-align: center;
 }
 
+/* Header Styling */
+.header {
+  font-size: 2.5rem; /* Adjust font size as needed */
+  color: #000; /* Black text color */
+  font-family: "Your Chosen Font", sans-serif; /* Specify the desired font family */
+}
+
+/* Search Box Styling */
 .searchForm {
-  background-color: rgb(202, 234, 232);
+  background-color: rgb(28, 36, 36);
   width: 40%;
+  max-width: 500px;
   border-radius: 30px;
   box-sizing: border-box;
   padding: 2vmax;
   display: flex;
   flex-direction: column;
   align-items: center;
-  animation: slideUp 1s ease-in-out;
+  animation: slideUp 1s ease-in-out, boxAnimation 4s infinite; /* Added box animation */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .searchForm > input {
   box-sizing: border-box;
-  padding: 1vmax 2vmax;
+  padding: 1.5vmax 2vmax;
   width: 80%;
-  border-radius: 30px;
+  max-width: 300px;
+  border-radius: 20px;
   border: 1px solid #cfabab;
-  margin: 1vmax;
-  font: 100 1rem "Roboto", sans-serif; /* Slightly smaller font size */
+  margin: 1.5vmax 0;
+  font: 100 1rem "Roboto", sans-serif;
   outline: none;
   transition: all 0.3s ease-in-out;
 }
 
 .searchForm > input:hover {
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
+/* Styling for Search Button */
+.searchForm > button {
+  background-color: #4caf50;
+  color: #050505;
+  border: none;
+  padding: 1.5vmax 2vmax;
+  border-radius: 20px;
+  cursor: pointer;
+  margin: 1.5vmax 0;
+  font: 100 1rem "Roboto", sans-serif;
+  outline: none;
+  transition: all 0.3s ease-in-out;
+}
+
+.searchForm > button:hover {
+  background-color: #45a049;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Additional Styling for Search Results (if needed) */
 .searchResults {
   width: 100%;
   height: 100%;
@@ -47,6 +82,7 @@
   animation: fadeIn 1s ease-in-out;
 }
 
+/* Keyframe Animation for Slide Up */
 @keyframes slideUp {
   0% {
     transform: translateY(100%);
@@ -56,16 +92,33 @@
   }
 }
 
+/* Box Animation */
+@keyframes boxAnimation {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+/* Media Query for Smaller Screens */
 @media screen and (max-width: 600px) {
   .searchForm {
-    width: 100%;
-    animation: slideUpMobile 1s ease-in-out;
+    width: 90%;
+    max-width: none;
+    animation: slideUpMobile 1s ease-in-out, boxAnimationMobile 4s infinite;
   }
 
   .searchForm > input {
-    padding: 2vw 4vw;
-    margin: 1vmax;
-    font: 100 1rem "Roboto", sans-serif; /* Slightly smaller font size */
+    padding: 2vmax 4vmax;
+    margin: 1vmax 0;
+    font-size: 0.9rem;
+  }
+
+  .searchForm > button {
+    padding: 2vmax 4vmax;
+    margin: 1.5vmax 0;
   }
 
   @keyframes slideUpMobile {
@@ -74,6 +127,16 @@
     }
     100% {
       transform: translateY(0);
+    }
+  }
+
+  /* Box Animation for Mobile */
+  @keyframes boxAnimationMobile {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
     }
   }
 }
