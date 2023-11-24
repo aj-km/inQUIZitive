@@ -3,6 +3,7 @@ import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { deleteMyProfile, logoutUser } from "../../Actions/User";
+import AllUsers from "../AllUsers/AllUsers";
 import Loader from "../Loader/Loader";
 import QuizResponse from "../QuizResponse/QuizResponse";
 import "./Account.css";
@@ -38,8 +39,12 @@ const Account = () => {
       <Typography variant="body1">Email: {user.email}</Typography>
       <Typography variant="body1">Admin: {user.isAdmin ? 'Yes' : 'No'}</Typography>
     </div>
+    
     <div className="accountmiddle">
-      <QuizResponse />
+    {
+      (user.isAdmin? <AllUsers/>:<QuizResponse />)
+    }
+      
     </div>
       <div className="accountright">
         <Avatar
