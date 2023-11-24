@@ -1,6 +1,6 @@
 const Quiz = require("../models/Quiz");
 const User = require("../models/User");
-
+const Group=require("../models/Group");
 exports.getQuizzes = async (req, res) => {
   try {
     const quizzes = await Quiz.find({});
@@ -52,50 +52,10 @@ exports.sendQuizToUser = async (req, res) => {
   }
 };
 
-// exports.sendQuizToUser = async (req, res) => {
-//   try {
-//     const { userEmail, quizTitle} = req.body;
-
-//     // Simple validation, you can customize it based on your needs
-//     if (!userEmail || !quizTitle ) {
-//       return res.status(400).json({ message: 'Invalid request parameters' });
-//     }
-
-//     let user = await User.findOne({ email: userEmail });
-//     let quiz = await Quiz.findOne({ title: quizTitle });
-
-//     if (!quiz) {
-//       return res.status(404).json({ message: 'Quiz not found' });
-//     }
-
-//     if (!user) {
-//       return res.status(404).json({ message: 'User not found' });
-//     }
-
-//     if (!user.quizzes.some((quizEntry) => quizEntry.quizId.equals(quiz._id))) {
-
-//       user.quizzes.push({
-//         quizId: quiz._id,
-//         responses: [],
-//         score: 0,
-//         duration: quiz.duration, // Include quiz duration in the user's quizzes
-//       });
-
-//       await user.save();
-//       res.status(200).json({ message: 'Quiz sent to user successfully' });
-//     } else {
-//       res.status(400).json({ message: 'User already has this quiz' });
-//     }
-//   } catch (error) {
-//     res.status(500).json({ message: error.message });
-//   }
-// };
-
 // Function to handle the submission of quiz responses
 exports.submitQuizResponses = async (req, res) => {
   const { userId, quizId, quizResponses, textResponsesArray, timeTaken } = req.body; // Extract userId, quizId, responses, and timeTaken from the request body
   try {
-    console.log(req.body);
     // Find the user by ID
     const user = await User.findById(userId);
     if (!user) {
@@ -131,12 +91,6 @@ exports.submitQuizResponses = async (req, res) => {
       quizAttempted.timeTaken = timeTaken; // Add timeTaken to the quizAttempted
       quizAttempted.responses.push(...quizResponses);
     }
-    // Calculate score based on responses - this is a simple correct/incorrect count
-
-
-    // Save the quiz responses, score, and time taken in the user's document
-    
-
     await user.save();
 
     res
@@ -162,5 +116,21 @@ exports.showQuizResponse = async (req, res) => {
     res.json(user.quizzes);
   } catch (err) {
     res.status(500).json({ message: err.message });
+  }
+};
+
+exports.getGroupByName = async (req, res) => {
+  try {
+    const { groupName } = req.params;
+
+    const group = await Group.findOne({ groupName });
+
+    if (!group) {
+      return res.status(404).json({ message: 'Group not found' });
+    }
+    return res.status(200).json(group);
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: 'Internal Server Error' });
   }
 };
