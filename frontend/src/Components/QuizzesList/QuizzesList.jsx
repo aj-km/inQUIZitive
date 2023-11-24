@@ -8,18 +8,18 @@ import './QuizzesList.css';
 const QuizzesList = () => {
   const dispatch = useDispatch();
   const { isAuthenticated, user } = useSelector((state) => state.user);
-  const { quizzes, loading, error } = useSelector((state) => state.fetchQuiz);
+  const { quizzes, error } = useSelector((state) => state.fetchQuiz);
   const [selectedQuiz, setSelectedQuiz] = useState(null);
   const [isFullScreen, setIsFullScreen] = useState(false);
-  const [currentTime, setCurrentTime] = useState(new Date());
+  const [ setCurrentTime] = useState(new Date());
 
   useEffect(() => {
     const timerId = setInterval(() => {
-      setCurrentTime(new Date()); // Update current time every second
+      setCurrentTime(new Date()); 
     }, 1000);
 
-    return () => clearInterval(timerId); // Cleanup interval on component unmount
-  }, []); // Empty dependency array to run only once on component mount
+    return () => clearInterval(timerId); 
+  },); 
 
   useEffect(() => {
     if (isAuthenticated && user?._id) {
@@ -63,11 +63,10 @@ const QuizzesList = () => {
 
   const handleQuizSelection = (quizId) => {
     const selectedQuiz = quizzes.find((q) => q.quizId._id === quizId);
-    // Check if the quiz is currently active
     if (isQuizActive(selectedQuiz)) {
       enterFullScreen();
       setSelectedQuiz(selectedQuiz);
-      // Add an event listener for beforeunload to show a warning when the user tries to leave the page
+      
       window.addEventListener('beforeunload', handleBeforeUnload);
     } else {
       console.log("This quiz is not currently active.");
@@ -76,8 +75,8 @@ const QuizzesList = () => {
 
   const handleBeforeUnload = (event) => {
     const message = 'You are about to leave the quiz. Are you sure you want to do this?';
-    event.returnValue = message; // Standard for most browsers
-    return message; // For some older browsers
+    event.returnValue = message; 
+    return message; 
   };
 
   return (

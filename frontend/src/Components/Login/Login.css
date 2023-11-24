@@ -11,7 +11,7 @@
 .loginForm {
   background-color: rgb(202, 234, 232);
   height: 100%;
-  width: 40%; /* Adjust the width as needed */
+  width: 40%; 
   border-radius: 30px;
   box-sizing: border-box;
   padding: 2vmax;
@@ -30,8 +30,6 @@
   font: 100 1.2rem "Roboto", sans-serif;
   outline: none;
 }
-
-/* Styling for all buttons and links */
 .loginForm > button,
 .loginForm > a {
   cursor: pointer;
@@ -45,18 +43,18 @@
   text-align: center;
   text-decoration: none;
   color: white;
-  background-color: #4caf50; /* Green background color for buttons */
+  background-color: #4caf50; 
 }
 
 .loginForm > button:hover,
 .loginForm > a:hover {
-  background-color: #45a049; /* Dark green background on hover */
+  background-color: #45a049;
 }
 .loginForm > .title {
   font-size: 2.5rem;
   font-weight: bold;
   margin-bottom: 2vmax;
-  color: #333; /* Change the color to your preference */
+  color: #333;
 }
 
 @media screen and (max-width: 600px) {

@@ -10,7 +10,7 @@ const Home = () => {
 
   const linksUser = [
     { name: "Attempt Quiz", path: "/attempt-quiz" },
-    { name: "Past Quiz Response", path: "/account" },
+    { name: "Past Quiz Response", path: "/quiz-response" },
     { name: "Account", path: "/account" },
   ];
 
@@ -18,7 +18,6 @@ const Home = () => {
     { name: "All Quizzes", path: "/all-quizzes" },
     { name: "Create Quiz", path: "/createQuiz" },
     { name: "Send Quiz to User", path: "/send-quiz" },
-    // { name: "Leaderboard", path: "/leaderboard" },
     { name: "Create Groups", path: "/create-group" },
     { name: "Account", path: "/account" },
     {name:"Send quiz to Group",path:"/sendToGroup"},

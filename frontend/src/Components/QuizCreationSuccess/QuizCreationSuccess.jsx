@@ -1,11 +1,8 @@
-import React, { useEffect } from 'react'
-import { useSelector } from 'react-redux';
-import { useLocation, useNavigate } from 'react-router-dom';
+import React from 'react'
+import {  useNavigate } from 'react-router-dom';
 import './QuizCreationSuccess.css'
 const QuizCreationSuccess = () => {
   const navigate = useNavigate();
-  const location=useLocation();
-  const { loading, error, quizDataFromBackend,quizCreated } = useSelector((state) => state.quiz);
   const handleReturn = () => {
     navigate('/createQuiz');
 
