@@ -117,11 +117,7 @@ function FrontPage() {
               <ul className="timeline">
                 <li>
                   <div className="timeline-image">
-                    <img
-                      className="rounded-circle img-fluid"
-                      src="img/about/1.jpg"
-                      alt=""
-                    />
+          
                   </div>
                   <div className="timeline-panel">
                     <div className="timeline-heading">
@@ -138,11 +134,7 @@ function FrontPage() {
                 </li>
                 <li className="timeline-inverted">
                   <div className="timeline-image">
-                    <img
-                      className="rounded-circle img-fluid"
-                      src="img/about/2.jpg"
-                      alt=""
-                    />
+              
                   </div>
                   <div className="timeline-panel">
                     <div className="timeline-heading">
@@ -161,11 +153,7 @@ function FrontPage() {
                 </li>
                 <li>
                   <div className="timeline-image">
-                    <img
-                      className="rounded-circle img-fluid"
-                      src="img/about/3.jpg"
-                      alt=""
-                    />
+      
                   </div>
                   <div className="timeline-panel">
                     <div className="timeline-heading">
@@ -315,38 +303,21 @@ function FrontPage() {
           <div className="row">
             <div className="col-md-3 col-sm-6">
               <a href="#something">
-                <img
-                  className="img-fluid d-block mx-auto"
-                  src="img/logos/envato.jpg"
-                  alt=""
-                />
+        
               </a>
             </div>
             <div className="col-md-3 col-sm-6">
               <a href="#something">
-                <img
-                  className="img-fluid d-block mx-auto"
-                  src="img/logos/designmodo.jpg"
-                  alt=""
-                />
               </a>
             </div>
             <div className="col-md-3 col-sm-6">
               <a href="#something">
-                <img
-                  className="img-fluid d-block mx-auto"
-                  src="img/logos/themeforest.jpg"
-                  alt=""
-                />
+                
               </a>
             </div>
             <div className="col-md-3 col-sm-6">
               <a href="#something">
-                <img
-                  className="img-fluid d-block mx-auto"
-                  src="img/logos/creative-market.jpg"
-                  alt=""
-                />
+  
               </a>
             </div>
           </div>
