@@ -178,6 +178,7 @@ const QuestionInput = () => {
           <input
             type="number"
             placeholder="Hours"
+            min="0"
             value={quizDuration.hours}
             onChange={handleQuizDurationChange("hours")}
             required
@@ -185,6 +186,7 @@ const QuestionInput = () => {
           <input
             type="number"
             placeholder="Minutes"
+            min="0"
             value={quizDuration.minutes}
             onChange={handleQuizDurationChange("minutes")}
             required
@@ -192,6 +194,7 @@ const QuestionInput = () => {
           <input
             type="number"
             placeholder="Seconds"
+            min="0"
             value={quizDuration.seconds}
             onChange={handleQuizDurationChange("seconds")}
             required
