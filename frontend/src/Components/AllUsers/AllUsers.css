@@ -1,35 +1,56 @@
-/* AllUsers.css */
-
-ul {
+.all-users-container {
+    background-color: #eee6e6;
+    font-family: Arial, sans-serif;
+    margin: 20px;
+  }
+  
+  .error-message {
+    color: red;
+  }
+  
+  .user-list {
     list-style: none;
     padding: 0;
-}
-
-li {
-    margin-bottom: 20px;
-    border: 1px solid #ddd;
-    padding: 15px;
-    border-radius: 5px;
-}
-
-h2 {
-    color: #333;
-}
-
-p {
-    margin: 0;
-}
-
-ul.quiz-list {
-    padding-left: 20px;
-}
-
-ul.quiz-list li {
-    margin: 0;
+  }
+  
+  .user-item {
+    cursor: pointer;
+    margin-bottom: 10px;
     padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    border: 1px solid #d3b8b8;
+  }
+  
+  .user-item.selected {
+    background-color: #c5c3c3;
+  }
+  
+  .user-name,
+  .user-email,
+  .admin-status,
+  .quiz-heading {
+    margin: 0;
+  }
+  
+  .user-details {
     margin-top: 10px;
-}
-
-/* Add more styles as needed */
+  }
+  
+  .quiz-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .quiz-item {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+  }
+  
+  .quiz-title,
+  .quiz-score,
+  .quiz-start-time,
+  .quiz-end-time,
+  .quiz-time-taken {
+    margin: 0;
+  }
+  

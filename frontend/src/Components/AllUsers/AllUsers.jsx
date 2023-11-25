@@ -16,35 +16,35 @@ const AllUsers = () => {
   };
 
   return (
-    <div>
-      <h2>User List</h2>
+    <div className="all-users-container">
+      <h2 style={{textAlign:"center" , }}>USER LIST</h2>
       {loading ? (
         <p>Loading...</p>
       ) : error ? (
-        <p>Error: {error}</p>
+        <p className="error-message">Error: {error}</p>
       ) : (
-        <ul>
+        <ul className="user-list">
           {users &&
             users.map((user) => (
-              <li key={user._id} onClick={() => handleUserClick(user._id)}>
-                <p>Name: {user.name}</p>
-                <p>Email: {user.email}</p>
+              <li key={user._id} onClick={() => handleUserClick(user._id)} className={`user-item ${selectedUser === user._id ? 'selected' : ''}`}>
+                <p className="user-name">Name: {user.name}</p>
+                <p className="user-email">Email: {user.email}</p>
                 { user.isAdmin ? (
-                  <p>Admin user </p>
+                  <p className="admin-status">Admin user </p>
                 ) : (
                   selectedUser === user._id  && (
-                    <div>
-                      <p>Quizzes:</p>
-                      <ul>
+                    <div className="user-details">
+                      <p className="quiz-heading">Quizzes:</p>
+                      <ul className="quiz-list">
                         {user.quizzes &&
                           user.quizzes.map((quiz) => (
-                            <li key={quiz._id}>
+                            <li key={quiz._id} className="quiz-item">
 
-                              <p>Quiz Title: {quiz.quizId.title}</p>
-                              <p>Score: {quiz.score}</p>
-                              <p>Start Time: {quiz.startTime}</p>
-                              <p>End Time: {quiz.endTime}</p>
-                              <p>Time Taken: {quiz.timeTaken}</p>
+                              <p className="quiz-title">Quiz Title: {quiz.quizId.title}</p>
+                              <p className="quiz-score">Score: {quiz.score}</p>
+                              <p className="quiz-start-time">Start Time: {quiz.startTime}</p>
+                              <p className="quiz-end-time">End Time: {quiz.endTime}</p>
+                              <p className="quiz-time-taken">Time Taken: {quiz.timeTaken}</p>
                             </li>
                           ))}
                       </ul>
@@ -60,3 +60,4 @@ const AllUsers = () => {
 };
 
 export default AllUsers;
+
