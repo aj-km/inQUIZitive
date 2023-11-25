@@ -10,13 +10,12 @@ a:hover{
 body {
   font-family: 'Arial', sans-serif;
   margin-top: 4rem;
-  /* margin-top: 37px; */
   padding: 2vmax 0;
   padding: 0;
-  /* background: linear-gradient(to right, #fff5bc, #cec1ff); */
   background: linear-gradient(to right, #bcd8ff, #795b5b);
-  /* background-image:url("../../Assets/img/bg3.jpg"); */
-  /* background-size: cover; */
+  background-image:url("../src/Assets/img/bg3.jpg");
+  background-size: cover;
+
 }
 
 .main-container {

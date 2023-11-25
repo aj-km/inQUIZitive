@@ -14,7 +14,6 @@ exports.sendQuizToUser = async (req, res) => {
   try {
 
     const { userEmail, quizTitle, quizStartDate, quizStartTime, quizEndDate, quizEndTime } = req.body;
-    // Simple validation, you can customize it based on your needs
     if (!userEmail || !quizTitle) {
       return res.status(400).json({ message: "Invalid request parameters" });
     }
@@ -52,16 +51,13 @@ exports.sendQuizToUser = async (req, res) => {
   }
 };
 
-// Function to handle the submission of quiz responses
 exports.submitQuizResponses = async (req, res) => {
   const { userId, quizId, quizResponses, textResponsesArray, timeTaken } = req.body; // Extract userId, quizId, responses, and timeTaken from the request body
   try {
-    // Find the user by ID
     const user = await User.findById(userId);
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
-    // Find the quiz by ID
     const quiz = await Quiz.findById(quizId);
     if (!quiz) {
       return res.status(404).json({ message: "Quiz not found" });
@@ -73,13 +69,13 @@ exports.submitQuizResponses = async (req, res) => {
       });
       quizAttempted.responses = [];
       quizAttempted.score = score;
-      quizAttempted.timeTaken = timeTaken; // Add timeTaken to the quizAttempted
+      quizAttempted.timeTaken = timeTaken;
       quizAttempted.responses.push(...textResponsesArray);
     } else {
       quizResponses.forEach((response) => {
         const question = quiz.questions.id(response.questionId);
         if (question && question.answer === response.chosenOption) {
-          score += 1; // Increment score for correct answers
+          score += 1; 
         }
       });
       const quizAttempted = user.quizzes.find((obj) => {
@@ -88,7 +84,7 @@ exports.submitQuizResponses = async (req, res) => {
   
       quizAttempted.responses = [];
       quizAttempted.score = score;
-      quizAttempted.timeTaken = timeTaken; // Add timeTaken to the quizAttempted
+      quizAttempted.timeTaken = timeTaken;
       quizAttempted.responses.push(...quizResponses);
     }
     await user.save();
