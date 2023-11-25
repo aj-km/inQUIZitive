@@ -231,12 +231,26 @@ exports.getUserProfile = async (req, res) => {
 
 exports.getAllUsers = async (req, res) => {
     try {
+        // const users = await User.find({
+        //     name: { $regex: req.query.name, $options: 'i' },
+        // });
         const users = await User.find({
             name: { $regex: req.query.name, $options: 'i' },
-        });
+          });
+          
+          const populatedUsers = await Promise.all(
+            users.map(async (user) => {
+              const populatedUser = await User.findById(user._id).populate({
+                path: "quizzes.quizId",
+                model: "Quiz",
+              });
+              return populatedUser;
+            })
+          );
         res.status(200).json({
             success: true,
-            users,
+            // users,
+            populatedUsers,
         });
     } catch (e) {
         res.status(500).json({

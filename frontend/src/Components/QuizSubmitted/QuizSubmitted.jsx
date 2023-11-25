@@ -6,7 +6,7 @@ const QuizSubmitted = () => {
   
 
   const handleReturn = () => {
-    navigate('/');
+    navigate('/home');
   };
 
   return (
