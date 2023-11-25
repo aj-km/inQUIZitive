@@ -78,9 +78,10 @@ export const getAllUsers =
       });
 
       const { data } = await axios.get(`/api/v1/users?name=${name}`);
+      console.log(data);
       dispatch({
         type: "allUsersSuccess",
-        payload: data.users,
+        payload: data.populatedUsers,
       });
     } catch (error) {
       dispatch({

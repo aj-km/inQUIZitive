@@ -6,13 +6,11 @@ import "./AllUsers.css";
 const AllUsers = () => {
   const dispatch = useDispatch();
   const { loading, users, error } = useSelector((state) => state.allUsers);
-
+  
   useEffect(() => {
     dispatch(getAllUsers());
   }, [dispatch]);
-
   const [selectedUser, setSelectedUser] = useState(null);
-
   const handleUserClick = (userId) => {
     setSelectedUser(userId === selectedUser ? null : userId);
   };
@@ -34,17 +32,19 @@ const AllUsers = () => {
                 { user.isAdmin ? (
                   <p>Admin user </p>
                 ) : (
-                  selectedUser === user._id && (
+                  selectedUser === user._id  && (
                     <div>
                       <p>Quizzes:</p>
                       <ul>
                         {user.quizzes &&
                           user.quizzes.map((quiz) => (
                             <li key={quiz._id}>
-                              <p>Quiz ID: {quiz.quizId}</p>
+
+                              <p>Quiz Title: {quiz.quizId.title}</p>
                               <p>Score: {quiz.score}</p>
                               <p>Start Time: {quiz.startTime}</p>
                               <p>End Time: {quiz.endTime}</p>
+                              <p>Time Taken: {quiz.timeTaken}</p>
                             </li>
                           ))}
                       </ul>
